@@ -15,8 +15,6 @@ $font_2: sans-serif;
 
 //radius
 $radius: 10px;
-//urls
-// $url_0: url(https://fonts.googleapis.com/css?family=Roboto);
 
 * {
   margin: 0;
@@ -71,7 +69,7 @@ button {
   margin: 2rem;
 }
 .back-drop {
-  background: $color_mine_shaft_692_approx;
+  // background: $color_mine_shaft_692_approx;
   height: 100%;
   width: 100%;
   position: fixed;
@@ -104,4 +102,28 @@ div.social-wrap button {
   &:active {
     background-color: $color_mine_shaft_approx;
   }
+}
+.close-button {
+  border: none;
+  display: inline-block;
+  padding: 8px 16px;
+  vertical-align: middle;
+  overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+  background-color: inherit;
+  text-align: center;
+  cursor: pointer;
+  white-space: nowrap;
+  font-size: 1.5rem;
+}
+
+.topright {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+button {
+  cursor: pointer;
 }
