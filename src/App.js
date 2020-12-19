@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from "react";
 import Modal from "./components/modal/Modal";
-import { auth,facebookProvider } from "./services/firebase";
-
+import { auth } from "./services/firebase";
+import Dashboard from'./components/dashboard/Dashboard';
+import ListDashboard from'./components/list-dashboard/ListDashboard';
 import "./App.css";
 
 function App() {
@@ -32,12 +33,18 @@ function App() {
   };
 
   return (
-    <>
+    <div>
       {show ? (
-        <div className="back-drop" onClick={closeModalHandler}></div>
+        <>
+        {/* <div className="back-drop" onClick={closeModalHandler}></div> */}
+        <Modal show={show} close={closeModalHandler} />
+        </>
       ) : null}
-      <Modal show={show} close={closeModalHandler} />
-    </>
+     
+
+      <Dashboard />
+      <ListDashboard/>
+    </div>
   );
 }
 

@@ -5,7 +5,7 @@ import "./Modal.scss";
 const Modal = (props) => {
   const { show, close } = props;
   return (
-    <>
+    <div>
       <div
         className="modal-wrapper"
         style={{
@@ -42,7 +42,7 @@ const Modal = (props) => {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
