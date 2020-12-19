@@ -1,10 +1,6 @@
-import React from "react";
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route
-} from "react-router-dom";
-import Home from "./pages/Home";
+import React from 'react';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import Home from './pages/Home';
 import Cart from './pages/Cart';
 import PrivateRoute from './components/hoc/PrivateRoute';
 
@@ -13,31 +9,31 @@ function App() {
     <Router>
       <Switch>
         <Route path={'/products/:categoryId'}>
-          <Home/>
+          <Home />
         </Route>
         <Route path={'/product/:id'}>
-          <Home/>
+          <Home />
         </Route>
         <PrivateRoute path={'/cart'}>
-          <Cart/>
+          <Cart />
         </PrivateRoute>
         <PrivateRoute path={'/address-list'}>
-          <Cart/>
+          <Cart />
         </PrivateRoute>
         <PrivateRoute path={'/new-address'}>
-          <Cart/>
+          <Cart />
         </PrivateRoute>
         <PrivateRoute path={'/orders'}>
-          <Cart/>
+          <Cart />
         </PrivateRoute>
         <PrivateRoute path={'/checkout'}>
-          <Cart/>
+          <Cart />
         </PrivateRoute>
         <PrivateRoute path={'/order-confirmation'}>
-          <Cart/>
+          <Cart />
         </PrivateRoute>
         <Route path={'/'}>
-          <Home/>
+          <Home />
         </Route>
       </Switch>
     </Router>
