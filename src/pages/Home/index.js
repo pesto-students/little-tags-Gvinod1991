@@ -1,13 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import Modal from "../../components/modal/Modal";
-import { auth } from "../../services/firebase";
-import Dashboard from '../../components/dashboard/Dashboard';
-import ListDashboard from '../../components/dashboard/ListDashboard';
-import Header from '../../components/layout/Header';
-
 import { useDispatch } from 'react-redux';
 
-
+import Modal from '../../components/modal/Modal';
+import { auth } from '../../services/firebase';
+import Dashboard from '../../components/dashboard/Dashboard';
+import Header from '../../components/layout/Header';
+import Footer from '../../components/layout/Footer'
 export default function Home() {
   const [show, setShow] = useState(false);
 
@@ -19,13 +17,13 @@ export default function Home() {
         const { displayName, email } = userIdentity;
         dispatch({
           displayName,
-          email
+          email,
         });
       } else {
-        let pop_status = localStorage.getItem("pop_status");
+        let pop_status = localStorage.getItem('pop_status');
         if (!pop_status) {
           setShow(true);
-          localStorage.setItem("pop_status", 1);
+          localStorage.setItem('pop_status', 1);
         }
       }
     });
@@ -49,8 +47,8 @@ export default function Home() {
         </>
       ) : null}
 
-
       <Dashboard />
+      <Footer/>
     </div>
-  )
+  );
 }

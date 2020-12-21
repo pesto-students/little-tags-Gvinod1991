@@ -77,7 +77,7 @@
 //Footer CSS
 
 .footer {
-  position: fixed;
+  position: relative;
   bottom: 0;
   background-color: #32353c;
   width: 100%;
@@ -342,10 +342,10 @@
   }
 }
 
-.cart {
-  top: 0;
-  right: 10px;
-  position: absolute;
-  margin: 0.6rem;
-  height: 4rem;
-}
+// .cart {
+//   top: 0;
+//   right: 10px;
+//   position: absolute;
+//   margin: 0.6rem;
+//   height: 4rem;
+// }
