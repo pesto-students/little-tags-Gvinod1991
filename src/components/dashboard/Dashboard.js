@@ -1,9 +1,11 @@
 import React from 'react';
 
 import './Dashboard.scss';
+import ListDashboard from './ListDashboard';
 
 const Dashboard = () => {
     return (
+      <>
         <div className = "dashboardContainer" >
           <div className = "backgroundContainer" >
           <div className="centered">
@@ -17,8 +19,8 @@ const Dashboard = () => {
             </div>
           </div>
         </div>
-
-        
+        <ListDashboard />
+       </> 
     )
 }
 

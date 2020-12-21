@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import Modal from "../../components/modal/Modal";
 import { auth } from "../../services/firebase";
 import Dashboard from'../../components/dashboard/Dashboard';
-import ListDashboard from'../../components/list-dashboard/ListDashboard';
+import ListDashboard from'../../components/dashboard/ListDashboard';
 import Header from '../../components/layout/Header';
 export default function Home(){
   const [show, setShow] = useState(false);
