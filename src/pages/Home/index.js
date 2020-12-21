@@ -29,7 +29,7 @@ export default function Home() {
         }
       }
     });
-  }, []);
+  }, [dispatch]);
 
   const closeModalHandler = () => {
     setShow(false);
