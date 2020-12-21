@@ -1,0 +1,137 @@
+//colors
+$color_wild_sand_approx: #f7f7f7;
+$black_30: rgba(0, 0, 0, 0.3);
+$white: white;
+$gray: gray;
+$black_50: rgba(0, 0, 0, 0.5);
+$color_cod_gray_approx: #111;
+$color_mine_shaft_approx: #222;
+$color_mine_shaft_692_approx: rgba(63, 61, 61, 0.692);
+
+//fonts
+$font_0: roboto;
+$font_1: Merriweather Sans;
+$font_2: sans-serif;
+
+//radius
+$radius: 10px;
+
+* {
+  margin: 0;
+  padding: 0;
+}
+@mixin border-radius($pixel...) {
+  border-radius: $pixel;
+}
+.modal-wrapper {
+  padding: 30px;
+  max-width: 350px;
+  width: 100% !important;
+  background-color: $color_wild_sand_approx;
+  margin: 8% 35% auto;
+  @include border-radius($radius);
+  box-shadow: 0 2px 2px $black_30;
+  overflow: hidden;
+  font-family: $font_0;
+  transition: all 0.3s ease;
+  position: fixed;
+  z-index: 1;
+}
+.modal-title {
+  text-align: center;
+  font-size: 0.8rem;
+  margin-top: 1rem;
+  .show {
+    transform: translateY(0vh);
+  }
+  .hide {
+    transform: translateX(-100vh);
+  }
+}
+button {
+  &#googleplus {
+    border-color: $color_cod_gray_approx;
+    background-color: $color_mine_shaft_approx;
+    text-shadow: $color_mine_shaft_approx -1px -1px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  span {
+    font-size: 18px;
+    margin: 0.5rem;
+    font-weight: bold;
+  }
+  &#faceBook {
+    border-color: $color_cod_gray_approx;
+    background-color: $color_mine_shaft_approx;
+    text-shadow: $color_mine_shaft_approx -1px -1px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+.wrap-buttons {
+  justify-content: center;
+  display: flex;
+  margin: 2rem;
+}
+.back-drop {
+  // background: $color_mine_shaft_692_approx;
+  height: 100%;
+  width: 100%;
+  position: fixed;
+  transition: all 1.3s;
+}
+.modal-header h1 {
+  text-align: center;
+  font-size: 1.8em;
+  font-family: $font_0;
+}
+div.social-wrap button {
+  height: 35px;
+  background: none;
+  border: none;
+  display: block;
+  background-size: 35px 35px;
+  background-position: right center;
+  background-repeat: no-repeat;
+  border-radius: 8px;
+  color: $white;
+  font-family: $font_1, $font_2;
+  font-size: 10px;
+  margin-bottom: 15px;
+  width: 205px;
+  border-bottom: 2px solid transparent;
+  border-left: 1px solid transparent;
+  border-right: 1px solid transparent;
+  box-shadow: 0 4px 2px -2px $gray;
+  text-shadow: $black_50 -1px -1px 0;
+  &:active {
+    background-color: $color_mine_shaft_approx;
+  }
+}
+.close-button {
+  border: none;
+  display: inline-block;
+  padding: 8px 16px;
+  vertical-align: middle;
+  overflow: hidden;
+  text-decoration: none;
+  color: inherit;
+  background-color: inherit;
+  text-align: center;
+  cursor: pointer;
+  white-space: nowrap;
+  font-size: 1.5rem;
+}
+
+.topright {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+button {
+  cursor: pointer;
+}
