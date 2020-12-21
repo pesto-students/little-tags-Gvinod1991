@@ -269,10 +269,10 @@
       margin-top: 0.3rem;
     }
   }
-  ul{
-    margin:0;
+  ul {
+    margin: 0;
   }
-  ul li{
+  ul li {
     list-style: none;
     font-family: Gotham;
     font-size: 1rem;
@@ -285,18 +285,18 @@
     cursor: pointer;
     padding-bottom: 0.1rem;
   }
-  ul li a{
-    text-decoration:none;
+  ul li a {
+    text-decoration: none;
     color: #000000;
     cursor: pointer;
     font-size: 1rem;
   }
-  .categories-section{
+  .categories-section {
     h4 {
-      margin:0;
+      margin: 0;
       margin-top: 2rem;
       margin-bottom: 1rem;
-      margin-left:2.5rem;
+      margin-left: 2.5rem;
       font-family: Gotham;
       font-size: 1.5rem;
       font-weight: 500;
@@ -307,28 +307,27 @@
       text-align: left;
       color: #000000;
       text-transform: uppercase;
-     
     }
   }
-  .white-space{
-    margin-top:2rem;
+  .white-space {
+    margin-top: 2rem;
   }
-  .nav-menu{
-    ul li{
+  .nav-menu {
+    ul li {
       padding-bottom: 0.4rem;
     }
   }
-  .logout-section{
+  .logout-section {
     position: fixed;
-    bottom:1.5rem;
-    left:3rem;
-    .btn{
-      margin:auto;
+    bottom: 1.5rem;
+    left: 3rem;
+    .btn {
+      margin: auto;
       text-align: center;
       padding: 0.5rem 5rem 0.5rem 5rem;
       border-radius: 0.3rem;
       background-color: #ebebeb;
-      border:none;
+      border: none;
       outline: none;
       font-family: Gotham;
       font-size: 1rem;
@@ -337,8 +336,16 @@
       color: #000000;
       cursor: pointer;
     }
-    .btn::focus{
+    .btn::focus {
       outline: none;
     }
   }
+}
+
+.cart {
+  top: 0;
+  right: 10px;
+  position: absolute;
+  margin: 0.6rem;
+  height: 4rem;
 }

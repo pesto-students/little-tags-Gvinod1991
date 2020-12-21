@@ -1,13 +1,17 @@
 import React, { useState } from 'react';
 import './layout.scss';
 import HamBurgerMenu from './HamBurgerMenu';
-export default function Header() {
+
+import { store } from '../../redux/store';
+
+export default function Header({ openModal }) {
   const [showHamburgerMenu, setShowHamburgerMenu] = useState(false);
 
   const toggleHamburgerMenu = () => {
     setShowHamburgerMenu(!showHamburgerMenu);
   };
 
+  const getData = store.getState().loginReducer
   return (
     <div>
       <div className="header">
@@ -28,7 +32,16 @@ export default function Header() {
           />
           <input type="text" placeholder="Search...." />
         </div>
-        <div className="login-container">Login/SignUp</div>
+        {
+          getData.isLoggedIn
+            ?
+            <div>
+              <img src="/cart.png" alt="cart" className="cart" />
+            </div>
+            : <div className="login-container" onClick={openModal}>Login/SignUp</div>
+        }
+
+
       </div>
       {showHamburgerMenu && (
         <HamBurgerMenu toggleHamburgerMenu={toggleHamburgerMenu} />

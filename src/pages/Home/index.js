@@ -1,18 +1,23 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import Modal from "../../components/modal/Modal";
 import { auth } from "../../services/firebase";
-import Dashboard from'../../components/dashboard/Dashboard';
-import ListDashboard from'../../components/dashboard/ListDashboard';
+import Dashboard from '../../components/dashboard/Dashboard';
+import ListDashboard from '../../components/dashboard/ListDashboard';
 import Header from '../../components/layout/Header';
-export default function Home(){
+
+import { useDispatch } from 'react-redux';
+
+
+export default function Home() {
   const [show, setShow] = useState(false);
-  const [user, setuser] = useState(null);
+
+  const dispatch = useDispatch();
   useEffect(() => {
     auth.onAuthStateChanged(async (userIdentity) => {
       if (userIdentity) {
         setShow(false);
         const { displayName, email } = userIdentity;
-        setuser({
+        dispatch({
           displayName,
           email
         });
@@ -25,23 +30,28 @@ export default function Home(){
       }
     });
   }, []);
+
   const closeModalHandler = () => {
     setShow(false);
   };
 
-  return(
+  const openModalHandler = () => {
+    setShow(true);
+  };
+
+  return (
     <div>
-      <Header></Header>
+      <Header openModal={openModalHandler}></Header>
       {show ? (
         <>
-        {/* <div className="back-drop" onClick={closeModalHandler}></div> */}
-        <Modal show={show} close={closeModalHandler} />
+          {/* <div className="back-drop" onClick={closeModalHandler}></div> */}
+          <Modal show={show} close={closeModalHandler} />
         </>
       ) : null}
-     
+
 
       <Dashboard />
-      <ListDashboard/>
+      <ListDashboard />
     </div>
   )
 }
