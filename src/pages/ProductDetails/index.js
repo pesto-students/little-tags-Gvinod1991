@@ -1,12 +1,15 @@
 import React from 'react';
 import './product-details.scss';
 import MainLayout from '../../components/layout/MainLayout';
+import Carousel from '../../components/carousel';
 export default function ProductDetails(){
   return(
     <MainLayout>
+       
     <div className="product-details-container">
+   
       <div className="product-carousal">
-          <img src="/yellow-jacket.png" alt="yellow-jacket" />
+          <Carousel type='stack' />
       </div>
       <div className="product-details">
         <h2 className="product-title">Faux Leather Jacket</h2>
@@ -48,6 +51,7 @@ export default function ProductDetails(){
         </button>
       </div>
     </div>
+    <Carousel type={'list'} />
     </MainLayout>
   )
 }
