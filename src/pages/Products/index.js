@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { useHistory } from 'react-router-dom';
 import MainLayout from '../../components/layout/MainLayout';
+import ProductCard from '../../components/productCard';
+import Pagination from '../../components/pagination';
 import './products.scss';
 const API_BASE_URL = 'https://fakestoreapi.com/';
 export default function Products() {
   const [productList, setProductList] = useState([]);
   const [loading, setLoading] = useState(false);
-  const history = useHistory();
   const API_URL = `${API_BASE_URL}products`;
   useEffect(() => {
     setLoading(true);
@@ -29,17 +29,9 @@ export default function Products() {
         <div className="all-products-wrapper">
           {loading && <p>Loading...</p>}
           {!loading && productList && productList.length && productList.map(({id,title,image,price})=>{
-              return <div key={id} className="product-container" onClick={()=>history.push({pathname: "/product/1"})}>
-                    <div className="row-left">
-                      <img className="product-image" src={image} alt={title} />
-                      <span>{title}</span>
-                    </div>
-                    <div className="row-right">
-                      <img className="inr-symbol" src="/inr.svg" alt="inr currency symbol"/>
-                      <div className="price">{price}</div>
-                    </div>
-              </div>
+              return <ProductCard key={id} title={title} productImage={image} pathname={`/product/${id}`} price={price} />
           })}
+          <Pagination/>
         </div>
       </div>
     </MainLayout>
