@@ -42,17 +42,16 @@ export default function Home() {
 
   return (
     <div>
-      {/* <Header openModal={openModalHandler}></Header>
+      <Header openModal={openModalHandler}></Header>
       {show ? (
-        <> */}
+        <>
       {/* <div className="back-drop" onClick={closeModalHandler}></div> */}
-      {/* <Modal show={show} close={closeModalHandler} />
+      <Modal show={show} close={closeModalHandler} />
         </>
       ) : null}
       <Dashboard />
 
-      <Footer /> */}
-      <DeliverTo />
+      <Footer />
     </div>
   );
 }
