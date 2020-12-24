@@ -1,27 +1,26 @@
+$border-color: #000000;
+$border-radius: 5px;
+
 .flex-container {
-  display: flex;
-  cursor: pointer;
-  font-weight: bold;
-  margin-top: 1rem;
+	display: flex;
+	cursor: pointer;
+	font-weight: bold;
+	margin-top: 1rem;
 }
-
 .flex-child {
-  //   flex: 1;
-  width: 2rem;
-  border: 1px solid black;
-  text-align: center;
-  height: 1.5rem;
+	width: 2rem;
+	border: 1px solid $border-color;
+	text-align: center;
+	height: 1.5rem;
+	&:first-child {
+		border-top-left-radius: $border-radius;
+		border-bottom-left-radius: $border-radius;
+	}
+	&:last-child {
+		border-top-right-radius: $border-radius;
+		border-bottom-right-radius: $border-radius;
+	}
 }
-.flex-child:first-child {
-  border-top-left-radius: 5px;
-  border-bottom-left-radius: 5px;
-}
-
-.flex-child:last-child {
-  border-top-right-radius: 5px;
-  border-bottom-right-radius: 5px;
-}
-
 .disabled {
-  cursor: not-allowed;
+	cursor: not-allowed;
 }

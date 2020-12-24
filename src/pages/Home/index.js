@@ -6,7 +6,6 @@ import Modal from '../../components/modal/Modal';
 import Dashboard from '../../components/dashboard/Dashboard';
 import Header from '../../components/layout/Header';
 import Footer from '../../components/layout/Footer'
-import DeliverTo from '../DeliverTo/deliver-to';
 
 
 export default function Home() {
