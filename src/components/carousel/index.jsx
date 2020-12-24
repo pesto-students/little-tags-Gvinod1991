@@ -1,13 +1,15 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import './carousel.scss';
-import Item from './Item';
-import carouselItem from './Item';
+import CarouselItem from './CarouselItem';
 export default function Carousel({type}) {
   const sliderArray = [
-    <Item path={'/purple-jacket.png'} />,
-    <Item path={'/yellow-jacket.png'} />,
-    <Item path={'/pink-dress.png'} />,
+    <CarouselItem path={'/purple-jacket.png'} type={type} />,
+    <CarouselItem path={'/yellow-jacket.png'}  type={type}/>,
+    <CarouselItem path={'/pink-dress.png'} type={type} />,
+    <CarouselItem path={'/purple-jacket.png'} type={type}/>,
+    <CarouselItem path={'/pink-dress.png'} type={type} />,
+    <CarouselItem path={'/yellow-jacket.png'} type={type} />,
   ];
   const [x, setX] = useState(0);
   const goLeft = () => {
@@ -38,10 +40,10 @@ export default function Carousel({type}) {
         );
       })}
       <button id="left-arrow" className={type === 'stack' ? 'lg' :'sm'} onClick={goLeft}>
-        <img src="/left-arrow.svg"/>
+        <img src="/left-arrow.svg" alt="left"/>
       </button>
       <button id="right-arrow" className={type === 'stack' ? 'lg' :'sm'} onClick={goRight}>
-        <img src="/right-arrow.svg" />
+        <img src="/right-arrow.svg"  alt="right" />
       </button>
     </div>
   );
