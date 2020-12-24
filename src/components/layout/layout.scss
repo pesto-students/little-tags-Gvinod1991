@@ -3,6 +3,9 @@
   flex-direction: row;
   justify-content: flex-start;
   margin: 1rem;
+  @media screen and (max-width:420px){
+    flex-wrap: wrap;
+  }
   .brand-container {
     display: flex;
     justify-content: space-between;
@@ -31,6 +34,17 @@
     border-radius: 5px;
     box-shadow: 0 0 6px 0 rgba(10, 91, 106, 0.16);
     background-color: #ffffff;
+    @media screen and (max-width:420px){
+      width: 100%;
+      margin-left: 0;
+      margin-right: 0;
+    }
+    @media screen and (max-width:768px){
+      height:3rem;
+    }
+    @media screen and (max-width:1024px){
+      height:3rem;
+    }
     .search-icon {
       margin-top: 0.5rem;
       margin-left: 0.5rem;
@@ -43,6 +57,12 @@
       font-size: 1.5rem;
       font-weight: normal;
       outline: none;
+      @media screen and (max-width:768px){
+        width: 80%;
+      }
+      @media screen and (max-width:420px){
+        width: 78%;
+      }
     }
     input::placeholder {
       font-family: MyanmarText;
@@ -92,7 +112,7 @@
     .categories-section,
     .get-in-touch-section {
       h2 {
-        font-family: ProximaNova;
+        font-family: Gotham;
         font-size: 1.5rem;
         font-weight: bold;
         font-stretch: normal;
@@ -106,7 +126,7 @@
     .contact-info-section {
       ul li {
         list-style: none;
-        font-family: ProximaNova;
+        font-family: Gotham;
         font-size: 0.9rem;
         font-weight: normal;
         font-stretch: normal;
@@ -117,7 +137,7 @@
         color: #6f6f6f;
       }
       h4 {
-        font-family: ProximaNova;
+        font-family: Gotham;
         font-size: 1rem;
         font-weight: normal;
         font-stretch: normal;
@@ -137,7 +157,7 @@
       ul li {
         list-style: none;
         padding: 5px;
-        font-family: ProximaNova;
+        font-family: Gotham;
         font-size: 0.9rem;
         font-weight: normal;
         font-stretch: normal;
@@ -158,9 +178,12 @@
         background-color: #ffffff;
         outline: none;
         font-size: 1rem;
+        @media screen and (max-width:420px){
+          padding: 0.5rem;
+        }
       }
       input::placeholder {
-        font-family: ProximaNova;
+        font-family: Gotham;
         font-size: 1rem;
         font-weight: normal;
         font-stretch: normal;
@@ -180,9 +203,12 @@
         background-color: #32353c;
         color: #fff;
         cursor: pointer;
+        @media screen and (max-width:420px){
+          padding: 0rem;
+        }
       }
       p {
-        font-family: ProximaNova;
+        font-family: Gotham;
         font-size: 1rem;
         font-weight: normal;
         font-stretch: normal;
@@ -201,7 +227,7 @@
     margin-right: 2rem;
     border-top: solid 1px #707070;
     p {
-      font-family: ProximaNova;
+      font-family: Gotham;
       font-size: 1.15rem;
       font-weight: normal;
       font-stretch: normal;
@@ -231,7 +257,7 @@
       cursor: pointer;
     }
     .brand-name {
-      font-family: MillionNotes;
+      font-family: Gotham;
       font-size: 2rem;
       font-weight: normal;
       font-stretch: normal;
