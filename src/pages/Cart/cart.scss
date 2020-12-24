@@ -1,0 +1,64 @@
+$black: #000000;
+
+.Your-Cart {
+  width: 109px;
+  height: 26px;
+  margin: 1rem;
+  font-family: Gotham;
+  font-size: 26px;
+  font-weight: 250;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 0.5;
+  letter-spacing: normal;
+  text-align: left;
+  color: $black;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: 1fr 2fr 1fr;
+  grid-gap: 10px;
+  margin-left: 1rem;
+  // padding: 10px;
+}
+.grid-container > div {
+  // height: ;
+}
+
+.product-description {
+  margin: 0.5rem;
+  font-family: Gotham;
+}
+
+.card-logo {
+  margin: 0.5rem;
+  width: 60%;
+  border: 1px solid black;
+  border-radius: 10px;
+}
+.Rectangle-39 {
+  width: 126px;
+  height: 126px;
+  margin: 23px 50px 23px 58px;
+  border-radius: 10px;
+}
+
+.cartImage {
+  max-width: 100%;
+}
+
+.cart-Item {
+  width: 362px;
+  height: 40px;
+  margin: 108px 414px 38px 100px;
+  font-family: Gotham;
+  font-size: 2rem;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.2;
+  letter-spacing: normal;
+  text-align: left;
+  color: $black;
+}

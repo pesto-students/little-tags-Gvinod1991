@@ -1,0 +1,19 @@
+.centerCard {
+  margin: 0 auto;
+  margin-top: 5%;
+  width: 80%;
+  text-align: center;
+}
+
+.flex-card {
+  display: flex;
+  margin: 1rem;
+}
+
+.flex-card>input {
+  margin: 1rem;
+}
+.address {
+  margin: 1rem;
+  width: 90%;
+}

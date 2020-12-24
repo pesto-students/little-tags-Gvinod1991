@@ -11,6 +11,7 @@ import PrivateRoute from './components/hoc/PrivateRoute';
 
 import { Provider } from 'react-redux';
 import { store } from './redux/store'
+import Payment from "./pages/Payment/payment";
 
 function App() {
 
@@ -37,7 +38,7 @@ function App() {
             <Cart />
           </PrivateRoute>
           <PrivateRoute path={'/checkout'}>
-            <Cart />
+            <Payment />
           </PrivateRoute>
           <PrivateRoute path={'/order-confirmation'}>
             <Cart />
