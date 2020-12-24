@@ -5,12 +5,26 @@
 }
 .product-details-container{
   display: flex;
-  justify-content: space-between;
+  justify-content:space-around;
+  @media screen and (max-width:420px) {
+    flex-wrap: wrap;
+    width:100%;
+  }
   .product-carousal{
     margin-left:2rem;
+    width:45%;
+    @media screen and (max-width:420px) {
+      width:90%;
+      margin-left:0rem;
+    }
   }
   .product-details{
-    margin-left:1rem;
+    margin-left:4rem;
+    width:60%;
+    @media screen and (max-width:420px) {
+      width:95%;
+      margin:0.5rem;
+    }
     .product-title{
       font-family: Gotham;
       font-size: 3rem;
@@ -20,7 +34,18 @@
       line-height: 1.21;
       letter-spacing: normal;
       text-align: left;
-      color: #000000;
+      color: var(--black);
+    }
+    .product-description{
+      font-family: Arial;
+    font-size: 22px;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.18;
+    letter-spacing: normal;
+    text-align: left;
+    color: var(--black);
     }
     .price-wrapper{
       display: flex;
@@ -54,7 +79,7 @@
         line-height: 1.13;
         letter-spacing: normal;
         text-align: left;
-        color: #000000;
+        color: var(--black);
       }
       ul li{
         list-style: none;
@@ -69,7 +94,7 @@
         line-height: 1.13;
         letter-spacing: normal;
         text-align: left;
-        color: #000000;
+        color: var(--black);
       }
     }
     .quantity-wrapper{
@@ -82,7 +107,7 @@
         line-height: 1.13;
         letter-spacing: normal;
         text-align: left;
-        color: #000000;
+        color: var(--black);
       }
       .qty-counter{
         display: inline-block;
@@ -130,5 +155,20 @@
         margin-top:5px;
       }
     }
+  }
+  margin-bottom:4rem;
+}
+.related-products-container{
+  
+  h2{
+  font-family: Gotham;
+  font-size: 2.5rem;
+  font-weight: 500;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.2;
+  letter-spacing: normal;
+  text-align: center;
+  color: var(--black);
   }
 }

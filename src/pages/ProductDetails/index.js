@@ -7,7 +7,6 @@ export default function ProductDetails(){
     <MainLayout>
        
     <div className="product-details-container">
-   
       <div className="product-carousal">
           <Carousel type='stack' />
       </div>
@@ -46,12 +45,15 @@ export default function ProductDetails(){
           </div>
         </div>
         <button className="cart-btn">
-          <img src="/shopping-cart.svg" />
+          <img src="/shopping-cart.svg" alt="shopping cart icon" />
           <span>ADD TO CART</span>
         </button>
       </div>
     </div>
-    <Carousel type={'list'} />
+    <div className="related-products-container">
+      <h2 >More You'll like</h2>
+      <Carousel type={'list'} />
+    </div>
     </MainLayout>
   )
 }
