@@ -30,7 +30,8 @@
   .search-bar {
     margin-left: 1rem;
     margin-right: 1rem;
-    width: 68%;
+    width: 62%;
+    height:3.1rem;
     border-radius: 5px;
     box-shadow: 0 0 6px 0 rgba(10, 91, 106, 0.16);
     background-color: #ffffff;
@@ -79,21 +80,7 @@
       outline: none;
     }
   }
-  .login-container {
-    padding: 0.5rem;
-    cursor: pointer;
-    font-family: Gotham;
-    font-size: 1.5rem;
-    font-weight: normal;
-    font-stretch: normal;
-    font-style: normal;
-    line-height: 1.2;
-    letter-spacing: normal;
-    text-align: left;
-    color: #000;
-  }
 }
-
 //Footer CSS
 
 .footer {
@@ -166,6 +153,10 @@
         letter-spacing: 0.53px;
         color: #6f6f6f;
         cursor: pointer;
+      }
+      ul li a{
+        color: #6f6f6f;
+        text-decoration: none;
       }
       li:hover {
         color: #f5f5f5;
@@ -268,35 +259,8 @@
       margin: 0;
     }
   }
-  .user-section {
-    display: flex;
-    justify-content: flex-start;
-    background-color: #000000;
-    padding: 0.5rem;
-    color: #fff;
-    .user-icon {
-      width: 1.2rem;
-      padding: 0.3rem;
-      border: 0.1rem solid #fff;
-      border-radius: 50%;
-    }
-    .user-name {
-      font-family: Gotham;
-      font-size: 1.2rem;
-      font-weight: normal;
-      font-stretch: normal;
-      font-style: normal;
-      line-height: 1.2;
-      letter-spacing: normal;
-      color: #ffffff;
-      margin: 0;
-      text-align: center;
-      margin-left: 0.8rem;
-      margin-top: 0.3rem;
-    }
-  }
-  ul {
-    margin: 0;
+  ul{
+    margin:0;
   }
   ul li {
     list-style: none;
