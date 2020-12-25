@@ -1,0 +1,28 @@
+.user-section {
+  display: flex;
+  justify-content: flex-start;
+  background-color: #000000;
+  padding: 0.5rem;
+  color: #fff;
+  cursor: pointer;
+  .user-icon {
+    width: 1.2rem;
+    padding: 0.3rem;
+    border: 0.1rem solid #fff;
+    border-radius: 50%;
+  }
+  .user-name {
+    font-family: Gotham;
+    font-size: 1.2rem;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.2;
+    letter-spacing: normal;
+    color: #ffffff;
+    margin: 0;
+    text-align: center;
+    margin-left: 0.8rem;
+    margin-top: 0.3rem;
+  }
+}
