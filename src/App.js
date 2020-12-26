@@ -42,9 +42,9 @@ function App() {
           <PrivateRoute path={'/checkout'}>
             <Payment />
           </PrivateRoute>
-          <Route path={'/order-confirmation'}>
+          <PrivateRoute path={'/order-confirmation'}>
             <Cart />
-          </Route>
+          </PrivateRoute>
           <Route path={'/'}>
             <Home />
           </Route>

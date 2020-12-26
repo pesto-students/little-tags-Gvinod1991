@@ -3,12 +3,14 @@ import React from "react";
 import "./ListDashboard.scss";
 
 const ListDashboard = () => {
+  // style={{backgroundImage: `url(${pencil})`}}
   return (
     <>
       <main>
         <div>Most in Demand</div>
       </main>
-      <div className="wrapper">
+     
+      {/* <div className="wrapper">
         <div className="box row1">
             <div className="text-item">
                 <span>T-Shirt</span>
@@ -30,7 +32,7 @@ const ListDashboard = () => {
             </div>
         </div>
        
-      </div>
+      </div> */}
     </>
   );
 };
