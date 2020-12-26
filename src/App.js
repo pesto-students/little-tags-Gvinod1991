@@ -21,10 +21,10 @@ function App() {
       <Router>
         <Switch>
           <Route path={'/products/:categoryId'}>
-            <Home />
+            <Products />
           </Route>
           <Route path={'/product/:id'}>
-            <Home />
+            <ProductDetails />
           </Route>
           <PrivateRoute path={'/cart'}>
             <Cart />
