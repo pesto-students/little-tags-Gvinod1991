@@ -2,10 +2,11 @@ import React from 'react';
 import './product-details.scss';
 import MainLayout from '../../components/layout/MainLayout';
 import Carousel from '../../components/carousel';
+
 export default function ProductDetails(){
   return(
     <MainLayout>
-       
+    <div>
     <div className="product-details-container">
       <div className="product-carousal">
           <Carousel type='stack' />
@@ -53,6 +54,7 @@ export default function ProductDetails(){
     <div className="related-products-container">
       <h2 >More You'll like</h2>
       <Carousel type={'list'} />
+    </div>
     </div>
     </MainLayout>
   )
