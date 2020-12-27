@@ -1,0 +1,21 @@
+.center {
+  margin: auto;
+  width: 60%;
+  font-family: Gotham;
+}
+
+.paymentGateways {
+  padding: 10px 16px;
+  text-align: left;
+  margin: auto;
+  width: 40%;
+  font-family: Gotham;
+  @media screen and (max-width:870px){
+    width:67%;
+  }
+}
+@media only screen and (max-width: 400px) {
+  .paymentGateways {
+    width: 100%;
+  }
+}

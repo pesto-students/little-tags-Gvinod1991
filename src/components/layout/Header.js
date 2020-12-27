@@ -37,7 +37,7 @@ export default function Header({ isLoggedIn,source='non-home',isSticky}) {
         {isLoggedIn ? (
           <AuthUserDisplay parent={"header"} source={source} isSticky={isSticky} />
         ) : (
-          <LoginAction openLoginModal={openLoginModal} source={source} isSticky={isSticky} />
+          <LoginAction openModalHandler={openLoginModal} source={source} isSticky={isSticky} />
         )}
         {isLoggedIn ? <HeaderCart isSticky={isSticky} source={source} /> : null}
       </div>

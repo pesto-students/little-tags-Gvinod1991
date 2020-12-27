@@ -1,0 +1,26 @@
+$border-color: #000000;
+$border-radius: 5px;
+
+.flex-container {
+	display: flex;
+	cursor: pointer;
+	font-weight: bold;
+	margin-top: 1rem;
+}
+.flex-child {
+	width: 2rem;
+	border: 1px solid $border-color;
+	text-align: center;
+	height: 1.5rem;
+	&:first-child {
+		border-top-left-radius: $border-radius;
+		border-bottom-left-radius: $border-radius;
+	}
+	&:last-child {
+		border-top-right-radius: $border-radius;
+		border-bottom-right-radius: $border-radius;
+	}
+}
+.disabled {
+	cursor: not-allowed;
+}
