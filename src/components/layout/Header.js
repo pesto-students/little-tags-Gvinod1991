@@ -9,7 +9,7 @@ import Brand from '../brand';
 import AuthUserDisplay from '../autUserDisplay';
 import HeaderCart from '../headerCart';
 
-export default function Header({isLoggedIn}) {
+export default function Header({isLoggedIn, openModal}) {
   const [showHamburgerMenu, setShowHamburgerMenu] = useState(false);
 
   const toggleHamburgerMenu = () => {
@@ -22,7 +22,7 @@ export default function Header({isLoggedIn}) {
       <div className="header">
         <Brand toggleHamburgerMenu={toggleHamburgerMenu} isLoggedIn={isLoggedIn} />
         <SearchBar/>
-        {isLoggedIn ? <AuthUserDisplay/>:<LoginAction />}
+        {isLoggedIn ? <AuthUserDisplay/>:<LoginAction openModalHandler={openModal}/>}
         {isLoggedIn ? <HeaderCart/> : null}
       </div>
       {showHamburgerMenu && (
