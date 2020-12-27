@@ -1,0 +1,28 @@
+.card-display {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    border-radius: 15px;
+    cursor: pointer;
+    margin: 1em;
+    transition: all .2s ease-in-out;
+    &:hover {
+        transform: scale(1.1);
+      }
+    @media only screen and (max-width: 400px) {
+       margin: 0;
+      }
+}
+
+.textInCard {
+    background:  rgba(0, 0, 0, 0.2);
+    border-bottom-left-radius: 16px;
+    border-bottom-right-radius: 16px;
+    height: 2rem;
+    text-align: center;
+    font-family: MillionNotes;
+    font-size: 1.3rem;
+}
+
+.card-image {
+    max-height:100%; 
+    max-width:100%;
+}

@@ -1,38 +1,40 @@
 import React from "react";
+import Card from "../card/card";
 
 import "./ListDashboard.scss";
 
 const ListDashboard = () => {
   // style={{backgroundImage: `url(${pencil})`}}
+  const imagesDummyy = [
+    {
+      url: '/purple-jacket.png',
+      title: 'Jacket1'
+    },
+    {
+      url: '/purple-jacket.png',
+      title: 'Jacket2'
+    },
+    {
+      url: '/purple-jacket.png',
+      title: 'Jacket3'
+    },
+    {
+      url: '/purple-jacket.png',
+      title: 'Jacket9'
+    }
+  ];
   return (
     <>
       <main>
-        <div>Most in Demand</div>
+        <div className="titleDemand"><strong>Most in Demand</strong></div>
       </main>
-     
-      {/* <div className="wrapper">
-        <div className="box row1">
-            <div className="text-item">
-                <span>T-Shirt</span>
-            </div>
-        </div>
-        <div className="box row2">
-            <div className="text-item">
-                <span>Jeans</span>
-            </div>
-        </div>
-        <div className="box box1">
-            <div className="text-item">
-                <span>Backpack</span>
-            </div>
-        </div>
-        <div className="box box2">
-            <div className="text-item">
-                <span>Charm Necklace</span>
-            </div>
-        </div>
-       
-      </div> */}
+      <div className="wrapper">
+        {
+          imagesDummyy.map(image => (
+            <Card pathname={image.url} title={image.title} />
+          ))
+        }
+      </div>
     </>
   );
 };

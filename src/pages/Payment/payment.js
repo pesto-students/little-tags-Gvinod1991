@@ -1,17 +1,33 @@
 import React from "react";
+import AddressCard from "../../components/addressCard/addressCard";
 import "./payment.scss";
 const Payment = () => {
+  const list = 
+  [
+    {
+      name: "Emerson",
+      address : "9522 Libero. St.",
+			city : "Lozzo Atestino",
+			postal :"27476"
+    }
+    ];
   return (
     <div className="center">
       <h2>
         <strong>Delivering To</strong>
       </h2>
-      <div className="card">
+      {/* <div className="card">
         <div className="container">
           <strong>Ayush Jaiswal</strong>
           <div>1418 Avenue</div>
         </div>
-      </div>
+      </div> */}
+        {
+        list.map((item,index) => (
+          <AddressCard details = {item} isDummy= {true}/>
+        
+          )  )
+      }
       <h2>
         <strong>Method of Payment</strong>
       </h2>
