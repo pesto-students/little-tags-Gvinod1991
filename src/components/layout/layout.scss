@@ -15,18 +15,6 @@
     cursor: pointer;
     width: 2rem;
   }
-  .brand-name {
-    font-family: MillionNotes;
-    font-size: 32px;
-    font-weight: normal;
-    font-stretch: normal;
-    font-style: normal;
-    line-height: 1.2;
-    letter-spacing: normal;
-    text-align: left;
-    color: #000000;
-    cursor: pointer;
-  }
   .search-bar {
     margin-left: 1rem;
     margin-right: 1rem;
@@ -240,24 +228,8 @@
   left: 0;
   top: 0;
   z-index: 999;
-  .header {
-    display: flex;
-    justify-content: space-between;
-    .close-icon {
-      width: 2.5rem;
-      cursor: pointer;
-    }
-    .brand-name {
-      font-family: Gotham;
-      font-size: 2rem;
-      font-weight: normal;
-      font-stretch: normal;
-      font-style: normal;
-      line-height: 1.2;
-      letter-spacing: normal;
-      color: #000000;
-      margin: 0;
-    }
+  .brand-wrapper-hamburger{
+    margin:1rem;
   }
   ul{
     margin:0;
@@ -331,11 +303,32 @@
     }
   }
 }
-
-// .cart {
-//   top: 0;
-//   right: 10px;
-//   position: absolute;
-//   margin: 0.6rem;
-//   height: 4rem;
-// }
+.header-fixed{
+  position: fixed;
+  width:100%;
+  z-index:99;
+  .brand-name{
+    color:#fff;
+  }
+  .login-container{
+    color:#fff;
+  }
+}
+.header-dark{
+  background: #fff;
+  position: fixed;
+  top: 0;
+  left: 0;
+  box-shadow: 1px 1px 1px #f5f5f5;
+  animation: moveDown 0.5s ease-in-out;
+  padding: 1rem;
+  margin:0;
+}
+@keyframes moveDown {
+  from {
+    transform: translateY(-5rem);
+  }
+  to {
+    transform: translateY(0rem);
+  }
+}

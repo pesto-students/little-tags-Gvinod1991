@@ -3,8 +3,7 @@ import Card from "../card/card";
 
 import "./ListDashboard.scss";
 
-const ListDashboard = () => {
-  // style={{backgroundImage: `url(${pencil})`}}
+const ListDashboard = ({element}) => {
   const imagesDummyy = [
     {
       url: '/purple-jacket.png',
@@ -23,10 +22,12 @@ const ListDashboard = () => {
       title: 'Jacket9'
     }
   ];
+ 
+  
   return (
     <>
-      <main>
-        <div className="titleDemand"><strong>Most in Demand</strong></div>
+      <main ref={element}>
+      <div className="titleDemand"><strong>Most in Demand</strong></div>
       </main>
       <div className="wrapper">
         {

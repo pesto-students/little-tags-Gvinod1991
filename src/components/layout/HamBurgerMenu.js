@@ -6,19 +6,26 @@ import LoginAction from '../loginAction';
 import Categories from '../categories';
 import Brand from '../brand';
 
-export default function HamburgerMenu({ showHamburgerMenu,toggleHamburgerMenu,isLoggedIn }) {
+export default function HamburgerMenu({
+  showHamburgerMenu,
+  toggleHamburgerMenu,
+  isLoggedIn,
+}) {
   return (
     <div className="hamburger-menu-container">
-      <div className="header">
-        <Brand toggleHamburgerMenu={toggleHamburgerMenu} showHamburgerMenu={showHamburgerMenu} />
+      <div className="brand-wrapper-hamburger">
+        <Brand
+          toggleHamburgerMenu={toggleHamburgerMenu}
+          showHamburgerMenu={showHamburgerMenu}
+        />
       </div>
-      {isLoggedIn ? <AuthUserDisplay/> : <LoginAction/>}
+      {isLoggedIn ? <AuthUserDisplay parent="hamburger" /> : <LoginAction />}
 
-      <Categories/>
+      <Categories />
 
       <div className="white-space"></div>
-      
-      {isLoggedIn && 
+
+      {isLoggedIn && (
         <div className="nav-menu">
           <ul>
             <li>
@@ -29,12 +36,12 @@ export default function HamburgerMenu({ showHamburgerMenu,toggleHamburgerMenu,is
             </li>
           </ul>
         </div>
-      }
-      {isLoggedIn && 
+      )}
+      {isLoggedIn && (
         <div className="logout-section">
           <button className="btn">Logout</button>
         </div>
-      }
+      )}
     </div>
   );
 }
