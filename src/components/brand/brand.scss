@@ -1,0 +1,21 @@
+.brand-container{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  .menu-icon {
+    margin-right: 1rem;
+    cursor: pointer;
+    width: 2rem;
+  }
+  .brand-name {
+    font-family: Gotham;
+    font-size: 1.6rem;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.2;
+    letter-spacing: normal;
+    color: #000000;
+    margin: 0;
+  }
+}

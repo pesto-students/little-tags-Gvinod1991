@@ -15,6 +15,8 @@ import Payment from "./pages/Payment/payment";
 import AddAddress from "./pages/Address/addAddress";
 import DeliverTo from "./pages/DeliverTo/deliver-to";
 
+import Products from './pages/Products';
+import ProductDetails from './pages/ProductDetails';
 function App() {
 
   return (
