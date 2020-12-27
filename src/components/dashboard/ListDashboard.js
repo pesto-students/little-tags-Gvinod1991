@@ -2,10 +2,10 @@ import React from "react";
 
 import "./ListDashboard.scss";
 
-const ListDashboard = () => {
+const ListDashboard = ({element}) => {
   return (
     <>
-      <main>
+      <main ref={element}>
         <div>Most in Demand</div>
       </main>
       <div className="wrapper">

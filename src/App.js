@@ -12,6 +12,8 @@ import PrivateRoute from './components/hoc/PrivateRoute';
 import { Provider } from 'react-redux';
 import { store } from './redux/store'
 
+import Products from './pages/Products';
+import ProductDetails from './pages/ProductDetails';
 function App() {
 
   return (
@@ -19,10 +21,10 @@ function App() {
       <Router>
         <Switch>
           <Route path={'/products/:categoryId'}>
-            <Home />
+            <Products />
           </Route>
           <Route path={'/product/:id'}>
-            <Home />
+            <ProductDetails />
           </Route>
           <PrivateRoute path={'/cart'}>
             <Cart />

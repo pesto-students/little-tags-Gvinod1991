@@ -3,7 +3,7 @@ import React from 'react';
 import './Dashboard.scss';
 import ListDashboard from './ListDashboard';
 
-const Dashboard = () => {
+const Dashboard = ({element}) => {
     return (
       <>
         <div className = "dashboardContainer" >
@@ -19,7 +19,7 @@ const Dashboard = () => {
             </div>
           </div>
         </div>
-        <ListDashboard />
+          <ListDashboard element={element} />
        </> 
     )
 }
