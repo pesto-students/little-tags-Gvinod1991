@@ -8,7 +8,7 @@ import AuthUserDisplay from '../autUserDisplay';
 import HeaderCart from '../headerCart';
 import Modal from '../../components/modal/Modal';
 
-export default function Header({ isLoggedIn,source='non-home',isSticky, openModal}) {
+export default function Header({ isLoggedIn,source='non-home',isSticky}) {
   const [showHamburgerMenu, setShowHamburgerMenu] = useState(false);
   const [show, setShow] = useState(false);
 

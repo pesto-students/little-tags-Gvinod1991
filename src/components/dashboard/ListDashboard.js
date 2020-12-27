@@ -31,8 +31,8 @@ const ListDashboard = ({element}) => {
       </main>
       <div className="wrapper">
         {
-          imagesDummyy.map(image => (
-            <Card pathname={image.url} title={image.title} />
+          imagesDummyy.map((image, index) => (
+            <Card pathname={image.url} title={image.title} key={index} />
           ))
         }
       </div>
