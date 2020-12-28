@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import {Link} from 'react-router-dom';
 import './brand.scss';
 export default function Brand({toggleHamburgerMenu,showHamburgerMenu,source,isSticky,parent}){
   return(
@@ -10,7 +11,7 @@ export default function Brand({toggleHamburgerMenu,showHamburgerMenu,source,isSt
         src={showHamburgerMenu ? "/close.svg" : source==='home' && !isSticky ?  "/menu-white.svg" : "/menu.svg"}
         alt="icon"
       />
-      <div className={source==='home' && !isSticky ? 'brand-name color-light' : parent==='hamburger' ?  'brand-name color-light' : 'brand-name color-dark'}>Little Tags</div>
+      <Link to="/"  className={source==='home' && !isSticky ? 'brand-name color-light' : parent==='hamburger' ?  'brand-name color-light' : 'brand-name color-dark'}>Little Tags</Link>
     </div>
   )
 }
