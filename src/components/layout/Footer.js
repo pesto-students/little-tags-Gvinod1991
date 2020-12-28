@@ -1,19 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { useSelector } from "react-redux";
-import capitalize from '../../services/capitalize';
 
 export default function Footer() {
   const [categories, setCategories] = useState({});
+  const [error, setError] = useState(null);
   
-  const { productList } = useSelector(
-    ({ productList: { productList } }) => ({
-      productList,
-    })
-  );
-
   const getCategories = (result) => {
-    const output = result.reduce(function(reducedArray, element) {
-      const category = (element['category']); 
+    var output = result.reduce(function(reducedArray, element) {
+      let category = (element['category']); 
       (reducedArray[category] ? reducedArray[category] : (reducedArray[category] = null || [])).push(element);
       return reducedArray;
     }, {});
@@ -21,10 +14,18 @@ export default function Footer() {
     setCategories(output);
   }
 
-  
   useEffect(() => {
-    getCategories(productList)
-  }, [productList]);
+    fetch("https://fakestoreapi.com/products")
+      .then((res) => res.json())
+      .then(
+        (result) => {
+          getCategories(result);
+        },
+        (error) => {
+          setError(error);
+        }
+      );
+  }, []);
 
   return (
     <div className="footer">
@@ -64,8 +65,8 @@ export default function Footer() {
             Object.keys(categories).length > 0 ?
             <ul>
             {
-              Object.keys(categories).map(category => (
-                <li key={category}>{capitalize(category) + '(' + categories[category].length + ')'}</li>
+              Object.keys(categories).map((category,index) => (
+                <li key={index}>{category + '(' + categories[category].length + ')'}</li>
               ))
             }
           </ul>: null
