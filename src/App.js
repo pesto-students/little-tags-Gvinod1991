@@ -9,8 +9,6 @@ import Home from "./pages/Home";
 import Cart from './pages/Cart';
 import PrivateRoute from './components/hoc/PrivateRoute';
 
-import { Provider } from 'react-redux';
-import { store } from './redux/store'
 import Payment from "./pages/Payment/payment";
 import AddAddress from "./pages/Address/addAddress";
 import DeliverTo from "./pages/DeliverTo/deliver-to";
@@ -20,7 +18,6 @@ import ProductDetails from './pages/ProductDetails';
 function App() {
 
   return (
-    <Provider store={store}>
       <Router>
         <Switch>
           <Route path={'/products/:categoryId'}>
@@ -52,7 +49,6 @@ function App() {
           </Route>
         </Switch>
       </Router>
-    </Provider>
   );
 }
 

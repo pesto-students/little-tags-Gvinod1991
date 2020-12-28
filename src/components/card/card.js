@@ -4,6 +4,7 @@ import PropTypes from "prop-types";
 import './card.scss';
 
 const Card = ({ pathname, title }) => {
+
   return (
     <>
         <div className="card-display" >

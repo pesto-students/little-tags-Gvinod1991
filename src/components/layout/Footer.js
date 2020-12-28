@@ -1,6 +1,32 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 export default function Footer() {
+  const [categories, setCategories] = useState({});
+  const [error, setError] = useState(null);
+  
+  const getCategories = (result) => {
+    var output = result.reduce(function(reducedArray, element) {
+      let category = (element['category']); 
+      (reducedArray[category] ? reducedArray[category] : (reducedArray[category] = null || [])).push(element);
+      return reducedArray;
+    }, {});
+    
+    setCategories(output);
+  }
+
+  useEffect(() => {
+    fetch("https://fakestoreapi.com/products")
+      .then((res) => res.json())
+      .then(
+        (result) => {
+          getCategories(result);
+        },
+        (error) => {
+          setError(error);
+        }
+      );
+  }, []);
+
   return (
     <div className="footer">
       <div className="footer-top">
@@ -35,12 +61,16 @@ export default function Footer() {
         </div>
         <div className="categories-section">
           <h2>Categories</h2>
-          <ul>
-            <li>Accessories(45)</li>
-            <li>Jeans(278)</li>
-            <li>Tops(64)</li>
-            <li>Jackets(3)</li>
-          </ul>
+          {
+            Object.keys(categories).length > 0 ?
+            <ul>
+            {
+              Object.keys(categories).map((category,index) => (
+                <li key={index}>{category + '(' + categories[category].length + ')'}</li>
+              ))
+            }
+          </ul>: null
+          }
         </div>
         <div className="empty-section"></div>
         <div className="get-in-touch-section">
