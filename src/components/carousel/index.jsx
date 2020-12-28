@@ -2,15 +2,10 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import './carousel.scss';
 import CarouselItem from './CarouselItem';
-export default function Carousel({type}) {
-  const sliderArray = [
-    <CarouselItem path={'/purple-jacket.png'} type={type} />,
-    <CarouselItem path={'/yellow-jacket.png'}  type={type}/>,
-    <CarouselItem path={'/pink-dress.png'} type={type} />,
-    <CarouselItem path={'/purple-jacket.png'} type={type}/>,
-    <CarouselItem path={'/pink-dress.png'} type={type} />,
-    <CarouselItem path={'/yellow-jacket.png'} type={type} />,
-  ];
+export default function Carousel({type,images}) {
+  const sliderArray = images.map((image)=>{
+    return <CarouselItem path={image} type={type} />
+  });
   const [x, setX] = useState(0);
   const goLeft = () => {
     if (x === 0) {
@@ -50,5 +45,6 @@ export default function Carousel({type}) {
 }
 
 Carousel.propTypes={
-  type:PropTypes.string.isRequired
+  type:PropTypes.string.isRequired,
+  images:PropTypes.array.isRequired
 }
