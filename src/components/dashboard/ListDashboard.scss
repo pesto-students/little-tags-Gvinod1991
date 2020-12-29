@@ -16,7 +16,9 @@ main {
 .wrapper {
   display: table;
   align-items: center;
-  // border-collapse:separate;border-spacing:5px;
+  border-collapse:separate;
+  border-spacing:5px;
+  margin: 1em;
 }
 
 .titleDemand {
