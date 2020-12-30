@@ -1,37 +1,64 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import {useParams} from 'react-router-dom';
+import { getProducts, updatePageNumber } from '../../redux/actions';
 import MainLayout from '../../components/layout/MainLayout';
 import ProductCard from '../../components/productCard';
+import Loader from '../../components/Loader';
 import Pagination from '../../components/pagination';
 import './products.scss';
-const API_BASE_URL = 'https://fakestoreapi.com/';
+
 export default function Products() {
-  const [productList, setProductList] = useState([]);
-  const [loading, setLoading] = useState(false);
-  const API_URL = `${API_BASE_URL}products`;
+  const { category } = useParams();
+  const {
+    loading,
+    currentProductList,
+    currentPage,
+    pageNumbers,
+  } = useSelector((state) => ({
+    productList: state.product.productList,
+    loading: state.product.loading,
+    message: state.product.message,
+    currentProductList: state.product.currentProductList,
+    currentPage: state.product.currentPage,
+    pageNumbers: state.product.pageNumbers,
+  }));
+  const dispatch = useDispatch();
+
   useEffect(() => {
-    setLoading(true);
-    fetch(API_URL)
-      .then((response) => response.json())
-      .then((responseJson) => {
-        setProductList(responseJson);
-        setLoading(false);
-      })
-      .catch((err) => {
-        console.log(err);
-        setLoading(false);
-      });
-  }, [API_URL]);
-  
+    dispatch(getProducts(category));
+  }, [dispatch,category]);
+
+  const handleCurrentPageChange = (id) => {
+    dispatch(updatePageNumber(id));
+  };
   return (
     <MainLayout>
       <div className="products-container">
-        <h2>All Shirts</h2>
+        <h2>{category}</h2>
         <div className="all-products-wrapper">
-          {loading && <p>Loading...</p>}
-          {!loading && productList && productList.length && productList.map(({id,title,image,price})=>{
-              return <ProductCard key={id} title={title} productImage={image} pathname={`/product/${id}`} price={price} />
-          })}
-          <Pagination/>
+          {loading && <Loader />}
+          {!loading &&
+            currentProductList &&
+            currentProductList.length &&
+            currentProductList.map(({ id, title, image, price }) => {
+              return (
+                <ProductCard
+                  key={id}
+                  title={title}
+                  productImage={image}
+                  pathname={`/product/${id}`}
+                  price={price}
+                />
+              );
+            })}
+          {!loading && (
+            <Pagination
+              currentPage={currentPage}
+              pageNumbers={pageNumbers}
+              handleCurrentPageChange={handleCurrentPageChange}
+            />
+          )}
         </div>
       </div>
     </MainLayout>

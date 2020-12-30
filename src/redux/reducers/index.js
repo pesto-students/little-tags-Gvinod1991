@@ -1,23 +1,15 @@
-const initialState = {
-  isLoggedIn: false,
-  userId: {},
-};
 
-export const loginReducer = (state = initialState, action) => {
-  switch (action.type) {
-    case "LOG_IN":
-      return {
-        isLoggedIn: true,
-        userId: action.data,
-      };
+import { combineReducers } from 'redux';
+import { loginReducer } from './loginReducer';
+import { product } from './product';
+import { productDetails } from './productDetails';
+import { productList } from './productList';
+import { cartList } from './cartList';
 
-    case "LOG_OUT":
-      return {
-        isLoggedIn: false,
-        userId: {},
-      };
-
-    default:
-      return state;
-  }
-};
+export default combineReducers({
+  loginReducer,
+  product,
+  productDetails,
+  productList,
+  cartList
+});

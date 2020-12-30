@@ -20,7 +20,7 @@ function App() {
   return (
       <Router>
         <Switch>
-          <Route path={'/products/:categoryId'}>
+          <Route path={'/products/:category'}>
             <Products />
           </Route>
           <Route path={'/product/:id'}>
