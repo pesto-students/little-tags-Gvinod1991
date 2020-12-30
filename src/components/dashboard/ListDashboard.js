@@ -1,28 +1,12 @@
 import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getProductLists } from "../../redux/actions";
 import Card from "../card/card";
 import Loader from "../Loader";
 
 import "./ListDashboard.scss";
 
 const ListDashboard = ({ element }) => {
-  const [products, setProducts] = useState([]);
-  const [isLoaded, setIsLoaded] = useState(false);
-  const [error, setError] = useState(null);
-
-  useEffect(() => {
-    fetch("https://fakestoreapi.com/products")
-      .then((res) => res.json())
-      .then(
-        (result) => {
-          setIsLoaded(true);
-          setProducts(result);
-        },
-        (error) => {
-          setIsLoaded(true);
-          setError(error);
-        }
-      );
-  }, []);
   
   const [categories, setCategories] = useState({});
 
@@ -65,13 +49,17 @@ const ListDashboard = ({ element }) => {
       </main>
       {isLoaded ? (
         <div className="wrapper">
-          {products.slice(0, 4).map((product) => (
-            <Card
-              pathname={product.image}
-              title={product.title}
-              key={product.id}
-            />
-          ))}
+          {Object.keys(categories).length > 0
+            ? Object.keys(categories).map((category) => (
+                <Card
+                  pathname={categories[category][0].image}
+                  title={categories[category][0].title}
+                  id={categories[category][0].id}
+                  key={categories[category][0].id}
+                  category={category}
+                />
+              ))
+            : null}
         </div>
       ) : (
         <div className="container-loader">

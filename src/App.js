@@ -26,7 +26,11 @@ function App() {
           </PrivateRoute>
           <PrivateRoute path={'/product/:id'}>
             <ProductDetails />
+<<<<<<< HEAD
           </PrivateRoute>
+=======
+          </Route>
+>>>>>>> Cart changes
           <PrivateRoute path={'/cart'}>
             <Cart />
           </PrivateRoute>

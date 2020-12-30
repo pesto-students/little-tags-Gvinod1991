@@ -1,13 +1,16 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import Header from './Header';
 import Footer from './Footer';
 import useSticky from '../hooks/useSticky';
-import { AppContext } from '../../redux/store';
+import { useSelector } from 'react-redux';
 
 export default function MainLayout({ children,source }) {
   const { isSticky, element } = useSticky();
-  const {state} = useContext(AppContext);
-  const isLoggedIn = state? state.isLoggedIn: false;
+  const { isLoggedIn } = useSelector((store) => ({
+    isLoggedIn: store.loginReducer.isLoggedIn,
+    userDetails:store.loginReducer.userDetails
+  }));
+
   return(
     <div>
       <Header isLoggedIn={isLoggedIn} source={source} isSticky={isSticky} />

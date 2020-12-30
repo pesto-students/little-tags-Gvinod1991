@@ -8,6 +8,7 @@ function Counter({ quantity, setQuantity }) {
   const reduceCount = () => {
     if (count > 0) {
       setCount(count - 1);
+      console.log(count);
       setDisabled("flex-child");
       if (count - 1 === 0) {
         setDisabled("flex-child disabled");

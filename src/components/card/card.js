@@ -6,8 +6,6 @@ import { NavLink } from "react-router-dom";
 
 const Card = ({ pathname, title, id , category}) => {
 
-const Card = ({ pathname, title }) => {
-
   return (
     <>
     <NavLink to={'/products/' + category} key={id}>
