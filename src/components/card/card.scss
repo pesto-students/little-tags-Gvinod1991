@@ -5,17 +5,18 @@
     transition: all .2s ease-in-out;
     position: relative;
     z-index: 0; 
+    width: 100%;
+    // height:40vh;
     &:hover {
-        transform: scale(1.1);
         z-index: 5;
-        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.8);
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.9);
         background: white;
+        border-radius: 15px;
       }
     @media only screen and (max-width: 400px) {
        margin: 0;
+       border-radius: 15px;
       }
-      display: table-cell;
-      width: 25%;
 }
 
 .textInCard {
@@ -36,6 +37,7 @@
 }
 
 .card-image {
-    max-height:100%; 
     max-width:100%;
+    height: 50vh;
+    border-radius: 16px;
 }

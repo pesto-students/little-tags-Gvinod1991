@@ -1,15 +1,8 @@
-import React from 'react';
 import thunkMiddleware from 'redux-thunk';
-import { createStore, combineReducers, applyMiddleware } from 'redux';
-import { loginReducer } from './reducers/index';
-
-const rootReducer = combineReducers({
-    loginReducer: loginReducer,
-});
+import { createStore, applyMiddleware } from 'redux';
+import rootReducer from './reducers'
 
 export const store = createStore(
     rootReducer,
     applyMiddleware(thunkMiddleware)
 );
-
-export const AppContext = React.createContext();

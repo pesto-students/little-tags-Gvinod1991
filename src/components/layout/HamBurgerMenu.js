@@ -1,22 +1,24 @@
-import React, { useContext} from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+
 import './layout.scss';
 import AuthUserDisplay from '../autUserDisplay';
 import LoginAction from '../loginAction';
 import Categories from '../categories';
 import Brand from '../brand';
-import { auth } from '../../services/firebase';
-import { AppContext } from '../../redux/store';
+import { logOut } from '../../redux/actions/validation';
 
 export default function HamburgerMenu({
   showHamburgerMenu,
   toggleHamburgerMenu,
   isLoggedIn,
 }) {
-  const {state, dispatch} = useContext(AppContext);
+
+  const dispatch = useDispatch();
+
   const logout = () => {
-    auth.signOut();
-    dispatch({ type: 'LOG_OUT', data: {}});
+    dispatch(logOut());
   }
   return (
     <div className="hamburger-menu-container">

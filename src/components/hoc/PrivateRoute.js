@@ -1,10 +1,7 @@
-import React, {useContext} from 'react';
+import React from 'react';
 import {Redirect,Route} from 'react-router-dom';
-import { AppContext } from '../../redux/store';
 
 export default function PrivateRoute({ children, ...rest }) {
-  // const {state} = useContext(AppContext);
-  // const isLoggedIn = state ? state.isLoggedIn: false;
   const authToken= window.localStorage.getItem('authToken');
   return (
     <Route

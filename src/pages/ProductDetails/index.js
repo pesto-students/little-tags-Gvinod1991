@@ -7,6 +7,7 @@ import Carousel from '../../components/carousel';
 import Counter from '../../components/counter/counter';
 import Loader from '../../components/Loader';
 import { getProductDetails } from '../../redux/actions';
+import { addToCart } from '../../redux/actions/cartList';
 
 const images = [
   '/purple-jacket.png',
@@ -18,6 +19,8 @@ const images = [
 ];
 
 export default function ProductDetails() {
+
+  let quantityOfItem = 1;
   const { id } = useParams();
   const { productDetails,loading } = useSelector((store) => ({
     productDetails: store.productDetails.productDetails,
@@ -29,6 +32,14 @@ export default function ProductDetails() {
     dispatch(getProductDetails(id));
   }, [id,dispatch]);
 
+  const handleQuantity = (count) => {
+    quantityOfItem = count;
+  }
+
+  const handleAddToCart = (item) => {
+    console.log(item);
+    dispatch(addToCart(item, quantityOfItem));
+  }
   return (
     <MainLayout>
       <div>
@@ -65,9 +76,9 @@ export default function ProductDetails() {
               )}
               <div className="quantity-wrapper">
                 <h2>Quantity</h2>
-                <Counter />
+                <Counter quantity = {quantityOfItem} setQuantity={handleQuantity}/>
               </div>
-              <button className="cart-btn">
+              <button className="cart-btn" onClick={() =>handleAddToCart(productDetails)}>
                 <img src="/shopping-cart.svg" alt="shopping cart icon" />
                 <span>ADD TO CART</span>
               </button>

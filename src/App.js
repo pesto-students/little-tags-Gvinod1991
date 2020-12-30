@@ -26,9 +26,9 @@ function App() {
           <Route path={'/product/:id'}>
             <ProductDetails />
           </Route>
-          <Route path={'/cart'}>
+          <PrivateRoute path={'/cart'}>
             <Cart />
-          </Route>
+          </PrivateRoute>
           <PrivateRoute path={'/address-list'}>
             <DeliverTo />
           </PrivateRoute>

@@ -2,17 +2,20 @@ import React from "react";
 import PropTypes from "prop-types";
 
 import './card.scss';
+import { NavLink } from "react-router-dom";
 
-const Card = ({ pathname, title }) => {
+const Card = ({ pathname, title, id , category}) => {
 
   return (
     <>
+    <NavLink to={'/products/' + category} key={id}>
         <div className="card-display" >
             <img  src={pathname} alt={title} className="card-image"/>
             <div className="textInCard">
                 {title}
             </div>
         </div>
+        </NavLink>
     </>
   );
 };

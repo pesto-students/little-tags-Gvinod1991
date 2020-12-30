@@ -1,28 +1,44 @@
 import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { getProductLists } from "../../redux/actions";
 import Card from "../card/card";
 
 import "./ListDashboard.scss";
 
 const ListDashboard = ({ element }) => {
-  const [products, setProducts] = useState([]);
-  const [isLoaded, setIsLoaded] = useState(false);
-  const [error, setError] = useState(null);
+  
+  const [categories, setCategories] = useState({});
+
+  const { isLoaded, productList } = useSelector(
+    ({ productList: { isLoaded, productList } }) => ({
+      isLoaded,
+      productList,
+    })
+  );
+
+  const dispatch = useDispatch();
+
+  const getCategories = (result) => {
+    const output = result.reduce(function (reducedArray, element) {
+      const category = element["category"];
+      (reducedArray[category]
+        ? reducedArray[category]
+        : (reducedArray[category] = null || [])
+      ).push(element);
+      return reducedArray;
+    }, {});
+
+    setCategories(output);
+  };
 
   useEffect(() => {
-    fetch("https://fakestoreapi.com/products")
-      .then((res) => res.json())
-      .then(
-        (result) => {
-          setIsLoaded(true);
-          setProducts(result);
-        },
-        (error) => {
-          setIsLoaded(true);
-          setError(error);
-        }
-      );
-  }, []);
-  
+    dispatch(getProductLists());
+  }, [dispatch]);
+
+  useEffect(() => {
+    getCategories(productList);
+  }, [productList]);
+
   return (
     <>
       <main ref={element}>
@@ -32,13 +48,17 @@ const ListDashboard = ({ element }) => {
       </main>
       {isLoaded ? (
         <div className="wrapper">
-          {products.slice(0, 4).map((product) => (
-            <Card
-              pathname={product.image}
-              title={product.title}
-              key={product.id}
-            />
-          ))}
+          {Object.keys(categories).length > 0
+            ? Object.keys(categories).map((category) => (
+                <Card
+                  pathname={categories[category][0].image}
+                  title={categories[category][0].title}
+                  id={categories[category][0].id}
+                  key={categories[category][0].id}
+                  category={category}
+                />
+              ))
+            : null}
         </div>
       ) : (
         <div className="container-loader">
