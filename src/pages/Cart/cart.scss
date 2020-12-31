@@ -1,4 +1,7 @@
 $black: #000000;
+$color_cod_gray_approx: #111;
+$color_mine_shaft_approx: #222;
+
 $font-family: Gotham;
 .Your-Cart {
   width: 100%;
@@ -13,6 +16,53 @@ $font-family: Gotham;
   letter-spacing: normal;
   text-align: left;
   color: $black;
+}
+.centeredText{
+  text-align: center;
+  position: relative;
+  font-size: 2rem;
+}
+.center-div {
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  margin-top: 4rem;
+}
+.btn {
+    border-color: $color_cod_gray_approx;
+    background-color: $color_mine_shaft_approx;
+    text-shadow: $color_mine_shaft_approx -1px -1px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 1rem;
+    margin-left: 4rem;
+    position: relative;
+    margin-bottom: 25px;
+    border-radius: 10px;
+    text-align: center;
+    width: 10rem;
+    height: 3rem;
+    color: white;
+    font-size: 1.4rem;
+    cursor: pointer;
+    transition: all 0.1s ease-in-out;
+    &:hover {
+      opacity: 1;
+      box-shadow: -6px -6px 10px rgba(255, 255, 255, 0.8),
+        6px 6px 10px rgba(0, 0, 0, 0.2);
+    }
+}
+
+a:link {
+  text-decoration: none;
+}
+
+a:visited {
+  text-decoration: none;
 }
 
 .grid-container {
@@ -30,8 +80,10 @@ $font-family: Gotham;
 .card-logo {
   margin: 0.5rem;
   width: 60%;
-  border: 1px solid $black;
-  border-radius: 10px;
+}
+
+.cart-container{
+  margin: 1rem;
 }
 .Rectangle-39 {
   width: 126px;

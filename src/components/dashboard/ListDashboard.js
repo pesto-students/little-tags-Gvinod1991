@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getProductLists } from "../../redux/actions";
 import Card from "../card/card";
+import Loader from "../Loader";
 
 import "./ListDashboard.scss";
 
@@ -61,12 +62,7 @@ const ListDashboard = ({ element }) => {
             : null}
         </div>
       ) : (
-        <div className="container-loader">
-          <div className="load"></div>
-          <div className="load2"></div>
-          <div className="load3"></div>
-          <div className="load4"></div>
-        </div>
+        <Loader />
       )}
     </>
   );

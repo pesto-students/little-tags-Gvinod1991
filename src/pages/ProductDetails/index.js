@@ -1,49 +1,64 @@
-import React, { useEffect } from 'react';
-import { useParams } from 'react-router-dom';
-import { useSelector, useDispatch } from 'react-redux';
-import './product-details.scss';
-import MainLayout from '../../components/layout/MainLayout';
-import Carousel from '../../components/carousel';
-import Counter from '../../components/counter/counter';
-import Loader from '../../components/Loader';
-import { getProductDetails } from '../../redux/actions';
-import { addToCart } from '../../redux/actions/cartList';
+import React, { useEffect } from "react";
+import { useParams } from "react-router-dom";
+import { useSelector, useDispatch } from "react-redux";
+import "./product-details.scss";
+import MainLayout from "../../components/layout/MainLayout";
+import Carousel from "../../components/carousel";
+import Counter from "../../components/counter/counter";
+import Loader from "../../components/Loader";
+import { getProductDetails } from "../../redux/actions";
+import { getCartCount } from "../../redux/actions/cartDetails";
 
 const images = [
-  '/purple-jacket.png',
-  '/yellow-jacket.png',
-  '/yellow-jacket.png',
-  '/purple-jacket.png',
-  '/yellow-jacket.png',
-  '/yellow-jacket.png',
+  "/purple-jacket.png",
+  "/yellow-jacket.png",
+  "/yellow-jacket.png",
+  "/purple-jacket.png",
+  "/yellow-jacket.png",
+  "/yellow-jacket.png",
 ];
 
 export default function ProductDetails() {
-
   let quantityOfItem = 1;
   const { id } = useParams();
-  const { productDetails,loading } = useSelector((store) => ({
+  const { productDetails, loading } = useSelector((store) => ({
     productDetails: store.productDetails.productDetails,
-    loading:store.productDetails.loading
+    loading: store.productDetails.loading
   }));
-  const {image,title,description,price,size}=productDetails;
-  const dispatch = useDispatch();
+  const { image, title, description, price, size } = productDetails;
+  const dispatch1 = useDispatch();
+  const dispatch2 = useDispatch();
   useEffect(() => {
-    dispatch(getProductDetails(id));
-  }, [id,dispatch]);
+    dispatch1(getProductDetails(id));
+  }, [id, dispatch1]);
 
   const handleQuantity = (count) => {
     quantityOfItem = count;
-  }
+  };
 
   const handleAddToCart = (item) => {
     console.log(item);
-    dispatch(addToCart(item, quantityOfItem));
-  }
+    const myCart = JSON.parse(localStorage.getItem("myCart"));
+    const idOfItem = item.id.toString();
+    const cartItem = { ["" + idOfItem]: { item, quantity: quantityOfItem , totalPrice: item.price * quantityOfItem} };
+    if (myCart === null) {
+      localStorage.setItem("myCart", JSON.stringify(cartItem));
+    } else {
+      if (Object.keys(myCart).indexOf(idOfItem) === -1) {
+        myCart[idOfItem] = { item, quantity: quantityOfItem , totalPrice: item.price * quantityOfItem};
+      } else {
+        myCart[idOfItem]["quantity"] += quantityOfItem;
+        myCart[idOfItem]["totalPrice"] += item.price * quantityOfItem;
+      }
+      localStorage.setItem("myCart", JSON.stringify(myCart));
+    }
+    dispatch2(getCartCount());
+  };
+  
   return (
     <MainLayout>
       <div>
-        {loading && <Loader/>}
+        {loading && <Loader />}
         {productDetails && Object.keys(productDetails).length > 0 && (
           <div className="product-details-container">
             <div className="product-carousal">
@@ -76,9 +91,15 @@ export default function ProductDetails() {
               )}
               <div className="quantity-wrapper">
                 <h2>Quantity</h2>
-                <Counter quantity = {quantityOfItem} setQuantity={handleQuantity}/>
+                <Counter
+                  quantity={quantityOfItem}
+                  setQuantity={handleQuantity}
+                />
               </div>
-              <button className="cart-btn" onClick={() =>handleAddToCart(productDetails)}>
+              <button
+                className="cart-btn"
+                onClick={() => handleAddToCart(productDetails)}
+              >
                 <img src="/shopping-cart.svg" alt="shopping cart icon" />
                 <span>ADD TO CART</span>
               </button>
@@ -87,7 +108,7 @@ export default function ProductDetails() {
         )}
         <div className="related-products-container">
           <h2>More You'll like</h2>
-          <Carousel type={'list'} images={images} />
+          <Carousel type={"list"} images={images} />
         </div>
       </div>
     </MainLayout>
