@@ -62,12 +62,7 @@ const ListDashboard = ({ element }) => {
             : null}
         </div>
       ) : (
-        <div className="container-loader">
-          <div className="load"></div>
-          <div className="load2"></div>
-          <div className="load3"></div>
-          <div className="load4"></div>
-        </div>
+        <Loader />
       )}
     </>
   );

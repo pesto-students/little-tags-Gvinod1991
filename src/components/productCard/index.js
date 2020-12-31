@@ -72,10 +72,9 @@ export default function ProductCard({
         )}
       </div>
     </div>
-    {quantity && <div className="proceed">
+    <div className="proceed">
       <button className="btn">Proceed</button>
     </div>
-}
     </>
   );
 }
