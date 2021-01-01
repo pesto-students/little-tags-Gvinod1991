@@ -44,7 +44,7 @@ function App() {
             <Cart />
           </PrivateRoute>
           <PrivateRoute path={'/checkout'}>
-            <Payment />
+            <Payment /> 
           </PrivateRoute>
           <PrivateRoute path={'/order-confirmation'}>
             <Cart />
