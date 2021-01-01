@@ -4,8 +4,8 @@ import './carousel.scss';
 import CarouselItem from './CarouselItem';
 const TRANSLATE_PERCENTAGE=100;
 
-export default function Carousel({type,images,title}) {
-  const sliderArray = images.map((image)=>{
+export default function Carousel({type,images}) {
+  const sliderArray = images.map(({image,title})=>{
     return <CarouselItem path={image} type={type} title={title} />
   });
 
@@ -52,6 +52,5 @@ export default function Carousel({type,images,title}) {
 
 Carousel.propTypes={
   type:PropTypes.string.isRequired,
-  images:PropTypes.array.isRequired,
-  title:PropTypes.string.isRequired
+  images:PropTypes.array.isRequired
 }

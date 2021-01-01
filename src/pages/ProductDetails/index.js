@@ -9,12 +9,12 @@ import Loader from '../../components/Loader';
 import { getProductDetails } from '../../redux/actions';
 
 const images = [
-  '/purple-jacket.png',
-  '/yellow-jacket.png',
-  '/yellow-jacket.png',
-  '/purple-jacket.png',
-  '/yellow-jacket.png',
-  '/yellow-jacket.png',
+  {image:'/purple-jacket.png',title:"RN Group"},
+  {image:'/yellow-jacket.png',title:"RN Group"},
+  {image:'/yellow-jacket.png',title:"RN Group"},
+  {image:'/purple-jacket.png',title:"RN Group"},
+  {image:'/purple-jacket.png',title:"RN Group"},
+  {image:'/purple-jacket.png',title:"RN Group"}
 ];
 
 export default function ProductDetails() {
@@ -36,7 +36,7 @@ export default function ProductDetails() {
         {productDetails && Object.keys(productDetails).length > 0 && (
           <div className="product-details-container">
             <div className="product-carousal">
-              <Carousel type="stack" images={[image]} />
+              <Carousel type="stack" images={[{image}]} />
             </div>
             <div className="product-details">
               <h2 className="product-title">{title}</h2>
