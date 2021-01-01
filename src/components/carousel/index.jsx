@@ -2,33 +2,39 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import './carousel.scss';
 import CarouselItem from './CarouselItem';
-export default function Carousel({type,images}) {
+const TRANSLATE_PERCENTAGE=100;
+
+export default function Carousel({type,images,title}) {
   const sliderArray = images.map((image)=>{
-    return <CarouselItem path={image} type={type} />
+    return <CarouselItem path={image} type={type} title={title} />
   });
-  const [x, setX] = useState(0);
+
+  const [horizontalTranslate, setHorizontalTranslate] = useState(0);
+
   const goLeft = () => {
-    if (x === 0) {
-      setX(-100 * (sliderArray.length - 1));
+    if (horizontalTranslate === 0) {
+      setHorizontalTranslate(-TRANSLATE_PERCENTAGE * (sliderArray.length - 1));
     } else {
-      setX(x + 100);
+      setHorizontalTranslate(horizontalTranslate + TRANSLATE_PERCENTAGE);
     }
   };
+
   const goRight = () => {
-    if (x === -((sliderArray.length - 1) * 100)) {
-      setX(0);
+    if (horizontalTranslate === -((sliderArray.length - 1) * 100)) {
+      setHorizontalTranslate(0);
     } else {
-      setX(x - 100);
+      setHorizontalTranslate(horizontalTranslate - TRANSLATE_PERCENTAGE);
     }
   };
+
   return (
     <div className="slider">
-      {sliderArray.map((item, index) => {
+      {sliderArray.map((item) => {
         return (
           <div
-            key={index}
+            key={item}
             className={type==='stack' ? 'slide min-width-100' : 'slide min-width-45' }
-            style={{ transform: `translate(${x}%)` }}
+            style={{ transform: `translate(${horizontalTranslate}%)` }}
           >
             {item}
           </div>
@@ -46,5 +52,6 @@ export default function Carousel({type,images}) {
 
 Carousel.propTypes={
   type:PropTypes.string.isRequired,
-  images:PropTypes.array.isRequired
+  images:PropTypes.array.isRequired,
+  title:PropTypes.string.isRequired
 }
