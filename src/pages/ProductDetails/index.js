@@ -37,7 +37,6 @@ export default function ProductDetails() {
   };
 
   const handleAddToCart = (item) => {
-    console.log(item);
     const myCart = JSON.parse(localStorage.getItem("myCart"));
     const idOfItem = item.id.toString();
     const cartItem = { ["" + idOfItem]: { item, quantity: quantityOfItem , totalPrice: item.price * quantityOfItem} };

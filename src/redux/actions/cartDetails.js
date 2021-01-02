@@ -25,7 +25,6 @@ export const getTotalPrice = (price) => (dispatch) => {
       Object.keys(cart).map(key => {
         priceList['' + key] =cart[key].totalPrice;
       });
-      console.log("pricelist",priceList)
       dispatch({
         type: FETCH_TOTAL_PRICE,
         payload: priceList,
