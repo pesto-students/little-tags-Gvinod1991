@@ -1,16 +1,25 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+
 import './layout.scss';
 import AuthUserDisplay from '../autUserDisplay';
 import LoginAction from '../loginAction';
 import Categories from '../categories';
 import Brand from '../brand';
+import { logOut } from '../../redux/actions/validation';
 
 export default function HamburgerMenu({
   showHamburgerMenu,
   toggleHamburgerMenu,
   isLoggedIn,
 }) {
+
+  const dispatch = useDispatch();
+
+  const logout = () => {
+    dispatch(logOut());
+  }
   return (
     <div className="hamburger-menu-container">
       <div className="brand-wrapper-hamburger">
@@ -39,7 +48,7 @@ export default function HamburgerMenu({
       )}
       {isLoggedIn && (
         <div className="logout-section">
-          <button className="btn">Logout</button>
+          <button className="btn" onClick={logout}>Logout</button>
         </div>
       )}
     </div>

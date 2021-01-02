@@ -7,7 +7,6 @@ export const PRODUCT_LIST_FAILED='PRODUCT_LIST_FAILED';
 export const PRODUCT_PAGE_NUMBER_UPDATE='PRODUCT_PAGE_NUMBER_UPDATE';
 
 export const  getProducts=(category)=>(dispatch)=>{
-    console.log(category);
     dispatch({type:PRODUCT_LIST_REQUEST});
     const API_URL = `${API_BASE_URL}products/category/${category}`;
     fetch(API_URL)

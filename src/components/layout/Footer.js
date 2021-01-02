@@ -1,6 +1,31 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { useSelector } from "react-redux";
+import capitalize from '../../services/capitalize';
 
 export default function Footer() {
+  const [categories, setCategories] = useState({});
+  
+  const { productList } = useSelector(
+    ({ productList: { productList } }) => ({
+      productList,
+    })
+  );
+
+  const getCategories = (result) => {
+    const output = result.reduce(function(reducedArray, element) {
+      const category = (element['category']); 
+      (reducedArray[category] ? reducedArray[category] : (reducedArray[category] = null || [])).push(element);
+      return reducedArray;
+    }, {});
+    
+    setCategories(output);
+  }
+
+  
+  useEffect(() => {
+    getCategories(productList)
+  }, [productList]);
+
   return (
     <div className="footer">
       <div className="footer-top">
@@ -35,12 +60,16 @@ export default function Footer() {
         </div>
         <div className="categories-section">
           <h2>Categories</h2>
-          <ul>
-            <li>Accessories(45)</li>
-            <li>Jeans(278)</li>
-            <li>Tops(64)</li>
-            <li>Jackets(3)</li>
-          </ul>
+          {
+            Object.keys(categories).length > 0 ?
+            <ul>
+            {
+              Object.keys(categories).map(category => (
+                <li key={category}>{capitalize(category) + '(' + categories[category].length + ')'}</li>
+              ))
+            }
+          </ul>: null
+          }
         </div>
         <div className="empty-section"></div>
         <div className="get-in-touch-section">

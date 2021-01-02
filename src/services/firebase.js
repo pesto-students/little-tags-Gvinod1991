@@ -15,16 +15,17 @@ firebase.initializeApp({
 });
 // https://little-tags-78c25-default-rtdb.firebaseapp.com/__/auth/handler
 export const auth = firebase.auth();
-// export const ref = firebase.database().ref();
+
 export const facebookProvider = new firebase.auth.FacebookAuthProvider()
-const googleProvider = new firebase.auth.GoogleAuthProvider()
+const googleProvider = new firebase.auth.GoogleAuthProvider();
+
 export const signInWithGoogle = () => {
     auth.signInWithPopup(googleProvider).then((res) => {
-        console.log(res.user)
     }).catch((error) => {
         console.log(error.message)
     })
 }
+
 
 export const signInWithFacebook = () => {
     auth.signInWithPopup(facebookProvider).then((res) => {

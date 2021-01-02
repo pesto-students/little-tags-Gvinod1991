@@ -1,9 +1,14 @@
 import React from "react";
 import { signInWithGoogle, signInWithFacebook } from "../../services/firebase";
+import { useDispatch } from 'react-redux';
+
 import "./Modal.scss";
+import { logIn } from "../../redux/actions/validation";
 
 const Modal = (props) => {
   const { show, close } = props;
+  const dispatch = useDispatch();
+
   return (
     <div>
       <div
@@ -27,6 +32,7 @@ const Modal = (props) => {
               id="googleplus"
               onClick={() => {
                 signInWithGoogle();
+                dispatch(logIn());
                 close();
               }}
             >
@@ -35,6 +41,7 @@ const Modal = (props) => {
             <button id="faceBook"
             onClick={() => {
               signInWithFacebook();
+              dispatch(logIn());
               close();
             }}>
               <span>f</span>Facebook Account

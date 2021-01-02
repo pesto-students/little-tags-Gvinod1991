@@ -16,12 +16,6 @@ const Payment = () => {
       <h2>
         <strong>Delivering To</strong>
       </h2>
-      {/* <div className="card">
-        <div className="container">
-          <strong>Ayush Jaiswal</strong>
-          <div>1418 Avenue</div>
-        </div>
-      </div> */}
         {
         list.map((item,index) => (
           <AddressCard details = {item} isDummy= {true}/>

@@ -1,13 +1,17 @@
 import React from 'react';
 import {Redirect,Route} from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 export default function PrivateRoute({ children, ...rest }) {
-  const authToken= window.localStorage.getItem('authToken');
+  const { isLoggedIn } = useSelector((store) => ({
+    isLoggedIn: store.loginReducer.isLoggedIn
+  }));
+  
   return (
     <Route
       {...rest}
       render={({ location }) =>
-      authToken ? (
+      isLoggedIn ? (
           children
         ) : (
           <Redirect
