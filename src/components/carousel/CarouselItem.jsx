@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types'
-export default function CarouselItem({path,type}){
+export default function CarouselItem({path,type,title}){
   return(
     <div className="carouselItem-container">
       <img  src={path} alt="carouselItem" />
       {type==='list' && 
         <div className="product-caption">
-          <span>Red BN Cap</span>
+          <span>{title}</span>
         </div>
       }
     </div>
@@ -15,5 +15,6 @@ export default function CarouselItem({path,type}){
 
 CarouselItem.propTypes={
   path: PropTypes.string.isRequired,
-  type: PropTypes.string.isRequired
+  type: PropTypes.string.isRequired,
+  title:PropTypes.string.isRequired,
 }

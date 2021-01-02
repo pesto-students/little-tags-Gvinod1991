@@ -10,69 +10,73 @@
   border-radius: 1.2rem;
 }
 
-.slide{
+.slide {
   border-radius: 1.2rem;
-  height:90%;
+  height: 90%;
   transition: 0.5s;
   overflow: hidden;
 }
-.min-width-100{
+.min-width-100 {
   min-width: 100%;
 }
-.min-width-45{
+.min-width-45 {
   min-width: 25%;
-  margin:1rem;
-  height:auto;
+  margin: 1rem;
+  height: auto;
 }
-%button-style{
+%button-style {
   position: absolute;
-  top:50%;
-  transform:translateY(-50%);
+  top: 50%;
+  transform: translateY(-50%);
   height: 80%;
-  background:none;
+  background: none;
   outline: none;
-  border:none;
+  border: none;
   cursor: pointer;
 }
-.lg{
-  width:8%;
-  @media screen and (max-width:420px){
-    width:15%;
+.lg {
+  width: 8%;
+  @media screen and (max-width: 420px) {
+    width: 15%;
   }
 }
-.sm{
-  width:4%;
-  @media screen and (max-width:420px){
-    width:10%;
+.sm {
+  width: 4%;
+  @media screen and (max-width: 420px) {
+    width: 10%;
   }
 }
-#left-arrow{
-  left:0;
+#left-arrow {
+  left: 0;
   @extend %button-style;
-  img{
-    width:100%;
+  img {
+    width: 100%;
   }
 }
-#right-arrow{
-  right:0;
+#right-arrow {
+  right: 0;
   @extend %button-style;
-  img{
-    width:100%;
+  img {
+    width: 100%;
   }
 }
-.carouselItem-container{
+.carouselItem-container {
   background-color: rgba(0, 0, 0, 0.1);
   opacity: 0.9;
   cursor: pointer;
-  img{
-    width:100%;
-    height:auto;
+  img {
+    width: 100%;
+    height: auto;
   }
-  .product-caption{
-    height:50px;
+  .product-caption {
+    height: 50px;
     opacity: 0.45;
-    background-image: linear-gradient(79deg, #000000 3%, rgba(0, 0, 0, 0.5) 100%);
-    span{
+    background-image: linear-gradient(
+      79deg,
+      #000000 3%,
+      rgba(0, 0, 0, 0.5) 100%
+    );
+    span {
       font-family: Gotham;
       font-size: 1.5rem;
       opacity: 1;
