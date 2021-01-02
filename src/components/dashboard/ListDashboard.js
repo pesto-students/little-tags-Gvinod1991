@@ -10,10 +10,10 @@ const ListDashboard = ({ element }) => {
   
   const [categories, setCategories] = useState({});
 
-  const { isLoaded, productList } = useSelector(
-    ({ productList: { isLoaded, productList } }) => ({
+  const { isLoaded, productsList } = useSelector(
+    ({ productList: { isLoaded, productsList } }) => ({
       isLoaded,
-      productList,
+      productsList,
     })
   );
 
@@ -37,8 +37,8 @@ const ListDashboard = ({ element }) => {
   }, [dispatch]);
 
   useEffect(() => {
-    getCategories(productList);
-  }, [productList]);
+    getCategories(productsList);
+  }, [productsList]);
 
   return (
     <>
