@@ -105,10 +105,11 @@ export default function ProductDetails() {
             </div>
           </div>
         )}
-        <div className="related-products-container">
+        {!loading && <div className="related-products-container">
           <h2>More You'll like</h2>
           <Carousel type={"list"} images={images} />
-        </div>
+          </div>
+        }
       </div>
     </MainLayout>
   );

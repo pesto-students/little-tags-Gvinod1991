@@ -6,8 +6,8 @@ import { Link,useHistory} from "react-router-dom";
 import MainLayout from '../../components/layout/MainLayout';
 import "./cart.scss";
 export default function Cart() {
-  const cart = JSON.parse(localStorage.getItem("myCart"));
-  const itemsInCart = Object.keys(cart).map((key) => cart[key]);
+  const cart = localStorage.getItem("myCart") ? JSON.parse(localStorage.getItem("myCart")) : null
+  const itemsInCart =cart && Object.keys(cart).map((key) => cart[key]);
   const history=useHistory();
   const { totalPriceList } = useSelector((store) => ({
     totalPriceList: store.cartDetails.totalPriceList,

@@ -4,7 +4,7 @@ import { useHistory } from 'react-router-dom';
 import AddressCard from '../../components/addressCard/addressCard';
 import MainLayout from '../../components/layout/MainLayout';
 import Loader from '../../components/Loader';
-import { getUserDetailList,saveUserDetailsId } from '../../redux/actions';
+import { getUserDetailList,saveUserDetailsId,getUserDetailsId } from '../../redux/actions';
 import './deliver-to.scss';
 const DeliverTo = () => {
   const [errMessage,setErrMessage]=useState(null);
@@ -18,6 +18,7 @@ const DeliverTo = () => {
   });
   useEffect(() => {
     dispatch(getUserDetailList());
+    dispatch(getUserDetailsId());
   }, [dispatch]);
 
   const redirectNewAddress = () => {
@@ -41,7 +42,7 @@ const DeliverTo = () => {
         {userDetailsList &&
           userDetailsList.length > 0 &&
           userDetailsList.map((userDetails) => (
-            <AddressCard key={userDetails.id} details={userDetails} isDummy={false} handleAddressChange={handleAddressChange}/>
+            <AddressCard key={userDetails.id} details={userDetails} isDummy={false} userDetailsId={userDetailsId} handleAddressChange={handleAddressChange}/>
           ))}
         <div className="row-box-deliver-to" onClick={redirectNewAddress}>
           <img src={'/add.svg'} alt="add new address" />
