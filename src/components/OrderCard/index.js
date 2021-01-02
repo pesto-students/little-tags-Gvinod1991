@@ -8,7 +8,6 @@ export default function OrderCard({order:{
   return (
     <>
     {cartItems && cartItems.length > 0 && cartItems.map((orderItem)=>{
-      console.log(orderItem);
         const {totalPrice,quantity,item}=orderItem;
         const {title,image,id}=item;
        return <div key={id} className="order-container">

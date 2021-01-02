@@ -7,12 +7,12 @@ import { getOrders } from '../../redux/actions';
 import Loader from '../../components/Loader';
 import Carousel from '../../components/carousel';
 const images = [
-  "/purple-jacket.png",
-  "/yellow-jacket.png",
-  "/yellow-jacket.png",
-  "/purple-jacket.png",
-  "/yellow-jacket.png",
-  "/yellow-jacket.png",
+  {image:'/purple-jacket.png',title:"RN Group"},
+  {image:'/yellow-jacket.png',title:"RN Group"},
+  {image:'/yellow-jacket.png',title:"RN Group"},
+  {image:'/purple-jacket.png',title:"RN Group"},
+  {image:'/purple-jacket.png',title:"RN Group"},
+  {image:'/purple-jacket.png',title:"RN Group"}
 ];
 export default function Orders() {
   const dispatch = useDispatch();
