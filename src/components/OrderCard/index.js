@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import './order-card.scss';
 
 export default function OrderCard({order:{
@@ -10,7 +10,7 @@ export default function OrderCard({order:{
     {cartItems && cartItems.length > 0 && cartItems.map((orderItem)=>{
       console.log(orderItem);
         const {totalPrice,quantity,item}=orderItem;
-        const {title,image,id,price}=item;
+        const {title,image,id}=item;
        return <div key={id} className="order-container">
         <div className="row-left-order-card">
           <div className="order-image-container ">
