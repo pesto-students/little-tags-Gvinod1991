@@ -22,10 +22,10 @@ export const saveOrderDetails=(orderDetails)=>(dispatch)=>{
   }
 }
 
-export const getOrders=()=>(dispatch)=>{
+export const getOrders=(userEmail)=>(dispatch)=>{
   dispatch({type:ORDERS_FETCH_REQUEST});
   try{
-    ordersRef.on('value',(snapShot)=>{
+    ordersRef.orderByChild('userEmail').equalTo(userEmail).on('value',(snapShot)=>{
       const data=snapShot.val();
       const ordersList=[];
       for(let id in data){

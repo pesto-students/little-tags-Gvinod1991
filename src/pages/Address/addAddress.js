@@ -1,8 +1,8 @@
-import React, { useState} from 'react';
-import {useHistory} from 'react-router-dom';
-import {useSelector,useDispatch} from 'react-redux';
+import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
 import MainLayout from '../../components/layout/MainLayout';
-import {saveUserDetails} from '../../redux/actions';
+import { saveUserDetails } from '../../redux/actions';
 import './addAddress.scss';
 import { states } from '../../utilities/states';
 import { isEmailValid, isPhoneNumberValid } from '../../utilities/validations';
@@ -18,17 +18,23 @@ const AddAddress = () => {
     state: '',
     pinCode: '',
   });
-  const [firstNameErr,setFirstNameErr] =useState(null);
-  const [lastNameErr,setLastNameErr] =useState(null);
-  const [emailIdErr,setEmailIdErr] =useState(null);
-  const [phoneNumberErr,setPhoneNumberErr] =useState(null);
-  const [addressLineOneErr,setAddressLineOneErr] =useState(null);
-  const [addressLineTwoErr,setAddressLineTwoErr] =useState(null);
-  const [stateErr,setStateErr] =useState(null);
-  const [pinCodeErr,setPinCodeErr] =useState(null);
-  const dispatch= useDispatch();
-  const history= useHistory();
-  const {saved,loading}=useSelector((state)=>{return {saved:state.userDetails.saved,loading:state.userDetails.loading}});
+  const [firstNameErr, setFirstNameErr] = useState(null);
+  const [lastNameErr, setLastNameErr] = useState(null);
+  const [emailIdErr, setEmailIdErr] = useState(null);
+  const [phoneNumberErr, setPhoneNumberErr] = useState(null);
+  const [addressLineOneErr, setAddressLineOneErr] = useState(null);
+  const [addressLineTwoErr, setAddressLineTwoErr] = useState(null);
+  const [stateErr, setStateErr] = useState(null);
+  const [pinCodeErr, setPinCodeErr] = useState(null);
+  const dispatch = useDispatch();
+  const history = useHistory();
+  const { saved, loading, user} = useSelector((state) => {
+    return {
+      saved: state.userDetails.saved,
+      loading: state.userDetails.loading,
+      user: state.loginReducer.userDetails,
+    };
+  });
   const handleChange = ({ name, value }) => {
     setAddressInformation({
       ...addressInformation,
@@ -60,51 +66,63 @@ const AddAddress = () => {
     state = state && state !== '' ? state : false;
     pinCode = pinCode && pinCode !== '' ? pinCode : false;
     if (!firstName) {
-      setFirstNameErr("First Name required!");
-    }else{
-      setFirstNameErr("");
+      setFirstNameErr('First Name required!');
+    } else {
+      setFirstNameErr('');
     }
     if (!lastName) {
-      setLastNameErr("Last Name required!");
-    }else{
-      setLastNameErr("");
+      setLastNameErr('Last Name required!');
+    } else {
+      setLastNameErr('');
     }
     if (!emailId) {
-      setEmailIdErr("Email id required and should be valid!");
-    }else{
-      setEmailIdErr("");
+      setEmailIdErr('Email id required and should be valid!');
+    } else {
+      setEmailIdErr('');
     }
     if (!phoneNumber) {
-      setPhoneNumberErr("Phone number required and should be valid!");
-    }else{
-      setPhoneNumberErr("");
+      setPhoneNumberErr('Phone number required and should be valid!');
+    } else {
+      setPhoneNumberErr('');
     }
     if (!addressLineOne) {
-      setAddressLineOneErr("Address line one required!");
-    }else{
-      setAddressLineOneErr("")
+      setAddressLineOneErr('Address line one required!');
+    } else {
+      setAddressLineOneErr('');
     }
     if (!addressLineTwo) {
-      setAddressLineTwoErr("Address line two required!");
-    }else{
-      setAddressLineTwoErr("")
+      setAddressLineTwoErr('Address line two required!');
+    } else {
+      setAddressLineTwoErr('');
     }
     if (!state) {
-      setStateErr("State is required!");
-    }else{
-      setStateErr("")
+      setStateErr('State is required!');
+    } else {
+      setStateErr('');
     }
     if (!pinCode) {
-      setPinCodeErr("Pin code is required!");
-    }else{
-      setPinCodeErr("")
+      setPinCodeErr('Pin code is required!');
+    } else {
+      setPinCodeErr('');
     }
-    if(firstName && lastName && emailId && phoneNumber && addressLineOne
-      && addressLineTwo && state && pinCode){
-        dispatch(saveUserDetails(addressInformation));
-        setTimeout(()=>{
-          history.push('/address-list');
-        },1000);
+    if (
+      firstName &&
+      lastName &&
+      emailId &&
+      phoneNumber &&
+      addressLineOne &&
+      addressLineTwo &&
+      state &&
+      pinCode
+    ) {
+      const data={
+        ...addressInformation,
+        userEmail:user.email
+      }
+      dispatch(saveUserDetails(data));
+      setTimeout(() => {
+        history.push('/address-list');
+      }, 1000);
     }
   };
 
@@ -184,7 +202,9 @@ const AddAddress = () => {
               type="text"
               className="input-class"
             />
-            {addressLineOneErr && <p className="text-danger">{addressLineOneErr}</p>}
+            {addressLineOneErr && (
+              <p className="text-danger">{addressLineOneErr}</p>
+            )}
           </div>
           <div className="row">
             <div>
@@ -198,7 +218,9 @@ const AddAddress = () => {
               type="text"
               className="input-class"
             />
-            {addressLineTwoErr && <p className="text-danger">{addressLineTwoErr}</p>}
+            {addressLineTwoErr && (
+              <p className="text-danger">{addressLineTwoErr}</p>
+            )}
           </div>
           <div className="row">
             <div>
@@ -213,14 +235,13 @@ const AddAddress = () => {
                 }
                 className="slct"
               >
-                <option value="">
-                  Choose an option
-                </option>
-                {states.map(({ name,key }) => (
-                  <option key={key} value={name}>{name}</option>
+                <option value="">Choose an option</option>
+                {states.map(({ name, key }) => (
+                  <option key={key} value={name}>
+                    {name}
+                  </option>
                 ))}
               </select>
-              
             </div>
             {stateErr && <p className="text-danger">{stateErr}</p>}
           </div>
@@ -242,8 +263,12 @@ const AddAddress = () => {
         <button onClick={() => submitInformation()} className="btn">
           Save
         </button>
-        {loading && <Loader/>}
-        {saved && <p className="text-success text-center">Address information saved successfully</p>}
+        {loading && <Loader />}
+        {saved && (
+          <p className="text-success text-center">
+            Address information saved successfully
+          </p>
+        )}
       </div>
     </MainLayout>
   );

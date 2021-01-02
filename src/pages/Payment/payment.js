@@ -41,7 +41,7 @@ const Payment = () => {
       orderDate: getDate(new Date()),
       cartItems: itemsInCart,
       deliverDetails: userDetails,
-      user,
+      userEmail:user.email,
     }
     dispatch(saveOrderDetails(data));
     setTimeout(() => {

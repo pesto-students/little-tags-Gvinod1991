@@ -30,10 +30,10 @@ export const saveUserDetails=(userDetails)=>(dispatch)=>{
   }
 }
 
-export const getUserDetailList=()=>(dispatch)=>{
+export const getUserDetailList=(userEmail)=>(dispatch)=>{
   dispatch({type:USER_DETAILS_FETCH_REQUEST});
   try{
-    userDetailsRef.on('value',(snapShot)=>{
+    userDetailsRef.orderByChild("userEmail").equalTo(userEmail).on('value',(snapShot)=>{
       const data=snapShot.val();
       const userDetailsList=[];
       for(let id in data){

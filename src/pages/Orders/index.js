@@ -16,20 +16,25 @@ const images = [
 ];
 export default function Orders() {
   const dispatch = useDispatch();
-  const { orderList, loading } = useSelector((state) => {
+  const { orderList, loading,user } = useSelector((state) => {
     return { orderList: state.orders.orderList,
-       loading:state.orders.loading};
+      loading:state.orders.loading,
+      user:state.loginReducer.userDetails
+      };
   });
   useEffect(()=>{
-    dispatch(getOrders());
-  },[dispatch])
+    const {email}=user;
+    if(email){
+      dispatch(getOrders(email));
+    }
+  },[dispatch,user]);
   return (
     <MainLayout>
       <>
       <div className="orders">
         <h2>Your Orders</h2>
         {loading && <Loader/>}
-        {orderList && orderList.length > 0 && orderList.map((order) => {
+        {!loading && orderList && orderList.length > 0 && orderList.map((order) => {
           const { id } = order;
           return <OrderCard key={id} order={order} />;
         })}

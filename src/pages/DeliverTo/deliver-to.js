@@ -10,16 +10,18 @@ const DeliverTo = () => {
   const [errMessage,setErrMessage]=useState(null);
   const history = useHistory();
   const dispatch = useDispatch();
-  const { userDetailsList, loading, userDetailsId } = useSelector((state) => {
+  const { userDetailsList, loading, userDetailsId,user } = useSelector((state) => {
     return { userDetailsList: state.userDetails.userDetailsList, 
       loading:state.userDetails.loading,
-      userDetailsId:state.userDetails.userDetailsId
+      userDetailsId:state.userDetails.userDetailsId,
+      user: state.loginReducer.userDetails,
     };
   });
   useEffect(() => {
-    dispatch(getUserDetailList());
+    const {email}=user;
+    dispatch(getUserDetailList(email));
     dispatch(getUserDetailsId());
-  }, [dispatch]);
+  }, [dispatch,user]);
 
   const redirectNewAddress = () => {
     history.push('/new-address');
