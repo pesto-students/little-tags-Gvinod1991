@@ -13,6 +13,9 @@ export const USER_DETAILS_FETCH_FAILED='USER_DETAILS_FETCH_FAILED';
 export const SAVE_USER_DETAILS_ID_SUCCESS='SAVE_USER_DETAILS_ID_SUCCESS';
 export const SAVE_USER_DETAILS_ID_FAILED='SAVE_USER_DETAILS_ID_FAILED';
 
+export const FETCH_USER_DETAILS_ID_SUCCESS='FETCH_USER_DETAILS_ID_SUCCESS';
+export const FETCH_USER_DETAILS_ID_FAILED='FETCH_USER_DETAILS_ID_FAILED';
+
 export const FETCH_USER_DETAIL_REQUEST='FETCH_USER_DETAIL_REQUEST';
 export const FETCH_USER_DETAIL_SUCCESS='FETCH_USER_DETAIL_SUCCESS';
 export const FETCH_USER_DETAIL_FAILED='FETCH_USER_DETAIL_FAILED';
@@ -50,7 +53,14 @@ export const saveUserDetailsId=(userDetailsId)=>(dispatch)=>{
     dispatch({type:SAVE_USER_DETAILS_ID_FAILED})
   }
 }
-
+export const getUserDetailsId=()=>(dispatch)=>{
+  try{
+    const userDetailsId=window.localStorage.getItem('userDetailsId');
+    dispatch({type:FETCH_USER_DETAILS_ID_SUCCESS,payload:userDetailsId})
+  }catch(err){
+    dispatch({type:FETCH_USER_DETAILS_ID_FAILED})
+  }
+}
 export const getUserDetails=()=>(dispatch)=>{
   dispatch({type:FETCH_USER_DETAIL_REQUEST});
   try{

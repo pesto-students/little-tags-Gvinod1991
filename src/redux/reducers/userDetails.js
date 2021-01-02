@@ -9,7 +9,9 @@ import {
   SAVE_USER_DETAILS_ID_SUCCESS,
   FETCH_USER_DETAIL_FAILED,
   FETCH_USER_DETAIL_SUCCESS,
-  FETCH_USER_DETAIL_REQUEST
+  FETCH_USER_DETAIL_REQUEST,
+  FETCH_USER_DETAILS_ID_FAILED,
+  FETCH_USER_DETAILS_ID_SUCCESS
 } from '../actions/userDetails';
 
 const initialState = {
@@ -38,6 +40,10 @@ export const userDetails = (state = initialState, action) => {
     case SAVE_USER_DETAILS_ID_SUCCESS:
       return { ...state, loading: false, userDetailsId:action.payload};
     case SAVE_USER_DETAILS_ID_FAILED:
+      return { ...state, loading: false};
+    case FETCH_USER_DETAILS_ID_SUCCESS:
+      return { ...state, loading: false, userDetailsId:action.payload};
+    case FETCH_USER_DETAILS_ID_FAILED:
       return { ...state, loading: false};
     case FETCH_USER_DETAIL_REQUEST:
       return { ...state, loading: true, message: null };
