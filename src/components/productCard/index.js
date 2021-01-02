@@ -72,9 +72,6 @@ export default function ProductCard({
         )}
       </div>
     </div>
-    <div className="proceed">
-      <button className="btn">Proceed</button>
-    </div>
     </>
   );
 }
