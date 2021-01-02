@@ -1,18 +1,47 @@
 import React from 'react';
 import './pagination.scss';
-export default function Pagination(){
-  return(
-    <div className="center">
-      <div className="pagination center">
-        <a href="#/">&laquo;Previous</a>
-        <a href="#/">1</a>
-        <a href="#/" className="active">2</a>
-        <a href="#/">3</a>
-        <a href="#/">4</a>
-        <a href="#/">5</a>
-        <a href="#/">6</a>
-        <a href="#/">Next &raquo;</a>
-      </div>
+
+export default function Pagination({
+  currentPage,
+  pageNumbers,
+  handleCurrentPageChange,
+}) {
+  return (
+    <div className="pagination-center">
+      {pageNumbers && pageNumbers.length > 0 && (
+        <div className="pagination">
+          <a
+            href="#/"
+            onClick={() =>
+              currentPage > 1 ? handleCurrentPageChange(currentPage - 1) : {}
+            }
+          >
+            &laquo;Previous
+          </a>
+          {pageNumbers.map((pageNumber) => {
+            return (
+              <a
+                key={pageNumber}
+                href="#/"
+                className={pageNumber === currentPage ? 'active' : ''}
+                onClick={() => handleCurrentPageChange(pageNumber)}
+              >
+                {pageNumber}
+              </a>
+            );
+          })}
+          <a
+            href="#/"
+            onClick={() =>
+              currentPage < pageNumbers.length
+                ? handleCurrentPageChange(currentPage + 1)
+                : {}
+            }
+          >
+            Next &raquo;
+          </a>
+        </div>
+      )}
     </div>
-  )
+  );
 }
