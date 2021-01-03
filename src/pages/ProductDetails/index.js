@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import "./product-details.scss";
@@ -6,31 +6,32 @@ import MainLayout from "../../components/layout/MainLayout";
 import Carousel from "../../components/carousel";
 import Counter from "../../components/counter/counter";
 import Loader from "../../components/Loader";
-import { getProductDetails } from "../../redux/actions";
+import { getProductDetails,getProducts } from "../../redux/actions";
 import { getCartCount } from "../../redux/actions/cartDetails";
-
-const images = [
-  {image:'/purple-jacket.png',title:"RN Group"},
-  {image:'/yellow-jacket.png',title:"RN Group"},
-  {image:'/yellow-jacket.png',title:"RN Group"},
-  {image:'/purple-jacket.png',title:"RN Group"},
-  {image:'/purple-jacket.png',title:"RN Group"},
-  {image:'/purple-jacket.png',title:"RN Group"}
-];
 
 export default function ProductDetails() {
   let quantityOfItem = 1;
+  const [filteredProductList,setFilteredProductList]=useState([]);
   const { id } = useParams();
-  const { productDetails, loading } = useSelector((store) => ({
+  const { productDetails, loading,productList } = useSelector((store) => ({
     productDetails: store.productDetails.productDetails,
-    loading: store.productDetails.loading
+    loading: store.productDetails.loading,
+    productList:store.product.productList,
   }));
-  const { image, title, description, price, size } = productDetails;
-  const dispatch1 = useDispatch();
-  const dispatch2 = useDispatch();
+  const { image, title, description, price, size,category } = productDetails;
+  const dispatch = useDispatch();
+
   useEffect(() => {
-    dispatch1(getProductDetails(id));
-  }, [id, dispatch1]);
+    dispatch(getProductDetails(id));
+  }, [id, dispatch]);
+
+  useEffect(() => {
+    dispatch(getProducts(category));
+  }, [category, dispatch]);
+
+  useEffect(()=>{
+    setFilteredProductList(productList.filter((product) => product.id !== parseFloat(id)));
+  },[productList,id]);
 
   const handleQuantity = (count) => {
     quantityOfItem = count;
@@ -51,7 +52,7 @@ export default function ProductDetails() {
       }
       localStorage.setItem("myCart", JSON.stringify(myCart));
     }
-    dispatch2(getCartCount());
+    dispatch(getCartCount());
   };
   
   return (
@@ -107,7 +108,7 @@ export default function ProductDetails() {
         )}
         {!loading && <div className="related-products-container">
           <h2>More You'll like</h2>
-          <Carousel type={"list"} images={images} />
+          <Carousel type={"list"} images={filteredProductList} />
           </div>
         }
       </div>
