@@ -3,7 +3,7 @@ import { signInWithGoogle, signInWithFacebook } from "../../services/firebase";
 import { useDispatch } from 'react-redux';
 
 import "./Modal.scss";
-import { logIn } from "../../redux/actions/validation";
+import { logIn } from "../../redux/actions/loginAction";
 
 const Modal = (props) => {
   const { show, close } = props;

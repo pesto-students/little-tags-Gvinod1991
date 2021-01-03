@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import Dashboard from '../../components/dashboard/Dashboard';
 import MainLayout from '../../components/layout/MainLayout';
-import { logIn } from '../../redux/actions/validation';
+import { logIn } from '../../redux/actions/loginAction';
 
 const SOURCE='home';
 

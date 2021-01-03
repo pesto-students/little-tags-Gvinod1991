@@ -1,5 +1,25 @@
 export const FETCH_CART_COUNT = "FETCH_CART_COUNT";
 export const FETCH_TOTAL_PRICE = "FETCH_TOTAL_PRICE";
+export const FETCH_CART_DETAILS = "FETCH_CART_DETAILS";
+export const UPDATE_CART_DETAILS = "UPDATE_CART_DETAILS";
+
+export const getCartData = () => (dispatch) => {
+  const cartData = JSON.parse(localStorage.getItem("myCart"));
+  dispatch({
+    type: FETCH_CART_DETAILS,
+    payload: cartData,
+  });
+};
+
+export const updateCartData = (data) => (dispatch) => {
+  localStorage.setItem("myCart", JSON.stringify(data));
+  if(data) {
+    dispatch({
+      type: FETCH_CART_DETAILS,
+      payload: data,
+    });
+  }
+};
 
 export const getCartCount = () => (dispatch) => {
   const count = localStorage.getItem("myCart")

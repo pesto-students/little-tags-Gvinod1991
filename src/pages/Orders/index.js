@@ -4,7 +4,7 @@ import { useHistory } from 'react-router-dom';
 import MainLayout from '../../components/layout/MainLayout';
 import OrderCard from '../../components/OrderCard';
 import './orders.scss';
-import { getOrders,getCartCount } from '../../redux/actions';
+import { getOrders,getCartCount, getCartData, updateCartData } from '../../redux/actions';
 import Loader from '../../components/Loader';
 import Carousel from '../../components/carousel';
 const images = [
@@ -20,14 +20,16 @@ export default function Orders() {
   const dispatch = useDispatch();
   const history = useHistory();
 
-  const { orderList, loading,user } = useSelector((state) => {
+  const { orderList, loading,user , cartData} = useSelector((state) => {
     return { orderList: state.orders.orderList,
       loading:state.orders.loading,
-      user:state.loginReducer.userDetails
+      user:state.loginReducer.userDetails,
+      cartData: state.cartDetails.cartData,
       };
   });
 
   useEffect(()=>{
+    dispatch(getCartData());
     const {email}=user;
     if(email){
       dispatch(getOrders(email));
@@ -35,19 +37,19 @@ export default function Orders() {
   },[dispatch,user]);
   
   const orderAgain =(item,quantity)=>{
-    const myCart = JSON.parse(localStorage.getItem("myCart"));
+    
     const idOfItem = item.id.toString();
     const cartItem = { ["" + idOfItem]: { item, quantity , totalPrice: item.price * quantity} };
-    if (myCart === null) {
-      localStorage.setItem("myCart", JSON.stringify(cartItem));
+    if (cartData === null) {
+      dispatch(updateCartData(cartItem))
     } else {
-      if (Object.keys(myCart).indexOf(idOfItem) === -1) {
-        myCart[idOfItem] = { item, quantity: quantity , totalPrice: item.price * quantity};
+      if (Object.keys(cartData).indexOf(idOfItem) === -1) {
+        cartData[idOfItem] = { item, quantity: quantity , totalPrice: item.price * quantity};
       } else {
-        myCart[idOfItem]["quantity"] += quantity;
-        myCart[idOfItem]["totalPrice"] += item.price * quantity;
+        cartData[idOfItem]["quantity"] += quantity;
+        cartData[idOfItem]["totalPrice"] += item.price * quantity;
       }
-      localStorage.setItem("myCart", JSON.stringify(myCart));
+      dispatch(updateCartData(cartData))
     }
     dispatch(getCartCount());
     history.push('/address-list');

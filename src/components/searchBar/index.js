@@ -30,12 +30,18 @@ export default function SearchBar() {
 
   useEffect(() => {
     let result = [];
+
     if (searchQuery) {
-      result = productsList.filter((item) => {
-        return item.title.toLowerCase().includes(searchQuery.toLowerCase());
-      });
-      setShowSearchList(true);
-      setFilteredList(result);
+      const delayDebounceFn = setTimeout(() => {
+        result = productsList.filter((item) => {
+          return item.title.toLowerCase().includes(searchQuery.toLowerCase());
+        });
+
+        setShowSearchList(true);
+        setFilteredList(result);
+      }, 500);
+
+      return () => clearTimeout(delayDebounceFn);
     } else {
       setShowSearchList(false);
       result = [];

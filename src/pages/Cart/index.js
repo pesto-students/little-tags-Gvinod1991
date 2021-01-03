@@ -1,20 +1,23 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import ProductCard from "../../components/productCard";
-import { getTotalPrice } from "../../redux/actions/cartDetails";
+import { getTotalPrice, getCartData } from "../../redux/actions/cartDetails";
 import { Link,useHistory} from "react-router-dom";
 import MainLayout from '../../components/layout/MainLayout';
 import "./cart.scss";
 export default function Cart() {
-  const cart = localStorage.getItem("myCart") ? JSON.parse(localStorage.getItem("myCart")) : null
-  const itemsInCart =cart && Object.keys(cart).map((key) => cart[key]);
+  
+  
   const history=useHistory();
-  const { totalPriceList } = useSelector((store) => ({
+  const { totalPriceList, cartData } = useSelector((store) => ({
     totalPriceList: store.cartDetails.totalPriceList,
+    cartData: store.cartDetails.cartData,
   }));
+  const itemsInCart = cartData ? Object.keys(cartData).map((key) => cartData[key]): [];
   const dispatch = useDispatch();
 
   useEffect(() => {
+    dispatch(getCartData());
     dispatch(getTotalPrice());
   }, [dispatch]);
 

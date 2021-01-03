@@ -15,7 +15,7 @@ const Payment = () => {
   const history = useHistory();
   const [paymentMethod, setPaymentMethod] = useState(null);
   const dispatch = useDispatch();
-  const { loading, userDetails, user, saved, orderLoading } = useSelector(
+  const { loading, userDetails, user, saved, orderLoading, cartData } = useSelector(
     (state) => {
       return {
         userDetails: state.userDetails.userDetail,
@@ -23,11 +23,12 @@ const Payment = () => {
         user: state.loginReducer.userDetails,
         saved: state.orders.saved,
         orderLoading: state.orders.loading,
+        cartData: state.cartDetails.cartData,
       };
     }
   );
-  const cart = localStorage.getItem("myCart") ? JSON.parse(localStorage.getItem('myCart')) : null;
-  const itemsInCart = cart && Object.keys(cart).map((key) => cart[key]);
+
+  const itemsInCart = cartData && Object.keys(cartData).map((key) => cartData[key]);
   useEffect(() => {
     dispatch(getUserDetails());
   }, [dispatch]);

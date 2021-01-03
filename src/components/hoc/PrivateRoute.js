@@ -1,11 +1,9 @@
 import React from 'react';
 import {Redirect,Route} from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { isUserLoggedIn } from '../../redux/actions/loginAction';
 
 export default function PrivateRoute({ children, ...rest }) {
-  const { isLoggedIn } = useSelector((store) => ({
-    isLoggedIn: store.loginReducer.isLoggedIn
-  }));
+  const isLoggedIn  = isUserLoggedIn();
   
   return (
     <Route
