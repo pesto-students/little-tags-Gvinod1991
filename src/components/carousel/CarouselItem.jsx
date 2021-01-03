@@ -15,6 +15,5 @@ export default function CarouselItem({path,type,title}){
 
 CarouselItem.propTypes={
   path: PropTypes.string.isRequired,
-  type: PropTypes.string.isRequired,
-  title:PropTypes.string.isRequired,
+  type: PropTypes.string.isRequired
 }
