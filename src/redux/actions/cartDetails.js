@@ -32,23 +32,25 @@ export const getCartCount = () => (dispatch) => {
 };
 
 export const getTotalPrice = (price) => (dispatch) => {
-  if (price) {
+  if(price) {
     dispatch({
       type: FETCH_TOTAL_PRICE,
       payload: price,
     });
-  } else {
+  }
+  else {
     const cart = JSON.parse(localStorage.getItem("myCart"));
-    if (cart) {
+    if(cart) {
       const priceList = {};
       Object.keys(cart).map(key => {
-        priceList["" + key] = cart[key]["totalPrice"];
-      })
-
+        priceList['' + key] =cart[key].totalPrice;
+      });
       dispatch({
         type: FETCH_TOTAL_PRICE,
         payload: priceList,
       });
     }
+    
   }
+  
 };

@@ -2,7 +2,7 @@ import {
   FETCH_CART_COUNT,
   FETCH_TOTAL_PRICE,
   FETCH_CART_DETAILS,
-  UPDATE_CART_DETAILS
+  UPDATE_CART_DETAILS,
 } from "../actions/cartDetails";
 
 const initialState = {
@@ -18,7 +18,7 @@ export const cartDetails = (state = initialState, action) => {
         ...state,
         cartData: action.payload,
       };
-      case UPDATE_CART_DETAILS:
+    case UPDATE_CART_DETAILS:
       return {
         ...state,
         cartData: action.payload,

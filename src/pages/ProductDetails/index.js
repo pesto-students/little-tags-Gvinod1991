@@ -7,27 +7,36 @@ import Carousel from "../../components/carousel";
 import Counter from "../../components/counter/counter";
 import Loader from "../../components/Loader";
 import { getProductDetails } from "../../redux/actions";
-import { getCartCount } from "../../redux/actions/cartDetails";
+import {
+  getCartCount,
+  getCartData,
+  updateCartData,
+} from "../../redux/actions/cartDetails";
 
 const images = [
-  {image:'/purple-jacket.png',title:"RN Group"},
-  {image:'/yellow-jacket.png',title:"RN Group"},
-  {image:'/yellow-jacket.png',title:"RN Group"},
-  {image:'/purple-jacket.png',title:"RN Group"},
-  {image:'/purple-jacket.png',title:"RN Group"},
-  {image:'/purple-jacket.png',title:"RN Group"}
+  { image: "/purple-jacket.png", title: "RN Group" },
+  { image: "/yellow-jacket.png", title: "RN Group" },
+  { image: "/yellow-jacket.png", title: "RN Group" },
+  { image: "/purple-jacket.png", title: "RN Group" },
+  { image: "/purple-jacket.png", title: "RN Group" },
+  { image: "/purple-jacket.png", title: "RN Group" },
 ];
 
 export default function ProductDetails() {
   let quantityOfItem = 1;
   const { id } = useParams();
-  const { productDetails, loading } = useSelector((store) => ({
+  const { productDetails, loading, cartData } = useSelector((store) => ({
     productDetails: store.productDetails.productDetails,
-    loading: store.productDetails.loading
+    loading: store.productDetails.loading,
+    cartData: store.cartDetails.cartData,
   }));
   const { image, title, description, price, size } = productDetails;
   const dispatch1 = useDispatch();
   const dispatch2 = useDispatch();
+
+  useEffect(() => {
+    dispatch2(getCartData());
+  }, [dispatch2]);
   useEffect(() => {
     dispatch1(getProductDetails(id));
   }, [id, dispatch1]);
@@ -37,23 +46,34 @@ export default function ProductDetails() {
   };
 
   const handleAddToCart = (item) => {
-    const myCart = JSON.parse(localStorage.getItem("myCart"));
     const idOfItem = item.id.toString();
-    const cartItem = { ["" + idOfItem]: { item, quantity: quantityOfItem , totalPrice: item.price * quantityOfItem} };
-    if (myCart === null) {
-      localStorage.setItem("myCart", JSON.stringify(cartItem));
+    const cartItem = {
+      ["" + idOfItem]: {
+        item,
+        quantity: quantityOfItem,
+        totalPrice: item.price * quantityOfItem,
+      },
+    };
+
+    if (cartData === null) {
+      dispatch2(updateCartData(cartItem));
     } else {
-      if (Object.keys(myCart).indexOf(idOfItem) === -1) {
-        myCart[idOfItem] = { item, quantity: quantityOfItem , totalPrice: item.price * quantityOfItem};
+      if (Object.keys(cartData).indexOf(idOfItem) === -1) {
+        cartData[idOfItem] = {
+          item,
+          quantity: quantityOfItem,
+          totalPrice: item.price * quantityOfItem,
+        };
       } else {
-        myCart[idOfItem]["quantity"] += quantityOfItem;
-        myCart[idOfItem]["totalPrice"] += item.price * quantityOfItem;
+        cartData[idOfItem]["quantity"] += quantityOfItem;
+        cartData[idOfItem]["totalPrice"] += item.price * quantityOfItem;
       }
-      localStorage.setItem("myCart", JSON.stringify(myCart));
+
+      dispatch2(updateCartData(cartData));
     }
     dispatch2(getCartCount());
   };
-  
+
   return (
     <MainLayout>
       <div>
@@ -61,7 +81,7 @@ export default function ProductDetails() {
         {productDetails && Object.keys(productDetails).length > 0 && (
           <div className="product-details-container">
             <div className="product-carousal">
-              <Carousel type="stack" images={[{image}]} />
+              <Carousel type="stack" images={[{ image }]} />
             </div>
             <div className="product-details">
               <h2 className="product-title">{title}</h2>

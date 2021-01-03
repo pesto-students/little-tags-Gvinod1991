@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
+import useDebounce from "../../services/useDebounce";
 import "./searchBar.scss";
 
 export default function SearchBar() {
@@ -14,6 +15,8 @@ export default function SearchBar() {
 
   const ref = useRef(null);
   const history = useHistory();
+
+  const debouncedSearchTerm = useDebounce(searchQuery, 500);
 
   const handleClickOutside = (event) => {
     if (ref.current && !ref.current.contains(event.target)) {
@@ -30,13 +33,18 @@ export default function SearchBar() {
 
   useEffect(() => {
     let result = [];
-    if (searchQuery) {
-      result = productList.filter((item) => {
-        return item.title.toLowerCase().includes(searchQuery.toLowerCase());
-      });
-      setShowSearchList(true);
-      setFilteredList(result);
 
+    if (searchQuery) {
+      const delayDebounceFn = setTimeout(() => {
+        result = productList.filter((item) => {
+          return item.title.toLowerCase().includes(searchQuery.toLowerCase());
+        });
+
+        setShowSearchList(true);
+        setFilteredList(result);
+      }, 500);
+
+      return () => clearTimeout(delayDebounceFn);
     } else {
       setShowSearchList(false);
       result = [];
