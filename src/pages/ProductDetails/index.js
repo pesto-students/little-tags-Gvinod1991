@@ -24,15 +24,14 @@ export default function ProductDetails() {
   const [heart, setHeart] = useState(1);
   const { image, title, description, price, size,category } = productDetails;
   const dispatch = useDispatch();
-  const dispatch2 = useDispatch();
 
   useEffect(() => {
     dispatch(getProductDetails(id));
   }, [id, dispatch]);
 
   useEffect(() => {
-    dispatch2(getCartData());
-  }, [dispatch2]);
+    dispatch(getCartData());
+  }, [dispatch]);
   
   useEffect(() => {
     dispatch(getProducts(category));
@@ -57,7 +56,7 @@ export default function ProductDetails() {
     };
 
     if (cartData === null) {
-      dispatch2(updateCartData(cartItem));
+      dispatch(updateCartData(cartItem));
     } else {
       if (Object.keys(cartData).indexOf(idOfItem) === -1) {
         cartData[idOfItem] = {
@@ -70,7 +69,7 @@ export default function ProductDetails() {
         cartData[idOfItem]["totalPrice"] += item.price * quantityOfItem;
       }
 
-      dispatch2(updateCartData(cartData));
+      dispatch(updateCartData(cartData));
     }
     dispatch(getCartCount());
   };
