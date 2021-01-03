@@ -37,8 +37,9 @@ margin: 0;
 .deliver {
 width: 100%;
 text-align: center;
-font-size: 1.5rem;
+font-size: 2rem;
 margin-top: 2rem;
+font-family: Gotham;
 }
 .slct {
 -webkit-appearance: none;
@@ -94,5 +95,20 @@ border: 1px solid lightgray;
 @media only screen and (max-width: 400px) {
   .input-class {
     width: 80%;
+  }
+}
+.add-address-container{
+  button{
+    margin: 0 auto;
+  }
+  .text-danger{
+    color:#D1290B;
+    text-align:center;
+  }
+  .text-center{
+    text-align:center
+  }
+  .text-success{
+    color:#056C3A;
   }
 }

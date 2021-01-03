@@ -50,11 +50,15 @@ export default function ProductCard({
     history.push({ pathname });
   };
 
+  const reRouteFromCart = () => {
+    history.push({ pathname });
+  };
+
   return (
     <>
       <div className="product-container" onClick={reRoute}>
         <div className="row-left">
-          <div className="product-image-container ">
+          <div className="product-image-container " onClick={reRouteFromCart}>
             <img className="product-image" src={productImage} alt={title} />
           </div>
           <div>

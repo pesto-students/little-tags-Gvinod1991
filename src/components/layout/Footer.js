@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import { useSelector } from "react-redux";
 import capitalize from '../../services/capitalize';
+import { useSelector } from "react-redux";
+import {Link} from 'react-router-dom';
 
 export default function Footer() {
   const [categories, setCategories] = useState({});
-  
-  const { productList } = useSelector(
-    ({ productList: { productList } }) => ({
-      productList,
+
+  const { productsList } = useSelector(
+    ({ productList: { productsList } }) => ({
+      productsList,
     })
   );
 
@@ -21,10 +22,9 @@ export default function Footer() {
     setCategories(output);
   }
 
-  
   useEffect(() => {
-    getCategories(productList)
-  }, [productList]);
+    getCategories(productsList)
+  }, [productsList]);
 
   return (
     <div className="footer">
@@ -65,7 +65,7 @@ export default function Footer() {
             <ul>
             {
               Object.keys(categories).map(category => (
-                <li key={category}>{capitalize(category) + '(' + categories[category].length + ')'}</li>
+                <li  key={category}><Link to={`/products/${category}`}>{capitalize(category) + '(' + categories[category].length + ')'}</Link></li>
               ))
             }
           </ul>: null

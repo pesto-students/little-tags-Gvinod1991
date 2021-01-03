@@ -2,6 +2,27 @@
   margin: auto;
   width: 60%;
   font-family: Gotham;
+  button{
+    width: 50%;
+    outline: none;
+    margin:0 auto;
+    img{
+      width:1.5rem;
+      margin:0.5rem;
+    }
+    span{
+    font-family: Gotham;
+    font-size: 1rem;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.22;
+    letter-spacing: normal;
+    text-align: left;
+    color: #ffffff;
+    text-transform: uppercase;
+    }
+  }
 }
 
 .paymentGateways {
@@ -10,6 +31,9 @@
   margin: auto;
   width: 40%;
   font-family: Gotham;
+  input,label{
+    cursor: pointer;
+  }
   @media screen and (max-width:870px){
     width:67%;
   }

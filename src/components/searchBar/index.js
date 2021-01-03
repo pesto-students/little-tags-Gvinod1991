@@ -9,8 +9,8 @@ export default function SearchBar() {
   const [searchQuery, setSearchQuery] = useState("");
   const [filteredList, setFilteredList] = useState([]);
 
-  const { productList } = useSelector((store) => ({
-    productList: store.productList.productList,
+  const { productsList } = useSelector((store) => ({
+    productsList: store.productList.productsList,
   }));
 
   const ref = useRef(null);
@@ -36,7 +36,7 @@ export default function SearchBar() {
 
     if (searchQuery) {
       const delayDebounceFn = setTimeout(() => {
-        result = productList.filter((item) => {
+        result = productsList.filter((item) => {
           return item.title.toLowerCase().includes(searchQuery.toLowerCase());
         });
 
@@ -50,7 +50,7 @@ export default function SearchBar() {
       result = [];
       setFilteredList(result);
     }
-  }, [searchQuery, productList]);
+  }, [searchQuery, productsList]);
 
   return (
     <div className={"search-bar dropdown "} ref={ref}>

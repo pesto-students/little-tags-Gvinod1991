@@ -1,13 +1,14 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import ProductCard from "../../components/productCard";
-import { getCartData, getTotalPrice } from "../../redux/actions/cartDetails";
-import { Link } from "react-router-dom";
-
+import { getTotalPrice, getCartData } from "../../redux/actions/cartDetails";
+import { Link,useHistory} from "react-router-dom";
+import MainLayout from '../../components/layout/MainLayout';
 import "./cart.scss";
-
 export default function Cart() {
-
+  
+  
+  const history=useHistory();
   const { totalPriceList, cartData } = useSelector((store) => ({
     totalPriceList: store.cartDetails.totalPriceList,
     cartData: store.cartDetails.cartData,
@@ -20,11 +21,16 @@ export default function Cart() {
     dispatch(getTotalPrice());
   }, [dispatch]);
 
+  const deliverTo =()=>{
+    history.push('/address-list');
+  }
   return (
+    <MainLayout>
     <div className="cart-container">
       <div className="Your-Cart">Your Cart</div>
       {Object.keys(totalPriceList).length > 0 ? (
-        itemsInCart.map((item) => (
+        <>
+        {itemsInCart.map((item) => (
           <ProductCard
             key={item.item.id}
             productId={item.item.id}
@@ -35,6 +41,9 @@ export default function Cart() {
             quantity={item.quantity}
           />
         ))
+        }
+        <button className="btn" onClick={deliverTo}>Proceed</button>
+        </>
       ) : (
         <div className="centeredText">
           <div className="center-div">
@@ -44,5 +53,6 @@ export default function Cart() {
         </div>
       )}
     </div>
+    </MainLayout>
   );
 }

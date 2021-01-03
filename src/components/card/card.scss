@@ -27,13 +27,12 @@
     height: 2rem;
     text-align: center;
     font-family: MillionNotes;
-    font-size: 1.1rem;
+    font-size: 1.3rem;
     position: absolute;
     width: 100%;
-    min-height: 50px;
+    height: fit-content;
     z-index: 1;
     bottom: 0;
-    vertical-align: middle;
 }
 
 .card-image {

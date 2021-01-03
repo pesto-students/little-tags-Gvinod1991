@@ -42,9 +42,7 @@ export const getTotalPrice = (price) => (dispatch) => {
     const cart = JSON.parse(localStorage.getItem("myCart"));
     if(cart) {
       const priceList = {};
-      Object.keys(cart).map(key => {
-        priceList['' + key] =cart[key].totalPrice;
-      });
+      Object.keys(cart).map(key => priceList['' + key] =cart[key].totalPrice);
       dispatch({
         type: FETCH_TOTAL_PRICE,
         payload: priceList,

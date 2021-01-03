@@ -5,8 +5,8 @@ import CarouselItem from './CarouselItem';
 const TRANSLATE_PERCENTAGE=100;
 
 export default function Carousel({type,images}) {
-  const sliderArray = images.map(({image,title})=>{
-    return <CarouselItem path={image} type={type} title={title} />
+  const sliderArray = images.map(({image,title},index)=>{
+    return <CarouselItem key={index+title} path={image} type={type} title={title} />
   });
 
   const [horizontalTranslate, setHorizontalTranslate] = useState(0);
@@ -29,10 +29,10 @@ export default function Carousel({type,images}) {
 
   return (
     <div className="slider">
-      {sliderArray.map((item) => {
+      {sliderArray.map((item,index) => {
         return (
           <div
-            key={item}
+            key={item+index}
             className={type==='stack' ? 'slide min-width-100' : 'slide min-width-45' }
             style={{ transform: `translate(${horizontalTranslate}%)` }}
           >
