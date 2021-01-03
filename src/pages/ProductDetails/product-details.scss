@@ -2,6 +2,8 @@
 :root {
   --black: #000000;
   --white: #ffffff;
+  --red: #f91106;
+  --grey: #777172;
 }
 .product-details-container{
   display: flex;
@@ -171,4 +173,28 @@
   text-align: center;
   color: var(--black);
   }
+}
+
+.heart1,.heart2 {
+	width: 30px;
+}
+.icon {
+  cursor: pointer;
+	path {
+		fill: transparent;
+		stroke-width: 10;
+		stroke-dasharray: 1560;
+    stroke-dashoffset: 0;
+    stroke: var(--black);
+    &:hover {
+      fill: var(--red);
+    }
+	}
+	&.heart2 {
+		path {
+      stroke-width: 10;
+      fill: var(--red);
+      stroke:var(--black);
+		}
+	}
 }
