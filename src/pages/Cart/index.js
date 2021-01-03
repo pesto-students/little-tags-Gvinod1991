@@ -23,15 +23,15 @@ export default function Cart() {
     <div className="cart-container">
       <div className="Your-Cart">Your Cart</div>
       {Object.keys(totalPriceList).length > 0 ? (
-        itemsInCart.map((item) => (
+        itemsInCart.map(({item, quantity}) => (
           <ProductCard
-            key={item.item.id}
-            productId={item.item.id}
-            title={item.item.title}
-            productImage={item.item.image}
-            pathname={`/product/${+item.item.id}`}
-            price={item.item.price}
-            quantity={item.quantity}
+            key={item.id}
+            productId={item.id}
+            title={item.title}
+            productImage={item.image}
+            pathname={`/product/${+item.id}`}
+            price={item.price}
+            quantity={quantity}
           />
         ))
       ) : (

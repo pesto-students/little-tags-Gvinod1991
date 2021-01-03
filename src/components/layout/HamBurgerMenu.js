@@ -7,7 +7,7 @@ import AuthUserDisplay from '../autUserDisplay';
 import LoginAction from '../loginAction';
 import Categories from '../categories';
 import Brand from '../brand';
-import { logOut } from '../../redux/actions/validation';
+import { logOut } from '../../redux/actions/loginAction';
 
 export default function HamburgerMenu({
   showHamburgerMenu,

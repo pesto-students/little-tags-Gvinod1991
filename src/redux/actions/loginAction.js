@@ -4,7 +4,9 @@ export const LOG_IN = "LOG_IN";
 export const LOG_OUT = "LOG_OUT";
 
 export const logIn = () => (dispatch) => {
+  debugger;
   auth.onAuthStateChanged(async (userIdentity) => {
+    console.log('LoggedIn', userIdentity)
       if(userIdentity) {
         dispatch({
             type: LOG_IN,

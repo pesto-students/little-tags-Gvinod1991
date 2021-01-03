@@ -1,7 +1,7 @@
 import {
   LOG_IN,
   LOG_OUT
-} from '../actions/validation';
+} from '../actions/loginAction';
 
 const initialState = {
   isLoggedIn: false,

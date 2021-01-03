@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
-import { getTotalPrice } from "../../redux/actions/cartDetails";
+import { getCartData, getTotalPrice, updateCartData } from "../../redux/actions/cartDetails";
 import Counter from "../counter/counter";
 import "./product-card.scss";
 
@@ -14,34 +14,34 @@ export default function ProductCard({
   productId,
 }) {
   
-  const { totalPriceList } = useSelector((store) => ({
+  const { totalPriceList, cartData } = useSelector((store) => ({
     totalPriceList: store.cartDetails.totalPriceList,
+    cartData: store.cartDetails.cartData
   }));
-  
+
   const history = useHistory();
 
   const dispatch = useDispatch();
 
   const handleQuantity = (count) => {
-    const itemsInCart = JSON.parse(localStorage.getItem("myCart"));
+    console.log(cartData)
     if(count ===0) {
-      delete itemsInCart["" + productId]; 
+      delete cartData["" + productId]; 
     } else {
-      itemsInCart["" + productId].quantity = count;
-      itemsInCart["" + productId].totalPrice = price * count;
+      cartData["" + productId].quantity = count;
+      cartData["" + productId].totalPrice = price * count;
     }
-    localStorage.setItem("myCart", JSON.stringify(itemsInCart));
+
+    dispatch(updateCartData(cartData));
     dispatch(getTotalPrice());
   };
 
   useEffect(() => {
+    dispatch(getCartData());
     dispatch(getTotalPrice());
   }, [dispatch]);
 
   const reRoute = () => {
-    if (quantity) {
-      return;
-    }
     history.push({ pathname });
   };
 
@@ -49,11 +49,11 @@ export default function ProductCard({
     <>
     <div
       className="product-container"
-      onClick={reRoute}
+      onClick={() => reRoute()}
     >
       <div className="row-left">
         <div className="product-image-container ">
-          <img className="product-image" src={productImage} alt={title} />
+          <img className="product-image" src={productImage} alt={title}/>
         </div>
         <div>
           <span>{title}</span>
