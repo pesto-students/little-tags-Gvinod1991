@@ -4,13 +4,13 @@ import './order-card.scss';
 export default function OrderCard({order:{
   cartItems,
   orderDate
-}}) {
+},orderAgain,orderId}) {
   return (
     <>
-    {cartItems && cartItems.length > 0 && cartItems.map((orderItem)=>{
+    {cartItems && cartItems.length > 0 && cartItems.map((orderItem,index)=>{
         const {totalPrice,quantity,item}=orderItem;
         const {title,image,id}=item;
-       return <div key={id} className="order-container">
+       return <div key={`${id}${orderId}`} className="order-container">
         <div className="row-left-order-card">
           <div className="order-image-container ">
             <img className="order-image" src={image} alt={title} />
@@ -30,7 +30,7 @@ export default function OrderCard({order:{
           </div>
         </div>
         <div className="row-right">
-          <button>Order Again</button>
+          <button onClick={()=>orderAgain(item,quantity)}>Order Again</button>
         </div>
       </div>
       })
