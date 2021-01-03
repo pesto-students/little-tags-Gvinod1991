@@ -22,12 +22,12 @@ function App() {
   return (
       <Router>
         <Switch>
-          <PrivateRoute path={'/products/:category'}>
+          <Route path={'/products/:category'}>
             <Products />
-          </PrivateRoute>
-          <PrivateRoute path={'/product/:id'}>
+          </Route>
+          <Route path={'/product/:id'}>
             <ProductDetails />
-          </PrivateRoute>
+          </Route>
           <PrivateRoute path={'/cart'}>
             <Cart />
           </PrivateRoute>
