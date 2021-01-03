@@ -2,14 +2,13 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import ProductCard from "../../components/productCard";
 import { getTotalPrice } from "../../redux/actions/cartDetails";
-import { Link } from "react-router-dom";
-
+import { Link,useHistory} from "react-router-dom";
+import MainLayout from '../../components/layout/MainLayout';
 import "./cart.scss";
-
 export default function Cart() {
-  const cart = JSON.parse(localStorage.getItem("myCart"));
-  const itemsInCart = Object.keys(cart).map((key) => cart[key]);
-
+  const cart = localStorage.getItem("myCart") ? JSON.parse(localStorage.getItem("myCart")) : null
+  const itemsInCart =cart && Object.keys(cart).map((key) => cart[key]);
+  const history=useHistory();
   const { totalPriceList } = useSelector((store) => ({
     totalPriceList: store.cartDetails.totalPriceList,
   }));
@@ -19,11 +18,16 @@ export default function Cart() {
     dispatch(getTotalPrice());
   }, [dispatch]);
 
+  const deliverTo =()=>{
+    history.push('/address-list');
+  }
   return (
+    <MainLayout>
     <div className="cart-container">
       <div className="Your-Cart">Your Cart</div>
       {Object.keys(totalPriceList).length > 0 ? (
-        itemsInCart.map((item) => (
+        <>
+        {itemsInCart.map((item) => (
           <ProductCard
             key={item.item.id}
             productId={item.item.id}
@@ -34,6 +38,9 @@ export default function Cart() {
             quantity={item.quantity}
           />
         ))
+        }
+        <button className="btn" onClick={deliverTo}>Proceed</button>
+        </>
       ) : (
         <div className="centeredText">
           <div className="center-div">
@@ -43,5 +50,6 @@ export default function Cart() {
         </div>
       )}
     </div>
+    </MainLayout>
   );
 }

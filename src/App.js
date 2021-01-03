@@ -15,18 +15,19 @@ import DeliverTo from "./pages/DeliverTo/deliver-to";
 
 import Products from './pages/Products';
 import ProductDetails from './pages/ProductDetails';
+import Orders from "./pages/Orders";
 
 function App() {
 
   return (
       <Router>
         <Switch>
-          <PrivateRoute path={'/products/:category'}>
+          <Route path={'/products/:category'}>
             <Products />
-          </PrivateRoute>
-          <PrivateRoute path={'/product/:id'}>
+          </Route>
+          <Route path={'/product/:id'}>
             <ProductDetails />
-          </PrivateRoute>
+          </Route>
           <PrivateRoute path={'/cart'}>
             <Cart />
           </PrivateRoute>
@@ -37,10 +38,10 @@ function App() {
             <AddAddress />
           </PrivateRoute>
           <PrivateRoute path={'/orders'}>
-            <Cart />
+            <Orders />
           </PrivateRoute>
           <PrivateRoute path={'/checkout'}>
-            <Payment />
+            <Payment /> 
           </PrivateRoute>
           <PrivateRoute path={'/order-confirmation'}>
             <Cart />

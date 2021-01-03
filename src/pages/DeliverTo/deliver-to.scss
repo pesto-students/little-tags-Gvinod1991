@@ -1,17 +1,67 @@
-.centerCard {
+.deliver-to-container{
 	margin: 0 auto;
 	margin-top: 5%;
 	width: 80%;
-	text-align: center;
-}
-.flex-card {
-	display: flex;
-	margin: 1rem;
-	& > input {
-		margin: 1rem;
-	}
-}
-.address {
-	margin: 1rem;
-	width: 90%;
+  text-align: center;
+  h2{
+    font-size: 1.5rem;
+    font-family: Gotham;
+  }
+  .flex-card {
+    display: flex;
+    margin: 1rem;
+    & > input {
+      margin: 1rem;
+    }
+  }
+  .address {
+    margin: 1rem;
+    width: 90%;
+  }
+  .row-box-deliver-to{
+    display:flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    img{
+      width:1.5rem;
+      margin:0.5rem;
+    }
+    h5{
+      text-transform: uppercase;
+      font-family: Gotham;
+      font-size: 1.2rem;
+      font-weight: 500;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: 1.22;
+      letter-spacing: normal;
+      text-align: left;
+      color: var(--black);
+    }
+  }
+  button{
+    outline: none;
+    margin:0 auto;
+    img{
+      width:1.5rem;
+      margin:0.5rem;
+    }
+    span{
+    font-family: Gotham;
+    font-size: 1rem;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.22;
+    letter-spacing: normal;
+    text-align: left;
+    color: #ffffff;
+    text-transform: uppercase;
+    }
+  }
+  .text-danger{
+    color:#D1290B;
+  }
 }

@@ -1,14 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { useSelector } from "react-redux";
-
+import { useSelector} from "react-redux";
 import { Link } from "react-router-dom";
 import capitalize from "../../services/capitalize";
 
 export default function Categories() {
   const [categories, setCategories] = useState({});
-
-  const { productList } = useSelector(({ productList: { productList } }) => ({
-    productList,
+  const { productsList } = useSelector(({ productList: { productsList } }) => ({
+    productsList,
   }));
 
   const getCategories = (result) => {
@@ -25,8 +23,8 @@ export default function Categories() {
   };
 
   useEffect(() => {
-    getCategories(productList);
-  }, [productList]);
+    getCategories(productsList);
+  }, [productsList]);
 
   return (
     <div className="categories-section">
@@ -35,7 +33,7 @@ export default function Categories() {
         <ul>
           {Object.keys(categories).map(category => (
             <li key={category}>
-              <Link to="/products/2">{capitalize(category) }</Link>
+              <Link to={`/products/${category}`}>{capitalize(category) }</Link>
             </li>
           ))}
         </ul>

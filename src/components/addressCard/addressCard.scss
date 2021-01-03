@@ -18,20 +18,42 @@
 .isDummy {
     transition: all .2s ease-in-out;
     &:hover {
-        transform: scale(1.1);
+        transform: scale(1.01);
       }
 }
 .flex-card {
-	margin: 1rem;
-	& > input {
-		margin: 1rem;
-    }
+  display: flex;
+  flex-direction: column;
 }
 
-.address {
-    width: 90%;
-    margin: 1rem;
-}
 .addressDetails {
-    display: block !important;
+  margin:0;
+  margin-left: 1rem;
+  font-family: Gotham;
+  font-size: 0.9rem;
+  font-weight: normal;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.18;
+  letter-spacing: normal;
+  text-align: left;
+  color: #000000;
+}
+.row-box-address-card{
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  margin-top: 1rem;
+  h2{
+    display: inline;
+    margin: 0;
+    margin-left: 1rem;
+    font-weight: bold;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.13;
+    letter-spacing: normal;
+    text-align: left;
+    font-family: Gotham;
+  }
 }
