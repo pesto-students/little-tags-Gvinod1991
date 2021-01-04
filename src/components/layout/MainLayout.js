@@ -19,7 +19,7 @@ export default function MainLayout({ children,source }) {
   },[dispatch]);
   
   return(
-    <div>
+    <div className="overflowAlign">
       <Header isLoggedIn={isLoggedIn} source={source} isSticky={isSticky} />
         {React.cloneElement(children, { element })}
       <Footer/>
