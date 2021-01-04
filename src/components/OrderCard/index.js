@@ -24,7 +24,7 @@ export default function OrderCard({order:{
                 src="/inr.svg"
                 alt="inr currency symbol"
               />
-              <div className="price">{totalPrice}</div>
+              <div className="price">{Number(totalPrice).toFixed(2)}</div>
             </div>
             <div className="order-date">{orderDate}</div>
           </div>

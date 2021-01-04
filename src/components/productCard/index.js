@@ -78,7 +78,7 @@ export default function ProductCard({
           {totalPriceList && totalPriceList[productId] ? (
             <div className="price">{totalPriceList[productId]}</div>
           ) : (
-            <div className="price">{price}</div>
+            <div className="price">{Number(price).toFixed(2)}</div>
           )}
         </div>
       </div>
