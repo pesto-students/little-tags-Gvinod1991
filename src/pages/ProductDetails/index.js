@@ -21,11 +21,10 @@ export default function ProductDetails() {
     cartData: store.cartDetails.cartData,
     wishList: store.wishList.wishList
   }));
-
-  const [heart, setHeart] = useState(1);
   const { image, title, description, price, size,category } = productDetails;
   const dispatch = useDispatch();
   
+  const [heart, setHeart] = useState(1);
   useEffect(() => {
     dispatch(getProductDetails(id));
   }, [id, dispatch]);
