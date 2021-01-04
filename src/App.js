@@ -17,7 +17,7 @@ import Products from './pages/Products';
 import ProductDetails from './pages/ProductDetails';
 import Orders from "./pages/Orders";
 import ThankYou from './pages/ThankYou';
-
+import PaymentGateway from './pages/PaymentGateway';
 function App() {
 
   return (
@@ -46,6 +46,9 @@ function App() {
           </PrivateRoute>
           <PrivateRoute path={'/order-confirmation'}>
             <ThankYou/>
+          </PrivateRoute>
+          <PrivateRoute path={'/payment-gateway'}>
+            <PaymentGateway/>
           </PrivateRoute>
           <Route path={'/'}>
             <Home />
