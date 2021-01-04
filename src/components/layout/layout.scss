@@ -24,7 +24,7 @@
     box-shadow: 0 0 6px 0 rgba(10, 91, 106, 0.16);
     background-color: #ffffff;
     @media screen and (max-width:420px){
-      width: 100%;
+      width: 80%;
       margin-left: 0;
       margin-right: 0;
     }
@@ -307,11 +307,18 @@
   position: fixed;
   width:100%;
   z-index:99;
+  opacity: 1;
   .brand-name{
     color:#fff;
   }
   .login-container{
     color:#fff;
+  }
+  @media screen and (max-width:420px){
+    position: relative;
+    background-color: #8c8c85;
+    margin:0;
+    padding: 0.1rem;
   }
 }
 .header-dark{
