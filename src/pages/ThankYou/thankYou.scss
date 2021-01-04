@@ -1,3 +1,5 @@
+
+.thankyou-container{
 .center {
   display: flex;
   justify-content: center;
@@ -63,6 +65,36 @@ div#face * {
   width: 100%;
   text-align: center;
 }
+.note-subtitle{
+  margin-top: 2rem;
+  font-size: 2rem;
+  width: 100%;
+  text-align: center;
+}
+
+  button{
+    margin:0 auto;
+    display: flex;
+    flex-direction: row;
+    border-radius: 0.3rem;
+    box-shadow: 0 0 1rem 0 rgba(0, 0, 0, 0.16);
+    background-color: var(--black);
+    padding: 0.5rem;
+    cursor: pointer;
+    font-family: Gotham;
+    font-size: 1rem;
+    font-weight: 500;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.22;
+    letter-spacing: normal;
+    text-align: left;
+    color:  var(--white);
+    outline: none;
+    border:none;
+    margin-top:1rem;
+    text-transform: uppercase;
+  }
 
 @media only screen and (max-width: 400px) {
   div#face {
@@ -85,4 +117,5 @@ div#face * {
     font-size: 1.5rem;
     font-weight: bold;
   }
+}
 }

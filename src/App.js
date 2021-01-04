@@ -16,6 +16,7 @@ import DeliverTo from "./pages/DeliverTo/deliver-to";
 import Products from './pages/Products';
 import ProductDetails from './pages/ProductDetails';
 import Orders from "./pages/Orders";
+import ThankYou from './pages/ThankYou';
 
 function App() {
 
@@ -44,7 +45,7 @@ function App() {
             <Payment /> 
           </PrivateRoute>
           <PrivateRoute path={'/order-confirmation'}>
-            <Cart />
+            <ThankYou/>
           </PrivateRoute>
           <Route path={'/'}>
             <Home />
