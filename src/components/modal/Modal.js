@@ -1,13 +1,19 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { signInWithGoogle, signInWithFacebook } from "../../services/firebase";
 import { useDispatch } from 'react-redux';
 
 import "./Modal.scss";
-import { logIn } from "../../redux/actions/loginAction";
+import { isUserVisitingForTheFirstTime, logIn, setUserVisit } from "../../redux/actions/loginAction";
 
 const Modal = (props) => {
   const { show, close } = props;
   const dispatch = useDispatch();
+
+  useEffect(()=> {
+    if(show && isUserVisitingForTheFirstTime()) {
+      setUserVisit();
+    }
+  }, [dispatch, show]);
 
   return (
     <div>
