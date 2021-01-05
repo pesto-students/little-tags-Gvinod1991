@@ -14,6 +14,8 @@ export default function ProductDetails() {
   let quantityOfItem = 1;
   const [filteredProductList,setFilteredProductList]=useState([]);
   const { id } = useParams();
+  const store = useSelector((store) => {return store});
+  console.log(store);
   const { productDetails, loading,productList, cartData, wishList } = useSelector((store) => ({
     productDetails: store.productDetails.productDetails,
     loading: store.productDetails.loading,
@@ -24,7 +26,8 @@ export default function ProductDetails() {
   const { image, title, description, price, size,category } = productDetails;
   const dispatch = useDispatch();
   
-  const [heart, setHeart] = useState(1);
+  const [heart, setHeart] = useState(wishList.indexOf(id.toString()) === -1? 1 :2);
+  
   useEffect(() => {
     dispatch(getProductDetails(id));
   }, [id, dispatch]);
@@ -35,10 +38,12 @@ export default function ProductDetails() {
 
   useEffect(() => {
     dispatch(getWishList());
-    // setHeart();
-    console.log('reasul', wishList.indexOf(id.toString()), wishList)
-  }, [dispatch, id, wishList]);
-  
+  }, [id, dispatch]);
+
+  useEffect(() => {
+    setHeart(wishList.indexOf(id.toString()) === -1? 1 :2 )
+  }, [wishList, id]);
+
   useEffect(() => {
     dispatch(getProducts(category));
   }, [category, dispatch]);

@@ -16,6 +16,7 @@ import DeliverTo from "./pages/DeliverTo/deliver-to";
 import Products from './pages/Products';
 import ProductDetails from './pages/ProductDetails';
 import Orders from "./pages/Orders";
+import Favourites from "./components/favourites";
 
 function App() {
 
@@ -45,6 +46,9 @@ function App() {
           </PrivateRoute>
           <PrivateRoute path={'/order-confirmation'}>
             <Cart />
+          </PrivateRoute>
+          <PrivateRoute path={'/wish-list'}>
+            <Favourites />
           </PrivateRoute>
           <Route path={'/'}>
             <Home />
