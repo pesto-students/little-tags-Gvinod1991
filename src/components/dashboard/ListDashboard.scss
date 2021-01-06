@@ -20,6 +20,9 @@ main {
   grid-auto-rows: 1fr;
   align-items: center;
   margin: 1em;
+  @media only screen and (max-width: 940px) {
+    grid-template-columns: 1fr 1fr
+   }
   @media only screen and (max-width: 500px) {
     grid-template-columns: 1fr
    }

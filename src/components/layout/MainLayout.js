@@ -15,7 +15,7 @@ export default function MainLayout({ children, source }) {
   }));
 
   const numberOfItemsInCart = cartData ? Object.keys(cartData).length : 0;
-  console.log(cartData, numberOfItemsInCart);
+  
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(logIn());

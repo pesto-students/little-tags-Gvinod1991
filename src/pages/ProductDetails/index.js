@@ -14,8 +14,7 @@ export default function ProductDetails() {
   let quantityOfItem = 1;
   const [filteredProductList,setFilteredProductList]=useState([]);
   const { id } = useParams();
-  const store = useSelector((store) => {return store});
-  console.log(store);
+  
   const { productDetails, loading,productList, cartData, wishList } = useSelector((store) => ({
     productDetails: store.productDetails.productDetails,
     loading: store.productDetails.loading,
@@ -91,10 +90,9 @@ export default function ProductDetails() {
     } else {
       setHeart(1)
     }
-    console.log(wishList);
+    
     dispatch(updateWishList(id));
     dispatch(getWishList);
-    console.log('get', wishList);
 
   }
   return (

@@ -14,7 +14,7 @@ import {
       } else {
         data.splice(index, 1);
       }
-    console.log(id, data);
+      
     window.localStorage.setItem("myWishList", JSON.stringify(data));
     return data;
   }
