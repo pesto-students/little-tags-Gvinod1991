@@ -43,12 +43,13 @@ const Payment = () => {
       cartItems: itemsInCart,
       deliverDetails: userDetails,
       userEmail:user.email,
+      paymentStatus:false
     }
     dispatch(saveOrderDetails(data));
     setTimeout(() => {
       dispatch(clearCart());
       if (paymentMethod === 'cod') {
-        history.push('/orders');
+        history.push('/order-confirmation');
       } else {
         history.push('/payment-gateway');
       }
@@ -118,7 +119,7 @@ const Payment = () => {
             {orderLoading && <Loader />}
             {saved && paymentMethod === 'cod' && (
               <p className="text-success text-center">
-                Redirecting to orders page{' '}
+                Order placed successfully{' '}
               </p>
             )}
             {saved && paymentMethod !== 'cod' && (

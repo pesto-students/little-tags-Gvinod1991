@@ -27,3 +27,17 @@ export const logOut = () => (dispatch) => {
   auth.signOut();
   dispatch({ type: LOG_OUT, data: {} });
 };
+
+export const isUserVisitingForTheFirstTime = () => {
+  const visit = window.localStorage.getItem("visit");
+  if(!visit) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+export const setUserVisit = () => {
+  window.localStorage.setItem("visit", 'yes');
+  return true
+}

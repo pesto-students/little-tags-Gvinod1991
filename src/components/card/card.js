@@ -12,7 +12,7 @@ const Card = ({ pathname, title, id , category}) => {
         <div className="card-display" >
             <img  src={pathname} alt={title} className="card-image"/>
             <div className="textInCard">
-                {title}
+                <span>{title}</span>
             </div>
         </div>
         </NavLink>

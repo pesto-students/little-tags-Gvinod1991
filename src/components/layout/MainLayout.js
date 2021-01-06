@@ -1,28 +1,36 @@
-import React, { useEffect } from 'react';
-import { useDispatch } from 'react-redux';
-import Header from './Header';
-import Footer from './Footer';
-import useSticky from '../hooks/useSticky';
-import { useSelector } from 'react-redux';
-import { logIn } from '../../redux/actions/loginAction';
+import React, { useEffect } from "react";
+import { useDispatch } from "react-redux";
+import Header from "./Header";
+import Footer from "./Footer";
+import useSticky from "../hooks/useSticky";
+import { useSelector } from "react-redux";
+import { logIn } from "../../redux/actions/loginAction";
 
-export default function MainLayout({ children,source }) {
+export default function MainLayout({ children, source }) {
   const { isSticky, element } = useSticky();
-  const { isLoggedIn } = useSelector((store) => ({
+  const { isLoggedIn, cartData } = useSelector((store) => ({
     isLoggedIn: store.loginReducer.isLoggedIn,
-    userDetails:store.loginReducer.userDetails
+    userDetails: store.loginReducer.userDetails,
+    cartData: store.cartDetails.cartData,
   }));
 
+  const numberOfItemsInCart = cartData ? Object.keys(cartData).length : 0;
+  console.log(cartData, numberOfItemsInCart);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(logIn());
-  },[dispatch]);
-  
-  return(
+  }, [dispatch]);
+
+  return (
     <div className="overflowAlign">
-      <Header isLoggedIn={isLoggedIn} source={source} isSticky={isSticky} />
-        {React.cloneElement(children, { element })}
-      <Footer/>
+      <Header
+        isLoggedIn={isLoggedIn}
+        source={source}
+        isSticky={isSticky}
+        numberOfItemsInCart={numberOfItemsInCart}
+      />
+      {React.cloneElement(children, { element })}
+      <Footer />
     </div>
   );
 }

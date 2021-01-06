@@ -65,7 +65,7 @@ export default function Orders() {
           return <OrderCard key={id} order={order} orderId={id} orderAgain={orderAgain} />;
         })}
       </div>
-      {!loading && <div className="related-products-container">
+      {!loading && orderList && orderList.length > 0 && <div className="related-products-container">
           <h2>More You'll like</h2>
           <Carousel type={"list"} images={images} />
       </div>

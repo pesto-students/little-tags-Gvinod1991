@@ -101,10 +101,10 @@ export default function ProductDetails() {
     <MainLayout>
       <div>
         {loading && <Loader />}
-        {productDetails && Object.keys(productDetails).length > 0 && (
+        {!loading && productDetails && Object.keys(productDetails).length > 0 && (
           <div className="product-details-container">
             <div className="product-carousal">
-              <Carousel type="stack" images={[{ image }]} />
+              <Carousel type="stack" images={[{ image },{ image },{ image }]} />
             </div>
             <div className="product-details">
               <h2 className="product-title">{title}</h2>
