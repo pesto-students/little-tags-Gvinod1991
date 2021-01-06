@@ -9,10 +9,10 @@ $border-radius: 5px;
 	margin-top: 1rem;
 }
 .flex-child {
-	width: 2rem;
+  width: 2rem;
+  padding: 0.3rem;
 	border: 1px solid $border-color;
 	text-align: center;
-	height: 1.5rem;
 	&:first-child {
 		border-top-left-radius: $border-radius;
 		border-bottom-left-radius: $border-radius;

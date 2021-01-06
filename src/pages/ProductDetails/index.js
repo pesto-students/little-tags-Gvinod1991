@@ -36,7 +36,8 @@ export default function ProductDetails() {
   }, [category, dispatch]);
 
   useEffect(()=>{
-    setFilteredProductList(productList.filter((product) => product.id !== parseFloat(id)));
+    const List=productList.filter((product) => product.id !== parseFloat(id))
+    setFilteredProductList([...List,...List]);
   },[productList,id]);
 
   const handleQuantity = (count) => {
@@ -74,7 +75,7 @@ export default function ProductDetails() {
 
   return (
     <MainLayout>
-      <div>
+      <div className="product-details-wrapper">
         {loading && <Loader />}
         {!loading && productDetails && Object.keys(productDetails).length > 0 && (
           <div className="product-details-container">

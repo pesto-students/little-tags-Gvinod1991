@@ -10,20 +10,25 @@ export default function Carousel({type,images}) {
   });
 
   const [horizontalTranslate, setHorizontalTranslate] = useState(0);
-
+  const [carouselIndex,setCarouselIndex]=useState(0);
   const goLeft = () => {
+    
     if (horizontalTranslate === 0) {
       setHorizontalTranslate(-TRANSLATE_PERCENTAGE * (sliderArray.length - 1));
+      setCarouselIndex((sliderArray.length - 1));
     } else {
       setHorizontalTranslate(horizontalTranslate + TRANSLATE_PERCENTAGE);
+      setCarouselIndex(carouselIndex-1);
     }
   };
 
   const goRight = () => {
     if (horizontalTranslate === -((sliderArray.length - 1) * 100)) {
       setHorizontalTranslate(0);
+      setCarouselIndex(0);
     } else {
       setHorizontalTranslate(horizontalTranslate - TRANSLATE_PERCENTAGE);
+      setCarouselIndex(carouselIndex+1);
     }
   };
 
@@ -46,6 +51,13 @@ export default function Carousel({type,images}) {
       <button id="right-arrow" className={type === 'stack' ? 'lg' :'sm'} onClick={goRight}>
         <img src="/right-arrow.svg"  alt="right" />
       </button>
+      {type === 'stack' && <ul className="carousel-indicators">
+        {sliderArray.map((item,index) => {
+          return <li key={item+index} className={index===carouselIndex ? "active" :""}></li>
+        })
+        }
+      </ul>
+      }
     </div>
   );
 }
