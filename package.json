@@ -2,6 +2,24 @@
   "name": "little-tags",
   "version": "0.1.0",
   "private": true,
+  "author": {
+    "name": "Godti Vinod",
+    "email": "venkat.godti3@gmail.com"
+  },
+  "contributors": [
+    {
+      "name": "Godti Vinod",
+      "email": "venkat.godti3@gmail.com"
+    },
+    {
+      "name": "Orpita Dutta",
+      "email": "orpitadutta91@gmail.com"
+    }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pesto-students/little-tags-Gvinod1991"
+  },
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",

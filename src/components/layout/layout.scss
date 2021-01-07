@@ -9,6 +9,7 @@
   .brand-container {
     display: flex;
     justify-content: space-between;
+    margin: 0.5rem;
   }
   .menu-icon {
     margin-right: 1rem;
@@ -19,14 +20,15 @@
     margin-left: 1rem;
     margin-right: 1rem;
     width: 62%;
-    height:3.1rem;
+    height:3rem;
     border-radius: 5px;
     box-shadow: 0 0 6px 0 rgba(10, 91, 106, 0.16);
     background-color: #ffffff;
     @media screen and (max-width:420px){
-      width: 80%;
+      width: 90%;
       margin-left: 0;
       margin-right: 0;
+      margin:0.5rem;
     }
     @media screen and (max-width:768px){
       height:3rem;
@@ -218,16 +220,23 @@
     }
   }
 }
+.hide{
+  display: none;
+}
+.show{
+  display: block;
+}
 .hamburger-menu-container {
   width: 300px;
   height: 800px;
   box-shadow: 16px 0 16px 0 rgba(0, 0, 0, 0.16);
   background-color: #ffffff;
-  border-radius: 0.5rem;
+  border-radius: 0 0.5rem;
   position: fixed;
   left: 0;
   top: 0;
   z-index: 999;
+  transition: width 0.5s ease-out;
   .brand-wrapper-hamburger{
     margin:1rem;
   }

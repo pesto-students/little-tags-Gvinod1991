@@ -101,14 +101,19 @@ border: 1px solid lightgray;
   button{
     margin: 0 auto;
   }
-  .text-danger{
-    color:#D1290B;
-    text-align:center;
+  label{
+    span{
+      color:#D1290B;
+    }
   }
-  .text-center{
-    text-align:center
-  }
-  .text-success{
-    color:#056C3A;
-  }
+}
+.text-danger{
+  color:#D1290B;
+  text-align:center;
+}
+.text-center{
+  text-align:center
+}
+.text-success{
+  color:#056C3A;
 }

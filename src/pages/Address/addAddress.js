@@ -23,7 +23,6 @@ const AddAddress = () => {
   const [emailIdErr, setEmailIdErr] = useState(null);
   const [phoneNumberErr, setPhoneNumberErr] = useState(null);
   const [addressLineOneErr, setAddressLineOneErr] = useState(null);
-  const [addressLineTwoErr, setAddressLineTwoErr] = useState(null);
   const [stateErr, setStateErr] = useState(null);
   const [pinCodeErr, setPinCodeErr] = useState(null);
   const dispatch = useDispatch();
@@ -90,11 +89,6 @@ const AddAddress = () => {
     } else {
       setAddressLineOneErr('');
     }
-    if (!addressLineTwo) {
-      setAddressLineTwoErr('Address line two required!');
-    } else {
-      setAddressLineTwoErr('');
-    }
     if (!state) {
       setStateErr('State is required!');
     } else {
@@ -133,7 +127,7 @@ const AddAddress = () => {
         <div className="columns">
           <div className="row">
             <div>
-              <label>First Name</label>
+              <label>First Name <span>*</span></label>
             </div>
             <input
               value={addressInformation.firstName}
@@ -148,7 +142,7 @@ const AddAddress = () => {
 
           <div className="row">
             <div>
-              <label>Last Name</label>
+              <label>Last Name<span>*</span></label>
             </div>
             <input
               value={addressInformation.lastName}
@@ -163,7 +157,7 @@ const AddAddress = () => {
 
           <div className="row">
             <div>
-              <label>Email ID</label>
+              <label>Email ID<span>*</span></label>
             </div>
             <input
               value={addressInformation.emailId}
@@ -177,7 +171,7 @@ const AddAddress = () => {
           </div>
           <div className="row">
             <div>
-              <label>Phone Number</label>
+              <label>Phone Number<span>*</span></label>
             </div>
             <input
               value={addressInformation.phoneNumber}
@@ -192,7 +186,7 @@ const AddAddress = () => {
 
           <div className="row">
             <div>
-              <label>Address line 1</label>
+              <label>Address line 1<span>*</span></label>
             </div>
             <input
               value={addressInformation.addressLineOne}
@@ -218,13 +212,10 @@ const AddAddress = () => {
               type="text"
               className="input-class"
             />
-            {addressLineTwoErr && (
-              <p className="text-danger">{addressLineTwoErr}</p>
-            )}
           </div>
           <div className="row">
             <div>
-              <label>State</label>
+              <label>State<span>*</span></label>
             </div>
             <div className="select">
               <select
@@ -247,7 +238,7 @@ const AddAddress = () => {
           </div>
           <div className="row">
             <div>
-              <label>Pin Code</label>
+              <label>Pin Code<span>*</span></label>
             </div>
             <input
               value={addressInformation.pinCode}
