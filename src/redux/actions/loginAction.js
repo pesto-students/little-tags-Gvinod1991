@@ -23,10 +23,11 @@ export const newlyLoggedIn = () => {
 
 export const isNewlyLoggedIn = () => {
   const value =  window.localStorage.getItem("nowLoggedIn");
-  if (value) { localStorage.removeItem("nowLoggedIn");}
   return value;
 }
-
+ export const removeNewlyLoggedIn = () => {
+  localStorage.removeItem("nowLoggedIn");
+ }
 export const isUserLoggedIn = () => {
   return window.localStorage.getItem("isLoggedIn");
 }

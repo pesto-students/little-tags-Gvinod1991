@@ -34,6 +34,7 @@ $color_mine_shaft_approx: #222;
       }
     }
     span{
+      display: block;
       margin-left:1rem;
       font-family: Gotham;
       font-size: 1.5rem;
@@ -72,7 +73,8 @@ $color_mine_shaft_approx: #222;
     color: #32353c;
     }
   .inr-symbol{
-    width:0.8rem;
+    width: 0.8rem;
+    margin-top: -4px;
   }
 }
 

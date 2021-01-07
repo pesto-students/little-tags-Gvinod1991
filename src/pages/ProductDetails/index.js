@@ -7,12 +7,17 @@ import Carousel from "../../components/carousel";
 import Counter from "../../components/counter/counter";
 import Loader from "../../components/Loader";
 import { getProductDetails,getProducts, getWishList, updateWishList } from "../../redux/actions";
-import { getCartCount, getCartData,
-  updateCartData, } from "../../redux/actions/cartDetails";
 
+import {
+  getCartCount,
+  getCartData,
+  updateCartData,
+} from '../../redux/actions/cartDetails';
+const productIdWithSize = [1, 2, 3, 4, 15, 16, 17, 18, 19, 20];
+const sizes = ['XS', 'S', 'M', 'L', 'XL'];
 export default function ProductDetails() {
   let quantityOfItem = 1;
-  const [filteredProductList,setFilteredProductList]=useState([]);
+  const [filteredProductList, setFilteredProductList] = useState([]);
   const { id } = useParams();
   
   const { productDetails, loading,productList, cartData, wishList } = useSelector((store) => ({
@@ -22,7 +27,9 @@ export default function ProductDetails() {
     cartData: store.cartDetails.cartData,
     wishList: store.wishList.wishList
   }));
-  const { image, title, description, price, size,category } = productDetails;
+  const { image, title, description, price, category } = productDetails;
+  const size = productIdWithSize.includes(parseFloat(id));
+  const [selectedVariant, setSelectedVariant] = useState(null);
   const dispatch = useDispatch();
   
   const [heart, setHeart] = useState(wishList.indexOf(id.toString()) === -1? 1 :2);
@@ -47,19 +54,23 @@ export default function ProductDetails() {
     dispatch(getProducts(category));
   }, [category, dispatch]);
 
-  useEffect(()=>{
-    setFilteredProductList(productList.filter((product) => product.id !== parseFloat(id)));
-  },[productList,id]);
+  useEffect(() => {
+    const List = productList.filter((product) => product.id !== parseFloat(id));
+    setFilteredProductList([...List, ...List]);
+  }, [productList, id]);
 
   const handleQuantity = (count) => {
     quantityOfItem = count;
   };
-
-  const handleAddToCart = (item) => {
+  const handleVariants = (variant) => {
+    setSelectedVariant(variant);
+  };
+  const handleAddToCart = (item,size) => {
     const idOfItem = item.id.toString();
     const cartItem = {
-      ["" + idOfItem]: {
+      ['' + idOfItem]: {
         item,
+        size,
         quantity: quantityOfItem,
         totalPrice: item.price * quantityOfItem,
       },
@@ -71,12 +82,13 @@ export default function ProductDetails() {
       if (Object.keys(cartData).indexOf(idOfItem) === -1) {
         cartData[idOfItem] = {
           item,
+          size,
           quantity: quantityOfItem,
           totalPrice: item.price * quantityOfItem,
         };
       } else {
-        cartData[idOfItem]["quantity"] += quantityOfItem;
-        cartData[idOfItem]["totalPrice"] += item.price * quantityOfItem;
+        cartData[idOfItem]['quantity'] += quantityOfItem;
+        cartData[idOfItem]['totalPrice'] += item.price * quantityOfItem;
       }
 
       dispatch(updateCartData(cartData));
@@ -97,12 +109,15 @@ export default function ProductDetails() {
   }
   return (
     <MainLayout>
-      <div>
+      <div className="product-details-wrapper">
         {loading && <Loader />}
         {!loading && productDetails && Object.keys(productDetails).length > 0 && (
           <div className="product-details-container">
             <div className="product-carousal">
-              <Carousel type="stack" images={[{ image },{ image },{ image }]} />
+              <Carousel
+                type="stack"
+                images={[{ image }, { image }, { image }]}
+              />
             </div>
             <div className="product-details">
               <h2 className="product-title">{title}</h2>
@@ -129,11 +144,18 @@ export default function ProductDetails() {
                 <div className="variant-wrapper">
                   <h2>Size</h2>
                   <ul>
-                    <li>XS</li>
-                    <li>S</li>
-                    <li>M</li>
-                    <li>L</li>
-                    <li>XL</li>
+                    {sizes.map((variant) => {
+                      return (
+                        <li key={variant}>
+                          <button
+                            onClick={() => handleVariants(variant)}
+                            className={selectedVariant===variant ? 'size-btn active' : 'size-btn'}
+                          >
+                            {variant}
+                          </button>
+                        </li>
+                      );
+                    })}
                   </ul>
                 </div>
               )}
@@ -146,7 +168,7 @@ export default function ProductDetails() {
               </div>
               <button
                 className="cart-btn"
-                onClick={() => handleAddToCart(productDetails)}
+                onClick={() => handleAddToCart(productDetails,selectedVariant)}
               >
                 <img src="/shopping-cart.svg" alt="shopping cart icon" />
                 <span>ADD TO CART</span>
@@ -154,11 +176,12 @@ export default function ProductDetails() {
             </div>
           </div>
         )}
-        {!loading && <div className="related-products-container">
-          <h2>More You'll like</h2>
-          <Carousel type={"list"} images={filteredProductList} />
+        {!loading && (
+          <div className="related-products-container">
+            <h2>More You'll like</h2>
+            <Carousel type={'list'} images={filteredProductList} />
           </div>
-        }
+        )}
       </div>
     </MainLayout>
   );

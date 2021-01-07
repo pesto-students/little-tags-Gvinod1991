@@ -9,9 +9,11 @@ import capitalize from '../../services/capitalize';
 const SOURCE='home';
 
 export default function Home() {
-  const { userDetails } = useSelector((store) => ({
+  const {isloggedIn,  userDetails } = useSelector((store) => ({
+    isLoggedIn: store.loginReducer.isLoggedIn,
     userDetails: store.loginReducer.userDetails,
   }));
+  console.log(isNewlyLoggedIn());
   const dispatch = useDispatch();
   const toastProperties = {
     id: 1,
@@ -21,10 +23,13 @@ export default function Home() {
         ? "You are logged in as " + capitalize(userDetails.displayName.split(" ")[0]) + "."
         : "",
     backgroundColor: "#5cb85c",
+    login: true
   };
   useEffect(() => {
     dispatch(logIn());
   },[dispatch]);
+
+
 
   return (
     <>

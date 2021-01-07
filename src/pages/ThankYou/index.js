@@ -5,8 +5,8 @@ import MainLayout from '../../components/layout/MainLayout';
 
 const ThankYou = () => {
   const history= useHistory();
-  const gotToOrders =()=>{
-    history.push('/orders');
+  const continueShopping =()=>{
+    history.push('/');
   }
     return (
       <MainLayout>
@@ -26,7 +26,7 @@ const ThankYou = () => {
           </div>
           <div className="note">Thank you for shopping with us</div>
           <p className="note-subtitle">Your order successfully placed.</p>
-          <button onClick={gotToOrders}>Your Orders</button>
+          <button onClick={continueShopping}>Continue Shopping</button>
         </div>
       </MainLayout>
     )

@@ -2,12 +2,14 @@ import React, { useState, useEffect } from "react";
 import PropTypes from 'prop-types';
 
 import './Toast.scss';
+import { removeNewlyLoggedIn } from "../../redux/actions/loginAction";
 
 const Toast = ({ toastList, autoDelete, autoDeleteTime }) => {
     const [list, setList] = useState(toastList);
 
     useEffect(() => {
         setList([...toastList]);
+
     }, [toastList]);
 
     useEffect(() => {
@@ -19,10 +21,12 @@ const Toast = ({ toastList, autoDelete, autoDeleteTime }) => {
                 list.splice(listItemIndex, 1);
                 toastList.splice(toastListItem, 1);
                 setList([...list]);
+                removeNewlyLoggedIn();
             }
         }, autoDeleteTime);
         
         return () => {
+            // 
             clearInterval(interval);
         }
     }, [toastList, autoDelete, autoDeleteTime, list]);

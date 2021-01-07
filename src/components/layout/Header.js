@@ -45,14 +45,12 @@ export default function Header({ isLoggedIn,source='non-home',isSticky, numberOf
         )}
         {isLoggedIn ? <HeaderCart isSticky={isSticky} source={source} numberOfItemsInCart={numberOfItemsInCart}/> : null}
       </div>
-      {showHamburgerMenu && (
         <HamBurgerMenu
           toggleHamburgerMenu={toggleHamburgerMenu}
           showHamburgerMenu={showHamburgerMenu}
           isLoggedIn={isLoggedIn}
           isSticky={isSticky}
         />
-      )}
       {(firstTimeVisit ? true : show) ? (
         <>
           <Modal show={firstTimeVisit ? true : show} close={closeLoginModal} />

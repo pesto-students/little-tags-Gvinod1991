@@ -14,6 +14,7 @@ export default function HamburgerMenu({
   toggleHamburgerMenu,
   isLoggedIn,
 }) {
+  
 
   const dispatch = useDispatch();
 
@@ -21,7 +22,7 @@ export default function HamburgerMenu({
     dispatch(logOut());
   }
   return (
-    <div className="hamburger-menu-container">
+    <div className={showHamburgerMenu ? "show hamburger-menu-container": "hide"}>
       <div className="brand-wrapper-hamburger">
         <Brand
           toggleHamburgerMenu={toggleHamburgerMenu}
