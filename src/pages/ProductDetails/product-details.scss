@@ -205,4 +205,15 @@
 		}
 	}
 }
+.size-btn{
+  display: inline;
+  border:none;
+  background-color: transparent;
+  font-size:1.5rem;
+  outline: none;
+}
+.active{
+  color:#555;
+  border-bottom: 0.2rem solid #111;
+}
 }
