@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getProductLists } from "../../redux/actions";
+import capitalize from "../../services/capitalize";
 import Card from "../card/card";
 import Loader from "../Loader";
 
 import "./ListDashboard.scss";
 
 const ListDashboard = ({ element }) => {
-  
   const [categories, setCategories] = useState({});
 
   const { isLoaded, productsList } = useSelector(
@@ -53,7 +53,7 @@ const ListDashboard = ({ element }) => {
             ? Object.keys(categories).map((category) => (
                 <Card
                   pathname={categories[category][0].image}
-                  title={categories[category][0].title}
+                  title={capitalize(category)}
                   id={categories[category][0].id}
                   key={categories[category][0].id}
                   category={category}
