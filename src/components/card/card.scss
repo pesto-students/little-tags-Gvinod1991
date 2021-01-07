@@ -52,6 +52,24 @@
 
 .card-image {
     max-width:100%;
-    height: 50vh;
+    // height: 50vh;
     border-radius: 16px;
+}
+
+.mobileViewImg {
+  @media only screen and (max-width: 400px) {
+    display:none;
+   }
+}
+.colImage {
+  height: 60vh;
+  width: fit-content;
+  @media only screen and (max-width: 400px) {
+    height: 30vh;
+   }
+}
+
+.rowImage {
+  height: 30vh;
+  width: fit-content;
 }

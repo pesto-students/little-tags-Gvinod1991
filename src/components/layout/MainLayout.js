@@ -10,12 +10,12 @@ export default function MainLayout({ children, source }) {
   const { isSticky, element } = useSticky();
   const { isLoggedIn, cartData } = useSelector((store) => ({
     isLoggedIn: store.loginReducer.isLoggedIn,
-    userDetails: store.loginReducer.userDetails,
     cartData: store.cartDetails.cartData,
-  }));
 
-  const numberOfItemsInCart = cartData ? Object.keys(cartData).length : 0;
+  }));
   
+  const numberOfItemsInCart = cartData ? Object.keys(cartData).length : 0;
+
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(logIn());
@@ -31,6 +31,7 @@ export default function MainLayout({ children, source }) {
       />
       {React.cloneElement(children, { element })}
       <Footer />
+      
     </div>
   );
 }
