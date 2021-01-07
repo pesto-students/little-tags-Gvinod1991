@@ -5,7 +5,7 @@ dotenv.config();
 
 const ordersRef= database.ref('orders');
 
-const {RAZOR_PAY_API_BASE_URL}=config;
+const {LITTLE_TAGS_API_URL}=config;
 
 export const ORDERS_SAVE_REQUEST='ORDERS_SAVE_REQUEST';
 export const ORDERS_SAVE_SUCCESS='ORDERS_SAVE_SUCCESS';
@@ -22,6 +22,7 @@ export const RAZOR_PAY_ORDERS_SAVE_REQUEST='RAZOR_PAY_ORDERS_SAVE_REQUEST';
 export const RAZOR_PAY_ORDERS_SAVE_SUCCESS='RAZOR_PAY_ORDERS_SAVE_SUCCESS';
 export const RAZOR_PAY_ORDERS_SAVE_FAILED='RAZOR_PAY_ORDERS_SAVE_FAILED';
 
+export const RESET_RAZOR_PAY_ORDER='RESET_RAZOR_PAY_ORDER';
 
 export const saveOrderDetails=(orderDetails)=>(dispatch)=>{
   dispatch({type:ORDERS_SAVE_REQUEST});
@@ -67,16 +68,20 @@ export const createRazorPayOrder=(data)=>(dispatch)=>{
     headers: {  'Accept': 'application/json',
     'Content-Type': 'application/json',
     'Access-Control-Allow-Origin': '*',
-    'Authorization': 'Basic ' + window.btoa(process.env.RAZOR_PAY_KEY + ":" + process.env.RAZOR_PAY_SECRET) },
+    },
     body: JSON.stringify(data)
   };
-  const API_URL = `${RAZOR_PAY_API_BASE_URL}v1/orders`;
+
+  const API_URL = `${LITTLE_TAGS_API_URL}create-razor-pay-order`;
   fetch(API_URL,requestOptions)
   .then((response) => response.json())
   .then((responseJson) => {
-    dispatch({type:RAZOR_PAY_ORDERS_SAVE_SUCCESS,payload:responseJson})
+    dispatch({type:RAZOR_PAY_ORDERS_SAVE_SUCCESS,payload:responseJson.data})
   })
   .catch((err) => {
     dispatch({type:RAZOR_PAY_ORDERS_SAVE_FAILED})
   });
+}
+export const clearOrder= ()=>(dispatch)=>{
+    dispatch({type:RESET_RAZOR_PAY_ORDER}); 
 }

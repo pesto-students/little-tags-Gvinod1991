@@ -9,7 +9,8 @@ import {
   REMOVE_CART_ITEMS_SUCCESS,
   RAZOR_PAY_ORDERS_SAVE_FAILED,
   RAZOR_PAY_ORDERS_SAVE_SUCCESS,
-  RAZOR_PAY_ORDERS_SAVE_REQUEST
+  RAZOR_PAY_ORDERS_SAVE_REQUEST,
+  RESET_RAZOR_PAY_ORDER
 } from '../actions/orders';
 
 const initialState = {
@@ -46,6 +47,8 @@ export const orders = (state = initialState, action) => {
       return { ...state, loading: false, razorPayOrder:action.payload};
     case RAZOR_PAY_ORDERS_SAVE_FAILED:
       return { ...state, loading: false, message: initialState.message };
+    case RESET_RAZOR_PAY_ORDER:
+      return { ...state, loading: false, razorPayOrder:initialState.razorPayOrder};
     default:
       return { ...state };
   }

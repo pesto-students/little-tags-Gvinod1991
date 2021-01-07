@@ -1,7 +1,7 @@
 const config={
   API_BASE_URL : 'https://fakestoreapi.com/',
   CURRENCY:'INR',
-  RAZOR_PAY_API_BASE_URL:'https://api.razorpay.com/'
+  LITTLE_TAGS_API_URL:'http://little-tags-api.herokuapp.com/'
 }
 
 
