@@ -47,104 +47,85 @@ const ListDashboard = ({ element }) => {
           <strong>Most in Demand</strong>
         </div>
       </main>
-      {/* {isLoaded ? (
-        <div className="wrapper">
-          {Object.keys(categories).length > 0
-            ? Object.keys(categories).map((category) => (
-                <Card
-                  pathname={categories[category][0].image}
-                  title={capitalize(category)}
-                  id={categories[category][0].id}
-                  key={categories[category][0].id}
-                  category={category}
-                />
-              ))
-            : null}
-            
-        </div>
-      ) : (
-        <Loader />
-      )} */}
+      
       {isLoaded ? (
         <div className="wrapper-grid">
-          {/* {Object.keys(categories).length > 0
-            // ? Object.keys(categories).map((category) => (
-                
-            //   ))
-
-            : null} */}
-            {
-              Object.keys(categories).length > 0 &&
-              <>
+        
+          {Object.keys(categories).length > 0 && (
+            <>
               <div className="sub-wrapper">
-              <div className="subwrapper-row1"><Card 
-                  pathname={'https://images.pexels.com/photos/298863/pexels-photo-298863.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500'}
-                  title={"Men's Clothing"}
-                  id={1}
-                  key={1}
-                  category={Object.keys(categories)[0]}
-                  imageClass= {"rowImage"}
-                  divclass={""}
-                />
+                <div className="subwrapper-row1">
+                  <Card
+                    pathname={
+                      "https://images.pexels.com/photos/298863/pexels-photo-298863.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+                    }
+                    title={"Men's Clothing"}
+                    id={1}
+                    key={1}
+                    category={Object.keys(categories)[0]}
+                    imageClass={"rowImage"}
+                    divclass={""}
+                  />
                 </div>
                 <div className="subwrapper-row2">
-                 <Card 
-                  pathname={'https://i.pinimg.com/originals/8f/22/2d/8f222da09dfa3c6e81973ee60fff2c2b.png'}
-                  title={"Jewelery"}
-                  id={2}
-                  key={2}
-                  category={Object.keys(categories)[1]}
-                  imageClass= {"rowImage"}
-                  divclass={"mobileViewImg"}
-                />
+                  <Card
+                    pathname={
+                      "https://i.pinimg.com/originals/8f/22/2d/8f222da09dfa3c6e81973ee60fff2c2b.png"
+                    }
+                    title={"Jewelery"}
+                    id={2}
+                    key={2}
+                    category={Object.keys(categories)[1]}
+                    imageClass={"rowImage"}
+                    divclass={"mobileViewImg"}
+                  />
                 </div>
               </div>
               <div className="mobileView">
-              <Card 
-                  pathname={'https://i.pinimg.com/originals/8f/22/2d/8f222da09dfa3c6e81973ee60fff2c2b.png'}
+                <Card
+                  pathname={
+                    "https://i.pinimg.com/originals/8f/22/2d/8f222da09dfa3c6e81973ee60fff2c2b.png"
+                  }
                   title={"Jewelery"}
                   id={2}
                   key={2}
                   category={Object.keys(categories)[1]}
-                  imageClass= {"rowImage"}
+                  imageClass={"rowImage"}
                   divclass={""}
-
                 />
               </div>
               <div className="card-col">
-             
-              <Card 
-                  pathname={'https://fossbytes.com/wp-content/uploads/2019/07/the-Best-Android-Wallpaper-apps-1200x900.jpg'}
+                <Card
+                  pathname={
+                    "https://fossbytes.com/wp-content/uploads/2019/07/the-Best-Android-Wallpaper-apps-1200x900.jpg"
+                  }
                   title={"Electronics"}
                   id={3}
                   key={3}
                   category={Object.keys(categories)[2]}
                   divclass={""}
-                  imageClass= {"colImage"}
+                  imageClass={"colImage"}
                 />
               </div>
               <div className="card-colwrapper">
-              <Card 
-                  pathname={'https://thumbs.dreamstime.com/z/women-s-clothing-dark-background-top-view-shopping-concept-autumn-jeans-suede-shoes-sneakers-pullovers-scarf-fashion-159217005.jpg'}
+                <Card
+                  pathname={
+                    "https://thumbs.dreamstime.com/z/women-s-clothing-dark-background-top-view-shopping-concept-autumn-jeans-suede-shoes-sneakers-pullovers-scarf-fashion-159217005.jpg"
+                  }
                   title={"Women's Clothing"}
                   id={4}
                   key={4}
                   category={Object.keys(categories)[3]}
                   divclass={""}
-                  imageClass= {"colImage"}
+                  imageClass={"colImage"}
                 />
               </div>
-                
-               
-                </>
-            }
-            
+            </>
+          )}
         </div>
       ) : (
         <Loader />
       )}
-
-
     </>
   );
 };

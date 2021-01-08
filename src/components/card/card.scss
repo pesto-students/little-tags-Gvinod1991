@@ -63,7 +63,7 @@
 }
 .colImage {
   height: 60vh;
-  width: fit-content;
+  width: 100%;
   @media only screen and (max-width: 400px) {
     height: 30vh;
    }
@@ -71,5 +71,5 @@
 
 .rowImage {
   height: 30vh;
-  width: fit-content;
+  width: 100%;
 }

@@ -28,14 +28,18 @@ $radius: 10px;
   max-width: 350px;
   width: 100% !important;
   background-color: $color_wild_sand_approx;
-  margin: 8% 35% auto;
+  margin: 15% 35% auto;
   @include border-radius($radius);
   box-shadow: 0 2px 2px $black_30;
   overflow: hidden;
   font-family: $font_0;
   transition: all 0.3s ease;
   position: fixed;
-  z-index: 1;
+  z-index: 99;
+  @media only screen and (max-width: 400px) {
+    max-width: 280px;
+    margin: 15% 1rem auto;
+   }
 }
 .modal-title {
   text-align: center;
