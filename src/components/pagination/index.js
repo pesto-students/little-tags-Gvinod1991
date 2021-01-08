@@ -16,7 +16,7 @@ export default function Pagination({
               currentPage > 1 ? handleCurrentPageChange(currentPage - 1) : {}
             }
           >
-            &laquo;Previous
+            &laquo; Previous
           </a>
           {pageNumbers.map((pageNumber) => {
             return (
