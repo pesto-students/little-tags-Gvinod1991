@@ -18,11 +18,13 @@ export default function Header({ isLoggedIn,source='non-home',isSticky, numberOf
   };
 
   const closeLoginModal = () => {
+    setFirstTimeVisit(false);
     setShow(false);
   };
 
   const openLoginModal = () => {
     setShow(true);
+    
   };
   useEffect(() => {
     setFirstTimeVisit(isUserVisitingForTheFirstTime() ? true : show);

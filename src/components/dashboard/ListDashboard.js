@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getProductLists } from "../../redux/actions";
-import capitalize from "../../services/capitalize";
 import Card from "../card/card";
 import Loader from "../Loader";
 

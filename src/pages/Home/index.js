@@ -9,7 +9,7 @@ import capitalize from '../../services/capitalize';
 const SOURCE='home';
 
 export default function Home() {
-  const {isloggedIn,  userDetails } = useSelector((store) => ({
+  const {userDetails } = useSelector((store) => ({
     isLoggedIn: store.loginReducer.isLoggedIn,
     userDetails: store.loginReducer.userDetails,
   }));
