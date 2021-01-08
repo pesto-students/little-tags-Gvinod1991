@@ -26,7 +26,7 @@ const AddressCard = ({ details:{firstName,lastName,emailId,phoneNumber,addressLi
 AddressCard.propTypes = {
   isDummy: PropTypes.bool.isRequired,
   details:PropTypes.object.isRequired,
-  handleAddressChange:PropTypes.func.isRequired,
-  userDetailsId:PropTypes.string.isRequired
+  handleAddressChange:PropTypes.func,
+  userDetailsId:PropTypes.string
 };
 export default AddressCard;
