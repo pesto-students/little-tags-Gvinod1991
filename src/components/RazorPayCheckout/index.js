@@ -22,7 +22,8 @@ export default function RazorPayCheckout({
       const options = {
         key: process.env.REACT_APP_RAZOR_PAY_KEY,
         amount: amount,
-        image: '',
+        image: '/favicon.ico',
+        description:"Little Tags",
         order_id: id,
         handler: (response) => {
           dispatch(clearCart());

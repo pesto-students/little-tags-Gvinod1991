@@ -66,7 +66,7 @@ const Payment = () => {
   useEffect(() => {
     if (saved && totalOrderPrice > 0) {
       const razorPayOrder = {
-        amount: parseFloat(totalOrderPrice) * 100, //As razor pay required in paise
+        amount: parseInt(parseFloat(totalOrderPrice) * 100), //As razor pay required in paise
         currency: CURRENCY,
       };
       if (paymentMethod === 'razorPay') {
