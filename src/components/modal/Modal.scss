@@ -9,17 +9,12 @@ $color_mine_shaft_approx: #222;
 $color_mine_shaft_692_approx: rgba(63, 61, 61, 0.692);
 
 //fonts
-$font_0: roboto;
+$font_0: Gotham;
 $font_1: Merriweather Sans;
 $font_2: sans-serif;
 
 //radius
 $radius: 10px;
-
-// * {
-//   margin: 0;
-//   padding: 0;
-// }
 @mixin border-radius($pixel...) {
   border-radius: $pixel;
 }
@@ -45,6 +40,7 @@ $radius: 10px;
   text-align: center;
   font-size: 0.8rem;
   margin-top: 1rem;
+  font-family: $font_0;
   .show {
     transform: translateY(0vh);
   }
@@ -60,6 +56,7 @@ button {
     display: flex;
     align-items: center;
     justify-content: center;
+    font-family: $font_0;
   }
   span {
     font-size: 18px;
@@ -73,6 +70,7 @@ button {
     display: flex;
     align-items: center;
     justify-content: center;
+    font-family: $font_0;
   }
 }
 .wrap-buttons {
@@ -100,11 +98,11 @@ div.social-wrap button {
   background-size: 35px 35px;
   background-position: right center;
   background-repeat: no-repeat;
-  border-radius: 8px;
+  border-radius: 0.4rem;
   color: $white;
   font-family: $font_1, $font_2;
-  font-size: 10px;
-  margin-bottom: 15px;
+  font-size: 0.8rem;
+  margin-bottom: 1rem;
   width: 205px;
   border-bottom: 2px solid transparent;
   border-left: 1px solid transparent;
@@ -113,6 +111,9 @@ div.social-wrap button {
   text-shadow: $black_50 -1px -1px 0;
   &:active {
     background-color: $color_mine_shaft_approx;
+  }
+  &:hover{
+    box-shadow: 0 4px 2px -3px $gray;
   }
 }
 .close-button {
