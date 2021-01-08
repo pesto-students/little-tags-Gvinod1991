@@ -42,7 +42,9 @@ export default function Cart() {
           />
         ))
         }
-        <button className="btn" onClick={deliverTo}>Proceed</button>
+        <div className="btn-wrapper">
+          <button className="btn" onClick={deliverTo}>Proceed</button>
+        </div>
         </>
       ) : (
         <div className="centeredText">
