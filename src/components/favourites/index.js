@@ -7,13 +7,15 @@ import {
 } from "../../redux/actions";
 import { getWishList } from "../../redux/actions/wishList";
 import MainLayout from "../layout/MainLayout";
+import Loader from "../Loader";
 import ProductCard from "../productCard";
 import "./favourites.scss";
 
 const Favourites = () => {
-  const { productsList, wishList, cartData } = useSelector((store) => ({
+  const { productsList, wishList, cartData,loading } = useSelector((store) => ({
     productsList: store.productList.productsList,
     wishList: store.wishList.wishList,
+    loading:store.productList.loading,
     cartData: store.cartDetails.cartData,
   }));
 
@@ -72,8 +74,8 @@ const Favourites = () => {
           {" "}
           <h1>Your Favorites</h1>
         </div>
-
-        {products.length > 0 &&
+        {loading && <Loader/>}
+        {!loading && products.length > 0 &&
           products.map((item) => (
             <ProductCard
               key={item.id}
@@ -86,6 +88,7 @@ const Favourites = () => {
               addToCart={() => addToCart(item)}
             />
           ))}
+          {!loading && products.length === 0 && <p>No items in your favorite section</p>}
       </div>
     </MainLayout>
   );
