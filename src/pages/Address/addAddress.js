@@ -47,7 +47,6 @@ const AddAddress = () => {
       emailId,
       phoneNumber,
       addressLineOne,
-      addressLineTwo,
       state,
       pinCode,
     } = addressInformation;
@@ -60,8 +59,6 @@ const AddAddress = () => {
         : false;
     addressLineOne =
       addressLineOne && addressLineOne !== '' ? addressLineOne : false;
-    addressLineTwo =
-      addressLineTwo && addressLineTwo !== '' ? addressLineTwo : false;
     state = state && state !== '' ? state : false;
     pinCode = pinCode && pinCode !== '' ? pinCode : false;
     if (!firstName) {
@@ -105,7 +102,6 @@ const AddAddress = () => {
       emailId &&
       phoneNumber &&
       addressLineOne &&
-      addressLineTwo &&
       state &&
       pinCode
     ) {
