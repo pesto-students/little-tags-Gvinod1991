@@ -1,6 +1,7 @@
 import {database} from '../../services/firebase';
 import {config} from '../../config';
 import dotenv from 'dotenv';
+import {FETCH_CART_DETAILS} from './cartDetails';
 dotenv.config();
 
 const ordersRef= database.ref('orders');
@@ -54,6 +55,7 @@ export const clearCart= ()=>(dispatch)=>{
   try{
     window.localStorage.removeItem('myCart');
     dispatch({type:REMOVE_CART_ITEMS_SUCCESS,removed:true});
+    dispatch({type:FETCH_CART_DETAILS,payload: {} });
     dispatch({type:ORDERS_SAVE_SUCCESS,payload:false})
   }catch(err){
     dispatch({type:REMOVE_CART_ITEMS_FAILED})

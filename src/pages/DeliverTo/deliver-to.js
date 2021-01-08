@@ -41,7 +41,7 @@ const DeliverTo = () => {
       <div className="deliver-to-container">
         <h2>Deliver To</h2>
         {loading && <Loader />}
-        {userDetailsList &&
+        {!loading && userDetailsList &&
           userDetailsList.length > 0 &&
           userDetailsList.map((userDetails) => (
             <AddressCard key={userDetails.id} details={userDetails} isDummy={false} userDetailsId={userDetailsId} handleAddressChange={handleAddressChange}/>

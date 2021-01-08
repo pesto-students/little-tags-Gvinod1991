@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import dotenv from 'dotenv';
-import { clearOrder, clearCart } from '../../redux/actions';
+import { clearOrder, clearCart, getCartCount } from '../../redux/actions';
 
 dotenv.config();
 
@@ -26,6 +26,7 @@ export default function RazorPayCheckout({
         order_id: id,
         handler: (response) => {
           dispatch(clearCart());
+          dispatch(getCartCount());
           dispatch(clearOrder());
           if (response && response.razorpay_signature) {
             history.push('/order-confirmation');

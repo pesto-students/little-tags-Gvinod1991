@@ -34,6 +34,6 @@ export const cartDetails = (state = initialState, action) => {
         totalPriceList: action.payload,
       };
     default:
-      return state;
+      return {...state};
   }
 };

@@ -5,6 +5,7 @@ import {
   getUserDetails,
   saveOrderDetails,
   clearCart,
+  getCartCount,
   createRazorPayOrder,
 } from '../../redux/actions';
 import AddressCard from '../../components/addressCard/addressCard';
@@ -73,6 +74,7 @@ const Payment = () => {
       }
       if (paymentMethod === 'cod') {
         dispatch(clearCart());
+        dispatch(getCartCount());
         history.push('/order-confirmation');
       }
     }

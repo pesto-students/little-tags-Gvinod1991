@@ -13,7 +13,6 @@ export default function Home() {
     isLoggedIn: store.loginReducer.isLoggedIn,
     userDetails: store.loginReducer.userDetails,
   }));
-  console.log(isNewlyLoggedIn());
   const dispatch = useDispatch();
   const toastProperties = {
     id: 1,
