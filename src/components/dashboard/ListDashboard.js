@@ -43,7 +43,7 @@ const ListDashboard = ({ element }) => {
     <>
       <main ref={element}>
         <div className="titleDemand">
-          <strong>Most in Demand</strong>
+          Most in Demand
         </div>
       </main>
       
