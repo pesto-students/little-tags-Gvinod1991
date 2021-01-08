@@ -3,7 +3,7 @@ import { signInWithGoogle, signInWithFacebook } from "../../services/firebase";
 import { useDispatch } from 'react-redux';
 
 import "./Modal.scss";
-import { isUserVisitingForTheFirstTime, logIn, setUserVisit } from "../../redux/actions/loginAction";
+import { isUserVisitingForTheFirstTime, logIn, newlyLoggedIn, setUserVisit } from "../../redux/actions/loginAction";
 
 const Modal = (props) => {
   const { show, close } = props;
@@ -39,6 +39,7 @@ const Modal = (props) => {
               onClick={() => {
                 signInWithGoogle();
                 dispatch(logIn());
+                newlyLoggedIn();
                 close();
               }}
             >
@@ -48,6 +49,7 @@ const Modal = (props) => {
             onClick={() => {
               signInWithFacebook();
               dispatch(logIn());
+              newlyLoggedIn();
               close();
             }}>
               <span>f</span>Facebook Account

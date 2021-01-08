@@ -7,6 +7,7 @@ import { productList } from './productList';
 import { cartDetails } from './CartDetails';
 import { userDetails } from './userDetails';
 import { orders } from './orders';
+import { wishList } from './wishListReducer';
 
 export default combineReducers({
   loginReducer,
@@ -15,5 +16,6 @@ export default combineReducers({
   productList,
   cartDetails,
   userDetails,
-  orders
+  orders,
+  wishList
 });

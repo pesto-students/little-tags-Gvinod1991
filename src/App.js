@@ -16,6 +16,8 @@ import DeliverTo from "./pages/DeliverTo/deliver-to";
 import Products from './pages/Products';
 import ProductDetails from './pages/ProductDetails';
 import Orders from "./pages/Orders";
+import Favourites from "./components/favourites";
+
 import ThankYou from './pages/ThankYou';
 import PaymentGateway from './pages/PaymentGateway';
 function App() {
@@ -49,6 +51,9 @@ function App() {
           </PrivateRoute>
           <PrivateRoute path={'/payment-gateway'}>
             <PaymentGateway/>
+          </PrivateRoute>
+          <PrivateRoute path={'/wish-list'}>
+            <Favourites />
           </PrivateRoute>
           <Route path={'/'}>
             <Home />

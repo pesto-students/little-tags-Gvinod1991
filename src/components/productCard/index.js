@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useHistory } from "react-router-dom";
 import {
+  getCartCount,
   getCartData,
   getTotalPrice,
   updateCartData,
@@ -29,6 +30,7 @@ export default function ProductCard({
   const handleQuantity = (count) => {
     if (count === 0) {
       delete cartData["" + productId];
+      dispatch(getCartCount());
     } else {
       cartData["" + productId].quantity = count;
       cartData["" + productId].totalPrice = price * count;
@@ -36,6 +38,7 @@ export default function ProductCard({
 
     dispatch(updateCartData(cartData));
     dispatch(getTotalPrice());
+
   };
 
   useEffect(() => {

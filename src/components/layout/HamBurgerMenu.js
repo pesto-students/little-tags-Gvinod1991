@@ -44,6 +44,9 @@ export default function HamburgerMenu({
             <li>
               <Link to="/new-address">Add Address</Link>
             </li>
+            <li>
+              <Link to="/wish-list">Your Favourites</Link>
+            </li>
           </ul>
         </div>
       )}

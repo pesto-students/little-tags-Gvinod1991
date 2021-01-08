@@ -17,13 +17,24 @@ export const logIn = () => (dispatch) => {
       }
   });
 };
+export const newlyLoggedIn = () => {
+  window.localStorage.setItem("nowLoggedIn", '1');
+}
 
+export const isNewlyLoggedIn = () => {
+  const value =  window.localStorage.getItem("nowLoggedIn");
+  return value;
+}
+ export const removeNewlyLoggedIn = () => {
+  localStorage.removeItem("nowLoggedIn");
+ }
 export const isUserLoggedIn = () => {
   return window.localStorage.getItem("isLoggedIn");
 }
 export const logOut = () => (dispatch) => {
+  
   window.localStorage.clear();
-
+  window.localStorage.setItem("visit", 'yes');
   auth.signOut();
   dispatch({ type: LOG_OUT, data: {} });
 };
