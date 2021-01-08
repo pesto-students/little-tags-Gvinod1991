@@ -12,6 +12,9 @@ main {
   justify-content: center;
   align-items: center;
 }
+.categories-wrapper{
+  min-height: 400px;
+}
 .wrapper-grid {
   display: grid;
   grid-template-columns: 2fr 1fr 1fr;

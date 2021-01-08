@@ -19,7 +19,9 @@ const Dashboard = ({element}) => {
             </div>
           </div>
         </div>
-          <ListDashboard element={element} />
+        <div className="categories-wrapper">
+        <ListDashboard element={element} />
+        </div>
        </> 
     )
 }

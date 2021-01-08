@@ -96,7 +96,7 @@ const ListDashboard = ({ element }) => {
               <div className="card-col">
                 <Card
                   pathname={
-                    "https://fossbytes.com/wp-content/uploads/2019/07/the-Best-Android-Wallpaper-apps-1200x900.jpg"
+                    "https://images.unsplash.com/photo-1498049794561-7780e7231661?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80"
                   }
                   title={"Electronics"}
                   id={3}
@@ -109,7 +109,7 @@ const ListDashboard = ({ element }) => {
               <div className="card-colwrapper">
                 <Card
                   pathname={
-                    "https://thumbs.dreamstime.com/z/women-s-clothing-dark-background-top-view-shopping-concept-autumn-jeans-suede-shoes-sneakers-pullovers-scarf-fashion-159217005.jpg"
+                    "https://images.unsplash.com/photo-1495121605193-b116b5b9c5fe?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=334&q=80"
                   }
                   title={"Women's Clothing"}
                   id={4}
