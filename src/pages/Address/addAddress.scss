@@ -1,0 +1,119 @@
+@media (min-height: 400px) {
+  .columns {
+    -webkit-columns: 2 350px;
+    -moz-columns: 2 350px;
+    columns: 2 350px;
+    margin: 0 auto;
+    text-align: left;
+    margin-top: 2rem;
+    margin-left: 2rem;
+    font-family: "Open Sans", sans;
+  }
+}
+
+.input-class {
+  background-color: #fafafa;
+  transition: 0.3s box-shadow;
+  border: 1px solid lightgray;
+  padding: 1.2em 0 10px 15px;
+  font-family: "Open Sans", sans;
+  font-size: 1rem;
+  margin-top: 0.5rem;
+  width: 80%;
+  border-radius: 0.25em;
+}
+
+.row {
+margin-bottom: 1em;
+}
+.input-class::-webkit-outer-spin-button,
+.input-class::-webkit-inner-spin-button {
+-webkit-appearance: none;
+margin: 0;
+}
+.input-class {
+-moz-appearance: textfield;
+}
+.deliver {
+width: 100%;
+text-align: center;
+font-size: 2rem;
+margin-top: 2rem;
+font-family: Gotham;
+}
+.slct {
+-webkit-appearance: none;
+-moz-appearance: none;
+-ms-appearance: none;
+appearance: none;
+outline: 0;
+box-shadow: none;
+border: 0 !important;
+background: #fafafa;
+background-image: none;
+color: black;
+border: 1px solid lightgray;
+flex: 1;
+padding: 0 0.5em;
+cursor: pointer;
+&::-ms-expand {
+  display: none;
+}
+& > option {
+  font-size: 1.3em;
+  padding-right: 10px;
+  padding-left: 5px;
+}
+}
+.select {
+position: relative;
+display: flex;
+width: 82%;
+height: 3em;
+line-height: 3;
+overflow: hidden;
+border-radius: 0.25em;
+border: 1px solid lightgray;
+&::after {
+  content: "\25BC";
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 0 1em;
+  cursor: pointer;
+  pointer-events: none;
+  -webkit-transition: 0.25s all ease;
+  -o-transition: 0.25s all ease;
+  transition: 0.25s all ease;
+}
+&:hover {
+  &::after {
+    color: #f39c12;
+  }
+}
+}
+@media only screen and (max-width: 400px) {
+  .input-class {
+    width: 80%;
+  }
+}
+.add-address-container{
+  button{
+    margin: 0 auto;
+  }
+  label{
+    span{
+      color:#D1290B;
+    }
+  }
+}
+.text-danger{
+  color:#D1290B;
+  text-align:center;
+}
+.text-center{
+  text-align:center
+}
+.text-success{
+  color:#056C3A;
+}

@@ -1,0 +1,34 @@
+.user-section {
+  display: flex;
+  justify-content: flex-start;
+  padding: 0.5rem;
+  color: #fff;
+  cursor: pointer;
+  .user-icon {
+    width: 2rem;
+  }
+  .user-name {
+    font-family: Gotham;
+    font-size: 1.2rem;
+    font-weight: normal;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: 1.2;
+    letter-spacing: normal;
+    
+    margin: 0;
+    text-align: center;
+    margin-left: 0.8rem;
+    margin-top: 0.3rem;
+  }
+}
+.color-light{
+  color: #ffffff;
+}
+.color-dark{
+  color: #000000;
+}
+
+.background-dark{
+  background-color: #000000;
+}

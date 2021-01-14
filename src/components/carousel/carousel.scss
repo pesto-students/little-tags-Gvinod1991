@@ -1,0 +1,122 @@
+.slider {
+  position: relative;
+  width: 100%;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  border-radius: 1.2rem;
+}
+
+.slide {
+  border-radius: 1.2rem;
+  height: 90%;
+  transition: 0.5s;
+  overflow: hidden;
+}
+.min-width-100 {
+  min-width: 100%;
+}
+.min-width-45 {
+  min-width: 25%;
+  margin: 1rem;
+  height: auto;
+  @media screen and (max-width: 420px) {
+    min-width: 100%;
+    margin:0
+  }
+}
+%button-style {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  height: 80%;
+  background: none;
+  outline: none;
+  border: none;
+  cursor: pointer;
+}
+.lg {
+  width: 10%;
+  @media screen and (max-width: 420px) {
+    width: 15%;
+  }
+}
+.sm {
+  width: 4%;
+  @media screen and (max-width: 420px) {
+    width: 10%;
+  }
+}
+#left-arrow {
+  left: 0;
+  @extend %button-style;
+  img {
+    width: 100%;
+  }
+}
+#right-arrow {
+  right: 0;
+  @extend %button-style;
+  img {
+    width: 100%;
+  }
+}
+.carousel-indicators{
+  position:absolute;
+  margin: 0 auto;
+  left: 35%;
+  bottom: -0.9rem;
+  padding: 10px;
+  li{
+    display: inline-block;
+    margin: 0.3rem;
+    list-style: none;
+    border-radius: 12px;
+    border:2px solid #0011ff;
+    width: 0.7rem;
+    height: 0.7rem;
+    background-color:#0011ff;
+    cursor: pointer;
+  }
+  .active{
+    border:2px solid #181e6b;
+    background-color:#181e6b;
+  }
+}
+
+.carouselItem-container {
+  background-color: rgba(0, 0, 0, 0.1);
+  opacity: 0.9;
+  cursor: pointer;
+  img {
+    width: 100%;
+    height: 50vh;
+  }
+  .product-caption {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    padding-bottom: 4rem;
+    height: 50px;
+    opacity: 0.45;
+    background-image: linear-gradient(
+      79deg,
+      #000000 3%,
+      rgba(0, 0, 0, 0.5) 100%
+    );
+    span {
+      font-family: Gotham;
+      font-size: 1.5rem;
+      opacity: 1;
+      font-weight: normal;
+      font-stretch: normal;
+      font-style: normal;
+      line-height: 1.19;
+      letter-spacing: normal;
+      text-align: left;
+      color: #ffffff;
+    }
+  }
+}
