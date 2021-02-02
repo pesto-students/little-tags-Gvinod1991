@@ -1,16 +1,16 @@
 .card-display {
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    border-radius: 15px;
     cursor: pointer;
     transition: all .2s ease-in-out;
     position: relative;
     z-index: 0; 
     width: 100%;
+    border-radius:1rem;
+    box-shadow: 0 0 0.8rem 0 #607d8b;
+    opacity: 0.9;
     &:hover {
         z-index: 5;
-        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.9);
-        background: white;
-        border-radius: 15px;
+        border-radius: 1rem;
+        box-shadow: 0 0 0.8rem 0 #607d8b;
       }
     @media only screen and (max-width: 400px) {
        margin: 0;
@@ -19,11 +19,8 @@
 }
 
 .textInCard {
-  background-image: linear-gradient(
-    79deg,
-    #000000 3%,
-    rgba(0, 0, 0, 0.5) 100%
-  );
+    opacity: 0.41;
+    background-image: linear-gradient(84deg, #000000 4%, rgba(0, 0, 0, 0.5) 100%);
     color: white;
     border-bottom-left-radius: 1rem;
     border-bottom-right-radius: 1rem;
@@ -52,7 +49,7 @@
 
 .card-image {
     max-width:100%;
-    // height: 50vh;
+    object-fit: cover;
     border-radius: 16px;
 }
 
@@ -72,4 +69,5 @@
 .rowImage {
   height: 30vh;
   width: 100%;
+  object-fit: cover;
 }

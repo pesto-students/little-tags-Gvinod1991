@@ -56,7 +56,7 @@ const ListDashboard = ({ element }) => {
                 <div className="subwrapper-row1">
                   <Card
                     pathname={
-                      "https://images.pexels.com/photos/298863/pexels-photo-298863.jpeg?auto=compress&cs=tinysrgb&dpr=1&w=500"
+                      "/mens-clothing.jpg"
                     }
                     title={"Men's Clothing"}
                     id={1}
