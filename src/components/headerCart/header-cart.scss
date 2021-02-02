@@ -2,18 +2,14 @@
   display: flex;
   align-items: center;
   img{
-    width:2rem;
-    margin-left:1rem;
+    width:1.8rem;
+    margin-right:1rem;
     cursor: pointer;
   }
 }
 
 .badge {
-  padding-left: 9px;
-  padding-right: 9px;
-  -webkit-border-radius: 9px;
-  -moz-border-radius: 9px;
-  border-radius: 9px;
+  border-radius: 1rem;
 }
 
 .label-warning[href],
@@ -21,10 +17,11 @@
   background-color: #c67605;
 }
 .lblCartCount {
-    font-size: 12px;
-    background: #0011ff;
-    color: #fff;
-    padding: 0 5px;
-    vertical-align: top;
-    margin-left: -10px; 
+  font-size: 0.7rem;
+  background: #0011ff;
+  color: #fff;
+  padding: 0 0.2rem;
+  vertical-align: top;
+  position: relative;
+  right: 1.5rem;
 }
