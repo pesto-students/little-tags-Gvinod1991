@@ -1,9 +1,8 @@
 .brand-container{
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
   .menu-icon {
-    margin-right: 1rem;
     cursor: pointer;
     width: 2rem;
   }
@@ -16,7 +15,10 @@
     line-height: 1.2;
     letter-spacing: normal;
     margin: 0;
+    margin-top: 0.3rem;
+    margin-left: 1rem;
     text-decoration: none;
+    cursor: pointer;
   }
   .color-dark{
     color: #000000;

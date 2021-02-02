@@ -8,14 +8,14 @@ const Card = ({ pathname, title, id , category , imageClass, divclass}) => {
 
   return (
     <>
-    <NavLink to={'/products/' + category} key={id}>
+      <NavLink to={'/products/' + category} key={id}>
         <div className={ "card-display " +divclass } >
-            <img  src={pathname} alt={title} className={"card-image " +imageClass}/>
-            <div className="textInCard">
-                <span>{title}</span>
-            </div>
+          <img  src={pathname} alt={title} className={"card-image " +imageClass}/>
+          <div className="textInCard">
+              <span>{title}</span>
+          </div>
         </div>
-        </NavLink>
+      </NavLink>
     </>
   );
 };

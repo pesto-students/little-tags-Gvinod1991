@@ -22,7 +22,7 @@ export default function HamburgerMenu({
     dispatch(logOut());
   }
   return (
-    <div className={showHamburgerMenu ? "show hamburger-menu-container": "hide"}>
+    <div key={showHamburgerMenu+1} className={showHamburgerMenu ? "show-hamburger hamburger-menu-container": "hide-hamburger"}>
       <div className="brand-wrapper-hamburger">
         <Brand
           toggleHamburgerMenu={toggleHamburgerMenu}
@@ -52,7 +52,7 @@ export default function HamburgerMenu({
       )}
       {isLoggedIn && (
         <div className="logout-section">
-          <button className="btn" onClick={logout}>Logout</button>
+          <button className="logout-btn" onClick={logout}>Logout</button>
         </div>
       )}
     </div>
