@@ -4,7 +4,6 @@ import { useDispatch } from 'react-redux';
 
 import './layout.scss';
 import AuthUserDisplay from '../autUserDisplay';
-import LoginAction from '../loginAction';
 import Categories from '../categories';
 import Brand from '../brand';
 import { logOut } from '../../redux/actions/loginAction';
@@ -14,7 +13,7 @@ export default function HamburgerMenu({
   toggleHamburgerMenu,
   isLoggedIn,
 }) {
-  
+
 
   const dispatch = useDispatch();
 
@@ -22,14 +21,14 @@ export default function HamburgerMenu({
     dispatch(logOut());
   }
   return (
-    <div key={showHamburgerMenu+1} className={showHamburgerMenu ? "show-hamburger hamburger-menu-container": "hide-hamburger"}>
+    <div key={showHamburgerMenu + 1} className={showHamburgerMenu ? "show-hamburger hamburger-menu-container" : "hide-hamburger"}>
       <div className="brand-wrapper-hamburger">
         <Brand
           toggleHamburgerMenu={toggleHamburgerMenu}
           showHamburgerMenu={showHamburgerMenu}
         />
       </div>
-      {isLoggedIn ? <AuthUserDisplay parent="hamburger" /> : <LoginAction />}
+      {isLoggedIn ? <AuthUserDisplay parent="hamburger" /> : null}
 
       <Categories />
 
